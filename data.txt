@@ -2,13 +2,19 @@ struct planet
 slot nameStart
 slot nameEnd
 slot nameNumber
+slot prime
 slot sun
 slot surface
 slot climate
 slot landscape
 slot special
 slot symmetry
-desc {nameStart}{nameEnd} {nameNumber}\n\n{surface:desc} {landscape:desc} {special:desc}
+slot animalColor
+slot animalTexture
+slot leafColor
+slot flora
+slot fauna
+desc <h1>{nameStart}{nameEnd} {nameNumber}</h1><br><br>{surface:desc} {fauna:desc} {special:desc}
 
 nameStart Bi
 nameStart Tor
@@ -55,6 +61,12 @@ nameNumber IV
 nameNumber V
 nameNumber VI
 
+prime seven
+prime eleven
+prime thirteen
+prime seventeen
+prime nineteen
+
 sun brightBlue
 brightness bright
 color blue
@@ -88,37 +100,56 @@ brightness dim
 color blue
 
 surface deepOcean
-desc There is a planet-wide, deep {climate:ocean}.
+desc There is a planet-wide, deep {climate:ocean}. {landscape:desc}
+lurk in the ocean.
 
 surface ocean
-desc There is a planet-wide {climate:ocean}.
+desc There is a planet-wide {climate:ocean}. {landscape:desc}
+lurk in the ocean.
 
 surface shallowOcean
-desc There is a planet-wide {climate:ocean}. It is shallow, but there is no land.
+desc There is a planet-wide {climate:ocean}. It is shallow, but there is no land. {landscape:desc}
+lurk in the ocean.
 
 surface islands
-desc There is a planet-wide {climate:ocean}. A few islands are dotted around.
+desc There is a planet-wide {climate:ocean}. A few islands are dotted around. {landscape:desc} {flora:land}
+lurk in the shallows.
 
 surface continents
-desc {nameStart}{nameEnd} {nameNumber} has a few large continents and an {climate:ocean}.
+desc {nameStart}{nameEnd} {nameNumber} has a few large continents and an {climate:ocean}. {landscape:desc} {flora:land}
+lurk {flora:lurk}
 
 surface supercontinent
-desc {nameStart}{nameEnd} {nameNumber} is covered with a supercontinent, dotted with small, shallow {climate:seas}.
+desc {nameStart}{nameEnd} {nameNumber} is covered with a supercontinent, dotted with small, shallow {climate:seas}. {landscape:desc} {flora:land}
+lurk {flora:lurk}
 
 surface swamps
-desc {nameStart}{nameEnd} {nameNumber} is covered with shallow {climate:lakes} and swamps.
+desc {nameStart}{nameEnd} {nameNumber} is covered with shallow {climate:lakes} and swamps. {landscape:desc} {flora:land}
+lurk in the swamps.
+
+surface tundra
+desc {nameStart}{nameEnd} {nameNumber} is covered with mostly frozen tundra and some {climate:lakes}. {landscape:desc} {flora:land}
+lurk {flora:lurk}
 
 surface arid
-desc Apart from a few {climate:lakes} and rivers, {nameStart}{nameEnd} {nameNumber} is dry.
+desc Apart from a few {climate:lakes} and rivers, {nameStart}{nameEnd} {nameNumber} is dry. {landscape:desc} {flora:land}
+lurk {flora:lurk}
 
 surface desert
-desc The surface of {nameStart}{nameEnd} {nameNumber} is a sandy desert.
+desc The surface of {nameStart}{nameEnd} {nameNumber} is a sandy desert. {landscape:desc} {flora:land}
+lurk beneath the sand.
+
+surface icyDesert
+desc The surface of {nameStart}{nameEnd} {nameNumber} is an icy desert. {landscape:desc} {flora:land}
+lurk in the ice.
 
 surface rocks
-desc The surface of {nameStart}{nameEnd} {nameNumber} is a rocky desert.
+desc The surface of {nameStart}{nameEnd} {nameNumber} is a rocky desert. {landscape:desc} {flora:land}
+lurk in nooks and crannies.
 
 surface jaggedRocks
-desc The surface of {nameStart}{nameEnd} {nameNumber} is a desert of jagged rocks.
+desc The surface of {nameStart}{nameEnd} {nameNumber} is a desert of jagged rocks. {landscape:desc} {flora:land}
+lurk in nooks and crannies.
 
 climate veryCold
 ocean ocean covered by a thick ice sheet
@@ -206,11 +237,134 @@ special constantWind
 desc A constant wind whips around the planet.
 
 symmetry 2
+many eight
+waterPropulsion tails
+fewLegged four-legged
 
 symmetry 3
+many nine
+waterPropulsion siphons
+fewLegged three-legged
 
 symmetry 5
+many ten
+waterPropulsion flippers
+fewLegged five-legged
 
 symmetry 6
+many six
+waterPropulsion undulating bodies
+fewLegged six-legged
 
 symmetry 0
+many many
+waterPropulsion mass of tentacles
+fewLegged tentacular
+
+leafColor red
+leafColor green
+leafColor orange
+leafColor green
+leafColor purple
+leafColor black
+leafColor blue
+leafColor white
+leafColor yellow
+leafColor crimson
+
+animalColor black
+animalColor striped
+animalColor spotted
+animalColor red
+animalColor brown
+animalColor white
+animalColor many-colored
+animalColor orange
+animalColor mottled
+
+animalTexture feathered
+animalTexture furry
+animalTexture smooth-skinned
+animalTexture scaly
+animalTexture spongy
+animalTexture spiny
+
+flora deepForests
+land Deep, dark forests cover the land.
+lurk in the branches.
+
+flora fungalThicket
+land An impassable {leafColor} fungal thicket covers the land.
+lurk in the deepest fungal thickets.
+
+flora treeTowers
+land Giant tower-like trees rise up between lesser plants.
+lurk in the branches.
+
+flora dottedShrubs
+land The occasional {leafColor} shrub can be found.
+lurk in the leaves.
+
+flora grass
+land Deep {leafColor} grass covers everything.
+lurk in the grass.
+
+flora lichen
+land A thin dusting of {leafColor} lichen covers the land.
+lurk in nooks and crannies.
+
+flora floatingPlants
+land Some local plants hover in mid-air, held aloft by gas bags.
+lurk between the tentacles of the flying plants.
+
+flora giantFlowers
+land The local plants produce massive flowers in all kinds of colors, sitting atop thick {leafColor} stems.
+lurk in the flowers.
+
+fauna giantHives
+desc Giant hives of small, {animalTexture} {symmetry:many}-legged creatures dominate.
+
+fauna fungalZombies
+desc The local fungus takes over the motor functions of deceased animals, using their decaying bodies to spread and feed itself.
+
+fauna brainParasites
+desc Vicious brain parasites lurk {surface:lurk}
+
+fauna shapeShifters
+desc One of the local animals can imitate the shape and sounds of any creature, even a sentient one.
+
+fauna gasFloaters
+desc Grazing {animalColor} herbivores with are held aloft by gas bags.
+
+fauna oceanGiants
+desc Gigantic {animalColor} creatures live in the depths of the ocean, moving slowly by using their {symmetry:waterPropulsion}.
+
+fauna hyperPredators
+desc The planet is home to extremely dangerous apex predators, {animalTexture} {animalColor} creatures that move faster than the eye can track.
+
+fauna radiovores
+desc The {animalTexture} local animals are able to feed on radioactivity.
+
+fauna swarmers
+desc Every {prime} years, billions of {animalTexture} creatures hatch all at once and begin to swarm, eating everything in their path.
+
+fauna massiveHerds
+desc Massive herds of {symmetry:fewLegged}, {animalColor} beasts move across the planet in time with the seasons.
+
+fauna invisiblePredators
+desc The planet is home to a predatory creature that can turn itself invisible.
+
+fauna landGiants
+desc Ancient, {symmetry:fewLegged}, {animalColor} giants move across the land.
+
+fauna scuttlers
+desc The land is teeming with {symmetry:many}-legged {animalColor} scuttling creatures.
+
+fauna furryFliers
+desc Small, {animalTexture}, {animalColor} flying creatures zip between the trees.
+
+fauna sessileTentacles
+desc Sessile {animalTexture} tentacles lie in wait for their victims.
+
+fauna burrowers
+desc Small {animalTexture} burrowers make giant nests.

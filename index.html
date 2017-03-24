@@ -3,7 +3,7 @@
 <html>
 <head><title>GenGen</title></head>
 <script src="jquery-3.2.0.min.js"></script>
-<body>
+<body style="background: #eeeeee;">
 <script>
 var structs = {};
 var slots = {};
@@ -70,6 +70,6 @@ jQuery.ajax({
     success: function(txt) { doParse(txt); jQuery("#txt").html(doGen("planet")); }
 });
 </script>
-<div id="txt" style="margin: auto; margin-top: 4em; width: 24em; line-height: 1.3;"></div>
+<div id="txt" style="font-size: 16pt; color: #222222; margin: auto; margin-top: 4em; width: 24em; line-height: 1.5;"></div>
 </body>
 </html>
