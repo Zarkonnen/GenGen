@@ -28,9 +28,13 @@ function doParse(text) {
             }
             return;
         }
+        if (k == "blocker") {
+            value.blockers.push([v.split(" ")[0], v.split(" ")[1]]);
+            return;
+        }
         if (slots[k]) {
             struct = null;
-            value = {"id": v};
+            value = {"id": v, "blockers": []};
             slots[k].push(value);
             return;
         }
@@ -47,7 +51,14 @@ function doParse(text) {
 function doGen(structID) {
     var result = {"struct": structs[structID]};
     structs[structID].slots.forEach(function(slot) {
-        result[slot] = slots[slot][Math.floor(Math.random() * slots[slot].length)];
+        var availableSlots = slots[slot].filter(function(value) {
+            return !value.blockers.some(function(blocker) {
+                var blockerSlot = blocker[0];
+                var blockerID = blocker[1];
+                return result[blockerSlot] && result[blockerSlot].id == blockerID;
+            });
+        });
+        result[slot] = availableSlots[Math.floor(Math.random() * availableSlots.length)];
     });
     return doExpand(structs[structID].vals["desc"], result).replace(/\\n/g, "<br>");
 }
