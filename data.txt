@@ -3,14 +3,57 @@ slot nameStart
 slot nameEnd
 slot nameNumber
 slot sun
-desc {nameStart}{nameEnd} {nameNumber}\n\nUnder a {sun:brightness} {sun:color} sun.
+slot surface
+slot climate
+slot landscape
+slot special
+slot symmetry
+desc {nameStart}{nameEnd} {nameNumber}\n\n{surface:desc} {landscape:desc} {special:desc}
 
 nameStart Bi
 nameStart Tor
+nameStart Teri
+nameStart Alim
+nameStart Cre
+nameStart Dri
+nameStart Epi
+nameStart Fra
+nameStart Gro
+nameStart Hima
+nameStart Jutu
+nameStart Kima
+nameStart Lu
+nameStart Mi
+nameStart No
+nameStart Noto
+nameStart Ori
+nameStart Pru
+nameStart Qu
+nameStart Ria
+nameStart Su
+nameStart Umako
+nameStart Vime
+nameStart Wito
+nameStart Xi
+nameStart Ya
+nameStart Zumo
 nameEnd von
 nameEnd oll
+nameEnd tol
+nameEnd gon
+nameEnd prim
+nameEnd tes
+nameEnd lup
+nameEnd vim
+nameEnd qua
+nameEnd pip
+nameEnd am
+nameNumber I
+nameNumber II
 nameNumber III
 nameNumber IV
+nameNumber V
+nameNumber VI
 
 sun brightBlue
 brightness bright
@@ -23,3 +66,151 @@ color red
 sun dimWhite
 brightness dim
 color white
+
+sun blindingWhite
+brightness blinding
+color white
+
+sun gentleYellow
+brightness gentle
+color yellow
+
+sun harshRed
+brightness harsh
+color red
+
+sun wanYellow
+brightness wan
+color yellow
+
+sun dimBlue
+brightness dim
+color blue
+
+surface deepOcean
+desc There is a planet-wide, deep {climate:ocean}.
+
+surface ocean
+desc There is a planet-wide {climate:ocean}.
+
+surface shallowOcean
+desc There is a planet-wide {climate:ocean}. It is shallow, but there is no land.
+
+surface islands
+desc There is a planet-wide {climate:ocean}. A few islands are dotted around.
+
+surface continents
+desc {nameStart}{nameEnd} {nameNumber} has a few large continents and an {climate:ocean}.
+
+surface supercontinent
+desc {nameStart}{nameEnd} {nameNumber} is covered with a supercontinent, dotted with small, shallow {climate:seas}.
+
+surface swamps
+desc {nameStart}{nameEnd} {nameNumber} is covered with shallow {climate:lakes} and swamps.
+
+surface arid
+desc Apart from a few {climate:lakes} and rivers, {nameStart}{nameEnd} {nameNumber} is dry.
+
+surface desert
+desc The surface of {nameStart}{nameEnd} {nameNumber} is a sandy desert.
+
+surface rocks
+desc The surface of {nameStart}{nameEnd} {nameNumber} is a rocky desert.
+
+surface jaggedRocks
+desc The surface of {nameStart}{nameEnd} {nameNumber} is a desert of jagged rocks.
+
+climate veryCold
+ocean ocean covered by a thick ice sheet
+seas seas covered with thick ice sheets
+lakes frozen lakes
+
+climate cold
+ocean ocean covered by ice everywhere except near the equator
+seas seas mostly covered with ice
+lakes frozen lakes
+
+climate temperate
+ocean ocean mostly free of ice, except at the poles
+seas seas
+lakes lakes
+
+climate hot
+ocean ocean
+seas seas
+lakes warm lakes
+
+climate veryHot
+ocean ocean that is constantly steaming
+seas seas that are constantly steaming
+lakes boiling lakes
+
+landscape mountains
+desc Tall mountains rise towards the sky.
+
+landscape plains
+desc Great plains stretch under the {sun:brightness} {sun:color} sun.
+
+landscape hills
+desc There are gentle rolling hills.
+
+landscape canyons
+desc Deep canyons cut into the planet's crust.
+
+landscape tunnels
+desc A network of tunnels extends under much of the surface.
+
+landscape nothingSpecial
+desc  
+
+special radioactive
+desc Much of the planet is heavily radioactive.
+
+special giantMoon
+desc A giant moon looms in the sky.
+
+special dustStorms
+desc Constant dust storms make it hard to see anything.
+
+special snowStorms
+desc Constant snowstorms make it hard to see anything.
+
+special hurricanes
+desc Constant hurricanes ravage the surface.
+
+special slowDayCycle
+desc A single day takes a very long time.
+
+special fastDayCycle
+desc Day and night rapidly follow on from each other.
+
+special heavyGravity
+desc The gravity is very strong.
+
+special lowGravity
+desc The gravity is quite low.
+
+special tidallyLocked
+desc The planet is tidally locked to its sun. One side is in constant day, the other in constant night, and a narrow band of twilight stretches around it.
+
+special electricalStorms
+desc Powerful electrical storms disrupt electronics and light up the sky.
+
+special solarFlares
+desc Frequent strong solar flares cause beautiful displays of light in the sky and make electronics all but useless.
+
+special poisonedSoil
+desc The soil is poisoned with heavy metals.
+
+special constantWind
+desc A constant wind whips around the planet.
+
+symmetry 2
+
+symmetry 3
+
+symmetry 5
+
+symmetry 6
+
+symmetry 0
