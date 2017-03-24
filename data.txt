@@ -1,0 +1,25 @@
+struct planet
+slot nameStart
+slot nameEnd
+slot nameNumber
+slot sun
+desc {nameStart}{nameEnd} {nameNumber}\n\nUnder a {sun:brightness} {sun:color} sun.
+
+nameStart Bi
+nameStart Tor
+nameEnd von
+nameEnd oll
+nameNumber III
+nameNumber IV
+
+sun brightBlue
+brightness bright
+color blue
+
+sun dullRed
+brightness dull
+color red
+
+sun dimWhite
+brightness dim
+color white

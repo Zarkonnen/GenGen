@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html>
+<head><title>GenGen</title></head>
+<script src="jquery-3.2.0.min.js"></script>
+<body>
+<script>
+var structs = {};
+var slots = {};
+
+function doParse(text) {
+    var struct = null;
+    var value = null;
+    text.split("\n").forEach(function(line) {
+        var k = line.split(" ")[0];
+        var v = line.substring(k.length + 1);
+        if (k.length == 0 || v.length == 0) { return; }
+        if (k == "struct") {
+            value = null;
+            struct = { slots: [], vals: {} };
+            structs[v] = struct;
+            return;
+        }
+        if (k == "slot") {
+            struct.slots.push(v);
+            if (!slots[v]) {
+                slots[v] = [];
+            }
+            return;
+        }
+        if (slots[k]) {
+            struct = null;
+            value = {"id": v};
+            slots[k].push(value);
+            return;
+        }
+        if (struct) {
+            struct.vals[k] = v;
+        } else {
+            value[k] = v;
+        }
+    });
+    //console.log(structs);
+    //console.log(slots);
+}
+
+function doGen(structID) {
+    var result = {"struct": structs[structID]};
+    structs[structID].slots.forEach(function(slot) {
+        result[slot] = slots[slot][Math.floor(Math.random() * slots[slot].length)];
+    });
+    return doExpand(structs[structID].vals["desc"], result).replace(/\\n/g, "<br>");
+}
+
+function doExpand(txt, context) {
+    if (txt.indexOf("{") == -1) { return txt; }
+    return txt.replace(/[{]([^}]*)[}]/g, function(m, capture) {
+        if (capture.indexOf(":") == -1) {
+            return context[capture].id;
+        } else {
+            var slot = capture.split(":")[0];
+            var prop = capture.substring(slot.length + 1);
+            return doExpand(context[slot][prop], context);
+        }
+    });
+}
+
+jQuery.ajax({
+    url: "data.txt",
+    success: function(txt) { doParse(txt); jQuery("#txt").html(doGen("planet")); }
+});
+</script>
+<div id="txt"></div>
+</body>
+</html>
