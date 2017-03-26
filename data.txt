@@ -15,7 +15,7 @@ slot flora
 slot leafColor
 slot fauna
 slot lifeSpecial
-desc <h1>{nameStart}{nameEnd} {nameNumber}</h1><br><br>{surface:desc}<br><br>{fauna:desc} {lifeSpecial:desc}<br><br>{special:desc}
+desc <h1>{nameStart}{nameEnd} {nameNumber}</h1>{surface:desc}<br><br>{fauna:desc}<br><br>{special:desc}
 
 nameStart Bi
 nameStart Tor
@@ -101,35 +101,35 @@ brightness dim
 color blue
 
 surface deepOcean
-desc There is a planet-wide, deep {climate:ocean}. {landscape:desc}
+desc A planet-wide, deep {climate:ocean}. {landscape:desc}
 lurk in the ocean.
 
 surface ocean
-desc There is a planet-wide {climate:ocean}. {landscape:desc}
-lurk in the ocean.
-
-surface shallowOcean
-desc There is a planet-wide {climate:ocean}. It is shallow, but there is no land. {landscape:desc}
+desc A planet-wide {climate:ocean}. {landscape:desc}
 lurk in the ocean.
 
 surface islands
-desc There is a planet-wide {climate:ocean}. A few islands are dotted around. {landscape:desc} {flora:land}
+desc A few islands are dotted around the {climate:ocean}. {landscape:desc} {flora:land}
 lurk in the shallows.
 
 surface continents
-desc {nameStart}{nameEnd} {nameNumber} has a few large continents and an {climate:ocean}. {landscape:desc} {flora:land}
+desc Large continents in an {climate:ocean}. {landscape:desc} {flora:land}
 lurk {flora:lurk}
 
 surface supercontinent
-desc {nameStart}{nameEnd} {nameNumber} is covered with a supercontinent, dotted with small, shallow {climate:seas}. {landscape:desc} {flora:land}
+desc A supercontinent and some small, shallow {climate:seas}. {landscape:desc} {flora:land}
 lurk {flora:lurk}
 
 surface swamps
-desc {nameStart}{nameEnd} {nameNumber} is covered with shallow {climate:lakes} and swamps. {landscape:desc} {flora:land}
+desc Shallow {climate:lakes} and swamps. {landscape:desc} {flora:land}
 lurk in the swamps.
 
+surface jungle
+desc Dense jungles cover {nameStart}{nameEnd} {nameNumber}. {landscape:desc} {flora:land}
+lurk in the jungles.
+
 surface tundra
-desc {nameStart}{nameEnd} {nameNumber} is covered with tundra and some {climate:lakes}. {landscape:desc} {flora:land}
+desc Tundra and a few {climate:lakes}. {landscape:desc} {flora:land}
 lurk {flora:lurk}
 
 surface arid
@@ -137,22 +137,26 @@ desc Apart from a few {climate:lakes} and rivers, {nameStart}{nameEnd} {nameNumb
 lurk {flora:lurk}
 
 surface desert
-desc The surface of {nameStart}{nameEnd} {nameNumber} is a sandy desert. {landscape:desc} {flora:land}
+desc A sandy desert lit by a {sun:brightness} {sun:color} sun. {landscape:desc} {flora:land}
 lurk beneath the sand.
 
 surface icyDesert
-desc The surface of {nameStart}{nameEnd} {nameNumber} is an icy desert. {landscape:desc} {flora:land}
+desc An icy desert. {landscape:desc} {flora:land}
 lurk in the ice.
 
 surface rocks
-desc The surface of {nameStart}{nameEnd} {nameNumber} is a rocky desert. {landscape:desc} {flora:land}
+desc A rocky desert lit by a {sun:brightness} {sun:color} sun. {landscape:desc} {flora:land}
 lurk in nooks and crannies.
 
 surface jaggedRocks
-desc The surface of {nameStart}{nameEnd} {nameNumber} is a desert of jagged rocks. {landscape:desc} {flora:land}
+desc A desert of jagged rocks. {landscape:desc} {flora:land}
 lurk in nooks and crannies.
 
 climate veryCold
+blocker sun brightBlue
+blocker sun gentleYellow
+blocker sun harshRed
+blocker surface jungles
 blocker surface swamps
 blocker surface islands
 ocean ocean covered by a thick ice sheet
@@ -160,12 +164,16 @@ seas seas covered with thick ice sheets
 lakes frozen lakes
 
 climate cold
+blocker sun brightBlue
+blocker sun gentleYellow
 blocker surface icyDesert
 ocean ocean covered by ice everywhere except near the equator
 seas seas mostly covered with ice
 lakes frozen lakes
 
 climate temperate
+blocker sun dimWhite
+blocker sun dimBlue
 blocker surface icyDesert
 blocker surface tundra
 ocean ocean mostly free of ice, except at the poles
@@ -173,6 +181,8 @@ seas seas
 lakes lakes
 
 climate hot
+blocker sun dimWhite
+blocker sun dimBlue
 blocker surface icyDesert
 blocker surface tundra
 ocean ocean
@@ -180,6 +190,10 @@ seas seas
 lakes warm lakes
 
 climate veryHot
+blocker sun dimWhite
+blocker sun gentleYellow
+blocker sun wanYellow
+blocker sun dimBlue
 blocker surface icyDesert
 blocker surface tundra
 ocean ocean that is constantly steaming
@@ -189,33 +203,33 @@ lakes boiling lakes
 landscape mountains
 blocker surface deepOcean
 blocker surface ocean
-blocker surface shallowOcean
 desc Tall mountains rise towards the sky.
 
 landscape plains
 blocker surface deepOcean
 blocker surface ocean
-blocker surface shallowOcean
 blocker surface islands
+blocker surface swamps
+blocker surface jungles
+blocker surface icyDesert
+blocker surface desert
+blocker surface rocks
 desc Great plains stretch under the {sun:brightness} {sun:color} sun.
 
 landscape hills
 blocker surface deepOcean
 blocker surface ocean
-blocker surface shallowOcean
 blocker surface desert
 desc There are gentle rolling hills.
 
 landscape canyons
 blocker surface deepOcean
 blocker surface ocean
-blocker surface shallowOcean
 desc Deep canyons cut into the planet's crust.
 
 landscape tunnels
 blocker surface deepOcean
 blocker surface ocean
-blocker surface shallowOcean
 desc A network of tunnels extends under much of the surface.
 
 landscape nothingSpecial
@@ -230,7 +244,6 @@ desc A giant moon looms in the sky.
 special dustStorms
 blocker surface deepOcean
 blocker surface ocean
-blocker surface shallowOcean
 blocker surface islands
 blocker surface swamps
 desc Constant dust storms make it hard to see anything.
@@ -243,7 +256,21 @@ desc Constant snowstorms make it hard to see anything.
 
 special hurricanes
 blocker climate veryCold
+blocker surface tundra
+blocker surface arid
+blocker surface desert
+blocker surface icyDesert
+blocker surface rocks
+blocker surface jaggedRocks
 desc Constant hurricanes ravage the surface.
+
+special iceSpires
+blocker surface deepOcean
+blocker surface ocean
+blocker climate temperate
+blocker climate hot
+blocker climate veryHot
+desc Tall ice spires formed by an unknown process cover much of the ground.
 
 special slowDayCycle
 desc A single day takes a very long time.
@@ -269,7 +296,6 @@ desc Frequent strong solar flares cause beautiful displays of light in the sky a
 special poisonedSoil
 blocker surface deepOcean
 blocker surface ocean
-blocker surface shallowOcean
 desc The soil is poisoned with heavy metals.
 
 special constantWind
@@ -343,28 +369,59 @@ animalTexture spongy
 blocker climate veryCold
 animalTexture spiny
 
+flora tubules
+blocker surface desert
+blocker surface icyDesert
+land There are clusters of {leafColor} tubules everywhere.
+lurk in the tubules.
+treeish tubules
+
+flora bubbles
+blocker surface jungle
+land The local plant life takes the shape of small {leafColor} bubbles.
+lurk between the bubbles.
+
+flora stalks
+blocker surface icyDesert
+land There are groups of tall, {leafColor} stalks everywhere.
+lurk in the stalks.
+treeish stalks
+
+flora domes
+blocker surface desert
+blocker surface icyDesert
+land The plants take the shape of giant geodesic domes.
+lurk high up in the dome-plants.
+treeish domes
+
 flora deepForests
 blocker surface tundra
 blocker surface desert
 blocker surface icyDesert
 blocker surface rocks
 blocker surface jaggedRocks
+blocker surface jungle
 land Deep, dark forests cover the land.
 lurk in the branches.
+treeish trees
 
 flora fungalThicket
 blocker surface tundra
 blocker surface desert
 blocker surface icyDesert
 blocker surface rocks
+blocker surface jungle
 land An impassable {leafColor} fungal thicket covers the land.
 lurk in the deepest fungal thickets.
+treeish fungal towers
 
 flora treeTowers
 land Giant tower-like trees rise up on occasion.
 lurk in the branches.
+treeish trees
 
 flora dottedShrubs
+blocker surface jungle
 land The occasional {leafColor} shrub can be found.
 lurk in the leaves.
 
@@ -372,38 +429,46 @@ flora grass
 blocker surface desert
 blocker surface icyDesert
 blocker surface rocks
+blocker surface jungle
 land Deep {leafColor} grass covers everything.
 lurk in the grass.
 
+flora grassClumps
+blocker surface desert
+blocker surface icyDesert
+blocker surface rocks
+blocker surface jungle
+land There are clumps of {leafColor} grass.
+lurk in the grass.
+
 flora lichen
+blocker surface jungle
 land A thin dusting of {leafColor} lichen covers the land.
 lurk in nooks and crannies.
 
 flora floatingPlants
 land Some local plants hover in mid-air, held aloft by gas bags.
 lurk between the tentacles of the flying plants.
+treeish floating plants
 
 flora giantFlowers
 land The local plants produce massive flowers in all kinds of colors, sitting atop thick {leafColor} stems.
 lurk in the flowers.
+treeish flowers
 
 fauna giantHives
 blocker surface deepOcean
 blocker surface ocean
-blocker surface shallowOcean
-desc Giant hives of small, {animalTexture} {symmetry:many}-legged creatures dominate.
-
-fauna fungalZombies
-desc The local fungus takes over the motor functions of deceased animals, using their decaying bodies to spread and feed itself.
+desc Giant hives of small, {animalTexture}, {symmetry:many}-legged creatures dominate. {lifeSpecial:plural}
 
 fauna brainParasites
-desc Vicious brain parasites lurk {surface:lurk}
+desc Vicious brain parasites lurk {surface:lurk} {lifeSpecial:plural}
 
 fauna shapeShifters
-desc One of the local animals can imitate the shape and sounds of any creature, even a sentient one.
+desc One of the local animals can imitate the shape and sounds of any creature, even a sentient one. {lifeSpecial:desc}
 
 fauna gasFloaters
-desc Grazing {animalColor} herbivores with {symmetry:fold} symmetry are held aloft by gas bags.
+desc Grazing {animalColor} herbivores with {symmetry:fold} symmetry are held aloft by gas bags. {lifeSpecial:plural}
 
 fauna oceanGiants
 blocker surface swamps
@@ -413,65 +478,110 @@ blocker surface desert
 blocker surface icyDesert
 blocker surface rocks
 blocker surface jaggedRocks
-desc Gigantic {animalColor} creatures live in the ocean, moving slowly by using their {symmetry:waterPropulsion}.
+desc Gigantic {animalColor} creatures live in the ocean, moving slowly by using their {symmetry:waterPropulsion}. {lifeSpecial:plural}
 
 fauna hyperPredators
-desc The planet is home to extremely dangerous apex predators, {animalTexture} {animalColor} creatures that move faster than the eye can track.
+desc The planet is home to extremely dangerous apex predators, {animalTexture} {animalColor} creatures that move faster than the eye can track. {lifeSpecial:plural}
 
 fauna radiovores
-desc The {animalTexture} local animals are able to feed on radioactivity.
+desc The {animalTexture} local animals are able to feed on radioactivity. {lifeSpecial:plural}
 
 fauna swarmers
-desc Every {prime} years, billions of {animalTexture} creatures hatch all at once and begin to swarm, eating everything in their path.
+desc Every {prime} years, billions of {animalTexture} creatures hatch all at once and begin to swarm, eating everything in their path. {lifeSpecial:plural}
 
 fauna massiveHerds
 blocker surface deepOcean
 blocker surface ocean
-blocker surface shallowOcean
-desc Massive herds of {symmetry:fewLegged}, {animalColor} beasts move across the planet in time with the seasons.
+desc Massive herds of {symmetry:fewLegged}, {animalColor} beasts move across the planet in time with the seasons. {lifeSpecial:desc}
 
 fauna invisiblePredators
-desc The planet is home to a predatory creature that can turn itself invisible.
+desc The planet is home to a predatory creature that can turn itself invisible. {lifeSpecial:desc}
 
 fauna landGiants
 blocker surface deepOcean
 blocker surface ocean
-blocker surface shallowOcean
-desc Ancient, {symmetry:fewLegged}, {animalColor} giants move across the land.
+desc Ancient, {symmetry:fewLegged}, {animalColor} giants move across the land. {lifeSpecial:plural}
 
 fauna scuttlers
 blocker surface deepOcean
 blocker surface ocean
-blocker surface shallowOcean
-desc The land is teeming with {symmetry:many}-legged {animalColor} scuttling creatures.
+desc The land is teeming with {symmetry:many}-legged {animalColor} scuttling creatures. {lifeSpecial:plural}
 
 fauna furryFliers
+blocker flora dottedShrubs
+blocker flora grass
+blocker flora grassClumps
+blocker flora bubbles
+blocker flora lichen
+desc Small, {animalTexture}, flying creatures zip between the {flora:treeish}. {lifeSpecial:plural}
+
+fauna sessileTentacles
+desc Sessile {animalTexture} tentacles lie in wait for their victims. {lifeSpecial:plural}
+
+fauna burrowers
+blocker surface deepOcean
+blocker surface ocean
+desc Small {animalTexture} burrowers make giant nests. {lifeSpecial:plural}
+
+fauna packHunters
+desc Hundreds of {animalColor} animals hunt in a single well-coordinated pack. {lifeSpecial:plural}
+
+fauna poisonDarters
+desc The animals of {nameStart}{nameEnd} {nameNumber} avail themselves of poisonous darts used both for defense and hunting. {lifeSpecial:plural}
+
+fauna motilePlants
+desc The "animals" on {nameStart}{nameEnd} {nameNumber} are heavily modified, mobile plants. {lifeSpecial:plural}
+
+fauna segmented
+blocker surface deepOcean
+blocker surface ocean
+desc Giant many-segmented {animalTexture} creatures slide along, crushing everything in their path. {lifeSpecial:plural}
+
+fauna prettyFliers
+desc The air is filled with {animalColor} fluttering flying creatures. {lifeSpecial:plural}
+
+fauna ooze
+desc The animal life on this planet is a kind of protoplasmic ooze capable of temporarily forming itself into a myriad of shapes. {lifeSpecial:desc}
+
+lifeSpecial fungalZombies
+plural {lifeSpecial:desc}
+desc The local fungus takes over the motor functions of deceased animals, using their decaying bodies to spread and feed itself.
+
+lifeSpecial bigEyed
+plural They have a single, massive eye.
+desc Most of the creatures on {nameStart}{nameEnd} {nameNumber} have a single, massive eye.
+
+lifeSpecial manyEyed
+plural Their eyes are clustered at the end of long tentacles.
+desc The eyes of the local animals are clustered at the end of long tentacles.
+
+lifeSpecial treeEggs
 blocker flora fungalThicket
 blocker flora dottedShrubs
 blocker flora grass
 blocker flora lichen
 blocker flora floatingPlants
-desc Small, {animalTexture}, {animalColor} flying creatures zip between the trees.
-
-fauna sessileTentacles
-desc Sessile {animalTexture} tentacles lie in wait for their victims.
-
-fauna burrowers
-blocker surface deepOcean
-blocker surface ocean
-blocker surface shallowOcean
-desc Small {animalTexture} burrowers make giant nests.
+blocker flora tubules
+blocker flora bubbles
+blocker flora stalks
+blocker flora domes
+plural They lay millions of tiny eggs in the trees.
+desc The trees are covered in millions of tiny eggs.
 
 lifeSpecial pharmaceuticals
+plural {lifeSpecial:desc}
 desc Some of the local plants have interesting pharmaceutical properties.
 
 lifeSpecial toxic
+plural {lifeSpecial:desc}
 desc The biochemistry of the local life is toxic.
 
 lifeSpecial clingons
+plural They have a tendency to cling on to the hulls of visiting spaceships.
 desc The local wildlife has a tendency to cling on to the hulls of visiting spaceships.
 
 lifeSpecial rapidMutation
+plural {lifeSpecial:desc}
 desc Life on the planet mutates and evolves at a rapid pace.
 
 lifeSpecial fires
@@ -480,34 +590,55 @@ blocker flora dottedShrubs
 blocker flora grass
 blocker flora lichen
 blocker flora floatingPlants
+blocker flora tubules
+blocker flora bubbles
+blocker flora stalks
+blocker flora domes
+plural {lifeSpecial:desc}
 desc There are constant forest fires filling the skies with smoke.
 
 lifeSpecial pollen
 blocker surface deepOcean
 blocker surface ocean
-blocker surface shallowOcean
+plural {lifeSpecial:desc}
 desc The air is filled with a thick haze of pollen.
 
 lifeSpecial symbiosis
+plural {lifeSpecial:desc}
 desc The local life is enmeshed in a complex symbiotic network.
 
 lifeSpecial morphs
+plural {lifeSpecial:desc}
 desc Most of the local animals are different morphs of the same highly versatile species.
 
 lifeSpecial superorganism
+plural {lifeSpecial:desc}
 desc The lifeforms on this planet appear to be part of a kind of superorganism.
 
 lifeSpecial hallucinogens
+plural {lifeSpecial:desc}
 desc The air is filled with organic compounds that induce hallucinations.
 
 lifeSpecial songs
+plural They produce eerie but beautiful songs.
 desc The local creatures produce eerie but beautiful songs.
 
 lifeSpecial dissolvingFungus
 blocker surface deepOcean
 blocker surface ocean
-blocker surface shallowOcean
+plural {lifeSpecial:desc}
 desc The local fungus dissolves everything in its path, even spacecraft hulls.
 
+lifeSpecial immortal
+plural They are functionally immortal, dying only when actively killed.
+desc Most of the animal life is functionally immortal, dying only when eaten or otherwise killed.
+
+lifeSpecial echolocating
+blocker surface deepOcean
+blocker surface ocean
+plural They use echolocation to find their way around, filling the air with chirps and trills.
+desc Most of the local animals use echolocation to find their way around, filling the air with chirps and trills.
+
 lifeSpecial nothingSpecial
+plural  
 desc  

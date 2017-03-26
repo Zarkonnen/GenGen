@@ -58,6 +58,11 @@ function doGen(structID) {
                 return result[blockerSlot] && result[blockerSlot].id == blockerID;
             });
         });
+        if (availableSlots.length == 0) {
+            console.log(slot + " fail");
+            console.log(result);
+            availableSlots = slots[slot]; // qqDPS
+        }
         result[slot] = availableSlots[Math.floor(Math.random() * availableSlots.length)];
     });
     return doExpand(structs[structID].vals["desc"], result).replace(/\\n/g, "<br>");
