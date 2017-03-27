@@ -182,7 +182,7 @@ climate veryCold
 blocker sun brightBlue
 blocker sun gentleYellow
 blocker sun harshRed
-blocker surface jungles
+blocker surface jungle
 blocker surface swamps
 blocker surface islands
 ocean ocean covered by a thick ice sheet
@@ -233,7 +233,7 @@ desc Tall mountains rise towards the sky.
 landscape plains
 blocker surface:land no
 blocker surface swamps
-blocker surface jungles
+blocker surface jungle
 blocker surface icyDesert
 blocker surface desert
 blocker surface rocks
