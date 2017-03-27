@@ -4,6 +4,7 @@ slot nameEnd
 slot nameNumber
 slot prime
 slot sun
+slot soilColor
 slot surface
 slot climate
 slot landscape
@@ -122,7 +123,7 @@ ocean yes
 land yes
 
 surface continents
-desc Large continents in an {climate:ocean}. {landscape:desc} {flora:land}
+desc Large continents. {landscape:desc} {flora:land}
 lurk {flora:lurk}
 ocean yes
 land yes
@@ -152,7 +153,7 @@ ocean no
 land yes
 
 surface muddy
-desc Mud and small rivulets cover the surface. {landscape:desc} {flora:land}
+desc {soilColor:cap} mud and small rivulets cover the surface. {landscape:desc} {flora:land}
 lurk {flora:lurk}
 ocean no
 land yes
@@ -236,10 +237,60 @@ ocean ocean that is constantly steaming
 seas seas that are constantly steaming
 lakes boiling lakes
 
+soilColor red
+cap Red
+soilColor grey
+cap Grey
+soilColor brown
+cap Brown
+soilColor black
+cap Black
+soilColor dark green
+cap Dark green
+
 landscape mountains
 blocker surface:land no
 blocker surface muddy
 desc Tall mountains rise towards the sky.
+
+landscape sinkholes
+blocker surface:land no
+desc Sinkholes dot the land.
+
+landscape fissures
+blocker surface:land no
+desc Noxious gases erupt from deep fissures.
+
+landscape rockSpires
+blocker surface:land no
+desc Spires of sharp stone interrupt the otherwise flat terrain.
+
+landscape sandBeach
+blocker surface:land no
+blocker surface:ocean no
+desc There are wide beaches of fine {soilColor} sand.
+
+landscape rockBeach
+blocker surface:land no
+blocker surface:ocean no
+desc There are wide, {soilColor}, rocky beaches.
+
+landscape maze
+blocker surface:land no
+blocker surface swamps
+blocker surface icyDesert
+blocker surface desert
+blocker surface rocks
+blocker surface jaggedRocks
+blocker surface muddy
+desc The land is covered in a maze of steep valleys.
+
+landscape plateaus
+blocker surface:land no
+blocker surface islands
+blocker surface swamps
+blocker surface muddy
+desc There are large plateaus with steep sides.
 
 landscape plains
 blocker surface:land no
@@ -270,6 +321,7 @@ desc Deep canyons cut into the planet's crust.
 
 landscape tunnels
 blocker surface:land no
+blocker surface muddy
 desc A network of tunnels extends under much of the surface.
 
 landscape nothingSpecial
@@ -280,6 +332,21 @@ desc Much of the planet is heavily radioactive.
 
 special giantMoon
 desc A giant moon looms in the sky.
+
+special darkness
+desc Due to a celestial conjunction, the planet is plunged into darkness every {prime} years.
+
+special manyMoons
+desc Many moons can be seen in the sky.
+
+special dustBand
+desc A band of glittering dust can be seen in the sky.
+
+special cloudCover
+desc The sky is constantly cloudy.
+
+special impactCrater
+desc The remains of an ancient, massive impact crater can be seen all the way from orbit.
 
 special dustStorms
 blocker surface:land no
@@ -318,6 +385,9 @@ desc A single day takes a very long time.
 special fastDayCycle
 desc Day and night rapidly follow on from each other.
 
+special irregularDayCycle
+desc Day and night have an irregular pattern due to the presence of two suns.
+
 special heavyGravity
 desc The gravity is very strong.
 
@@ -342,6 +412,18 @@ desc Frequent strong solar flares cause beautiful displays of light in the sky a
 special poisonedSoil
 blocker surface:land no
 desc The soil is poisoned with heavy metals.
+
+special richSurface
+blocker surface:land no
+desc Deposits of valuable ores can be seen all over the surface.
+
+special deepRiches
+blocker surface:land yes
+desc There are deposits of valuable ores in the ocean depths.
+
+special petroleum
+blocker surface:land no
+desc There are deposits of a petroleum-like substance just under the surface.
 
 special constantWind
 desc A constant wind whips around the planet.
@@ -415,6 +497,18 @@ animalColor white
 animalColor many-colored
 animalColor orange
 animalColor mottled
+animalColor translucent
+animalColor yellow
+animalColor crimson
+animalColor pink
+animalColor light blue
+animalColor dark green
+animalColor grey
+animalColor dark orange
+animalColor light green
+animalColor dark grey
+animalColor scintillating
+animalColor glowing
 
 animalTexture feathered
 animalTexture furry
@@ -425,6 +519,12 @@ animalTexture scaly
 animalTexture spongy
 blocker climate veryCold
 animalTexture spiny
+animalTexture fuzzy
+animalTexture muscular
+animalTexture armored
+animalTexture gelatinous
+animalTexture rugose
+animalTexture segmented
 
 plantDecoColor red
 plantDecoColor green
@@ -508,7 +608,7 @@ tall yes
 flora domes
 blocker surface desert
 blocker surface icyDesert
-land The plants take the shape of giant geodesic domes.
+land The plants take the shape of giant {leafColor} geodesic domes.
 plural domes
 lurk high up in the dome-plants.
 tall yes
@@ -542,7 +642,7 @@ blocker surface desert
 blocker surface icyDesert
 blocker surface rocks
 blocker surface jaggedRocks
-land Giant tower-like trees with {leafColor} leaves.
+land There are giant tower-like trees with {leafColor} leaves.
 plural trees
 lurk in the branches.
 tall yes
@@ -617,7 +717,7 @@ flora spines
 blocker surface desert
 blocker surface icyDesert
 blocker surface rocks
-land The plants are tall, {plantTexture} spines.
+land The plants are tall {plantTexture} spines.
 plural spines
 lurk in the spines.
 tall yes
@@ -678,7 +778,41 @@ fauna shapeShifters
 desc One of the local animals can imitate the shape and sounds of any creature, even a sentient one. {lifeSpecial:desc}
 
 fauna gasFloaters
+blocker surface:land no
 desc Grazing {animalColor} herbivores with {symmetry:fold} symmetry are held aloft by gas bags. {lifeSpecial:plural}
+
+fauna waterSwarms
+blocker surface:ocean no
+desc Great swarms of {animalTexture} creatures inhabit the oceans. {lifeSpecial:plural}
+
+fauna deepScuttlers
+blocker surface:ocean no
+desc The ocean depths are home to {animalTexture} scuttling creatures. {lifeSpecial:plural}
+
+fauna oceanWorms
+blocker surface:ocean no
+desc The ocean shallows are home to giant {animalColor} worms. {lifeSpecial:plural}
+
+fauna oceanSails
+blocker surface:ocean no
+blocker climate cold
+blocker climate veryCold
+desc Large {animalColor} creatures use sails to drift across the ocean surface. {lifeSpecial:plural}
+
+fauna oceanHunters
+blocker surface:ocean no
+desc Swift hunters with {symmetry:fold} symmetry stalk the sea. {lifeSpecial:plural}
+
+fauna oceanColonies
+blocker surface:ocean no
+desc Large colonies of {animalTexture} {animalColor} creatures inhabit the shallows. {lifeSpecial:plural}
+
+fauna hydrothermals
+blocker surface:ocean no
+blocker climate hot
+blocker climate veryHot
+blocker climate temperate
+desc Small {animalColor} creatures cluster around hydrothermal vents. {lifeSpecial:plural}
 
 fauna oceanGiants
 blocker surface:ocean no
@@ -710,6 +844,7 @@ desc The land is teeming with {symmetry:many}-legged {animalColor} scuttling cre
 
 fauna furryFliers
 blocker flora:tall no
+blocker surface:land no
 desc Small, {animalTexture}, flying creatures zip between the {flora:plural}. {lifeSpecial:plural}
 
 fauna sessileTentacles
@@ -726,13 +861,23 @@ fauna poisonDarters
 desc The animals of {nameStart}{nameEnd} {nameNumber} avail themselves of poisonous darts used both for defense and hunting. {lifeSpecial:plural}
 
 fauna motilePlants
+blocker surface:land no
 desc The "animals" on {nameStart}{nameEnd} {nameNumber} are heavily modified, mobile plants. {lifeSpecial:plural}
 
 fauna segmented
 blocker surface:land no
+blocker animalTexture segmented
 desc Giant many-segmented {animalTexture} creatures slide along, crushing everything in their path. {lifeSpecial:plural}
 
+fauna social
+desc The local creatures live in tight-knit family units. {lifeSpecial:plural}
+
+fauna worms
+blocker surface:land no
+desc The {flora:plural} are covered in tiny {animalColor} worms. {lifeSpecial:plural}
+
 fauna prettyFliers
+blocker surface:land no
 desc The air is filled with {animalColor} fluttering creatures. {lifeSpecial:plural}
 
 fauna engulfers
@@ -740,9 +885,11 @@ desc The local animals take their prey by engulfing it. {lifeSpecial:plural}
 
 fauna leapers
 blocker flora:tall no
+blocker surface:land no
 desc Small {animalTexture} creatures rapidly leap between the {flora:plural}. {lifeSpecial:plural}
 
 fauna wheels
+blocker surface:land no
 desc The planet's creatures have developed wheeled locomotion. {lifeSpecial:plural}
 
 fauna ooze
@@ -776,6 +923,10 @@ desc The local animals keep growing as they age, leading to some massive specime
 lifeSpecial eyeStrip
 plural A narrow strip of eyes wraps around their bodies, giving them 360-degree vision.
 desc A narrow strip of eyes wraps around the bodies of most local animals, giving them 360-degree vision.
+
+lifeSpecial explode
+plural As a last-ditch defense mechanism, they will literally explode.
+desc Some of the local creatures will literally explode as a last-ditch defense mechanism.
 
 lifeSpecial hollowSymbiotes
 plural Symbiotic creatures live on their skin, keeping away pests and attackers.
@@ -821,7 +972,7 @@ lifeSpecial climbers
 blocker flora:tall no
 blocker fauna leapers
 plural They are often seen climbing in the {flora:plural}.
-plural Many animals are climbing in the {flora:plural}.
+plural Many animals can be found climbing in the {flora:plural}.
 
 lifeSpecial fungalZombies
 blocker surface:land no
@@ -838,6 +989,7 @@ desc The eyes of the local animals are clustered at the end of long tentacles.
 
 lifeSpecial treeEggs
 blocker flora:tall no
+blocker surface:land no
 plural They lay millions of tiny eggs in the {flora:plural}.
 desc The {flora:plural} are covered in millions of tiny eggs.
 
