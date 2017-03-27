@@ -116,7 +116,7 @@ ocean yes
 land no
 
 surface islands
-desc A few islands are dotted around the {climate:ocean}. {landscape:desc} {flora:land}
+desc A few islands are dotted around an {climate:ocean}. {landscape:desc} {flora:land}
 lurk in the shallows.
 ocean yes
 land yes
@@ -147,6 +147,12 @@ land yes
 
 surface tundra
 desc Tundra and a few {climate:lakes}. {landscape:desc} {flora:land}
+lurk {flora:lurk}
+ocean no
+land yes
+
+surface muddy
+desc Mud and small rivulets cover the surface. {landscape:desc} {flora:land}
 lurk {flora:lurk}
 ocean no
 land yes
@@ -188,6 +194,7 @@ blocker sun harshRed
 blocker surface jungle
 blocker surface swamps
 blocker surface islands
+blocker surface muddy
 ocean ocean covered by a thick ice sheet
 seas seas covered with thick ice sheets
 lakes frozen lakes
@@ -231,6 +238,7 @@ lakes boiling lakes
 
 landscape mountains
 blocker surface:land no
+blocker surface muddy
 desc Tall mountains rise towards the sky.
 
 landscape plains
@@ -240,6 +248,8 @@ blocker surface jungle
 blocker surface icyDesert
 blocker surface desert
 blocker surface rocks
+blocker surface jaggedRocks
+blocker surface muddy
 desc Great plains stretch under the {sun:brightness} {sun:color} sun.
 
 landscape hills
@@ -248,6 +258,10 @@ blocker surface desert
 blocker surface jaggedRocks
 blocker surface icyDesert
 blocker surface rocks
+blocker surface swamps
+blocker surface jungle
+blocker surface muddy
+blocker surface jaggedRocks
 desc There are gentle rolling hills.
 
 landscape canyons
@@ -517,12 +531,17 @@ blocker surface desert
 blocker surface icyDesert
 blocker surface rocks
 blocker surface jungle
+blocker surface jaggedRocks
 land An impassable {leafColor} fungal thicket covers the land.
 plural fungal towers
 lurk in the deepest fungal thickets.
 tall yes
 
 flora treeTowers
+blocker surface desert
+blocker surface icyDesert
+blocker surface rocks
+blocker surface jaggedRocks
 land Giant tower-like trees with {leafColor} leaves.
 plural trees
 lurk in the branches.
@@ -540,6 +559,7 @@ blocker surface desert
 blocker surface icyDesert
 blocker surface rocks
 blocker surface jungle
+blocker surface jaggedRocks
 land Deep {leafColor} grass covers everything.
 plural blades of grass
 lurk in the grass.
@@ -569,6 +589,9 @@ lurk between the tentacles of the flying plants.
 tall yes
 
 flora giantFlowers
+blocker surface desert
+blocker surface icyDesert
+blocker surface rocks
 land The local plants produce massive flowers in all kinds of colors, sitting atop thick {leafColor} stems.
 plural flowers
 lurk in the flowers.
@@ -581,42 +604,64 @@ lurk under the fungi.
 tall no
 
 flora moss
+blocker surface desert
+blocker surface icyDesert
+blocker surface rocks
+blocker surface jaggedRocks
 land The surface is covered in thick mats of {leafColor} moss.
 plural clumps of moss
 lurk in the moss.
 tall no
 
 flora spines
+blocker surface desert
+blocker surface icyDesert
+blocker surface rocks
 land The plants are tall, {plantTexture} spines.
 plural spines
 lurk in the spines.
 tall yes
 
 flora sheets
+blocker surface desert
+blocker surface icyDesert
+blocker surface rocks
+blocker surface jungle
+blocker surface jaggedRocks
 land The land is covered in tall, {leafColor} sheets of plant matter.
 plural sheets
 lurk between the sheets
 tall yes
 
 flora toppedStalks
+blocker surface desert
+blocker surface icyDesert
+blocker surface rocks
+blocker surface jaggedRocks
 land The plants are tall stalks covered in {plantDeco:desc} with a single {leafColor}, circular leaf at the top.
 plural stalks
 lurk in the leaves
 tall yes
 
 flora nonToppedStalks
+blocker surface desert
+blocker surface icyDesert
+blocker surface rocks
+blocker surface jaggedRocks
 land The plants are {leafColor}, {plantTexture} stalks with {plantDeco:desc} at the top.
 plural stalks
 lurk on the stalks
 tall yes
 
 flora squatTrunks
+blocker surface jungle
 land The plants are squat, {plantTexture} trunks with {plantDeco:desc}.
 plural trunks
 lurk between the plants
 tall no
 
 flora barrels
+blocker surface jungle
 land The local plants take the shape of squat {leafColor} barrels covered with {plantDeco:desc}.
 plural barrels
 lurk between the plants.
@@ -688,7 +733,17 @@ blocker surface:land no
 desc Giant many-segmented {animalTexture} creatures slide along, crushing everything in their path. {lifeSpecial:plural}
 
 fauna prettyFliers
-desc The air is filled with {animalColor} fluttering flying creatures. {lifeSpecial:plural}
+desc The air is filled with {animalColor} fluttering creatures. {lifeSpecial:plural}
+
+fauna engulfers
+desc The local animals take their prey by engulfing it. {lifeSpecial:plural}
+
+fauna leapers
+blocker flora:tall no
+desc Small {animalTexture} creatures rapidly leap between the {flora:plural}. {lifeSpecial:plural}
+
+fauna wheels
+desc The planet's creatures have developed wheeled locomotion. {lifeSpecial:plural}
 
 fauna ooze
 desc The animal life on this planet is a kind of protoplasmic ooze capable of temporarily forming itself into myriad shapes. {lifeSpecial:desc}
@@ -758,6 +813,16 @@ lifeSpecial bioLaser
 plural They are able to emit laser-like blasts of light to hurt and disorient their enemies.
 desc Some of the wildlife can emit laser-like blasts of light to hurt and disorient their enemies.
 
+lifeSpecial nests
+plural They build nests in the {flora:plural}.
+desc There are many nests in the {flora:plural}.
+
+lifeSpecial climbers
+blocker flora:tall no
+blocker fauna leapers
+plural They are often seen climbing in the {flora:plural}.
+plural Many animals are climbing in the {flora:plural}.
+
 lifeSpecial fungalZombies
 blocker surface:land no
 plural {lifeSpecial:desc}
@@ -803,16 +868,19 @@ desc The local {flora:plural} periodically set themselves on fire to spread thei
 
 lifeSpecial pollen
 blocker surface:land no
+blocker special thinAir
 plural {lifeSpecial:desc}
 desc The air is filled with a thick haze of pollen.
 
 lifeSpecial spores
 blocker surface:land no
+blocker special thinAir
 plural {lifeSpecial:desc}
 desc The air is filled with a thick haze of spores.
 
 lifeSpecial hairs
 blocker surface:land no
+blocker special thinAir
 plural {lifeSpecial:desc}
 desc The air is filled with a thick haze of hairs.
 
