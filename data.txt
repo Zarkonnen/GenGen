@@ -13,6 +13,9 @@ slot animalColor
 slot animalTexture
 slot flora
 slot leafColor
+slot plantTexture
+slot plantDecoColor
+slot plantDeco
 slot fauna
 slot lifeSpecial
 desc <h1>{nameStart}{nameEnd} {nameNumber}</h1>{surface:desc}<br><br>{fauna:desc}<br><br>{special:desc}
@@ -307,6 +310,12 @@ desc The gravity is very strong.
 special lowGravity
 desc The gravity is quite low.
 
+special thinAir
+desc The air is thin.
+
+special thickAir
+desc The air pressure is very high.
+
 special tidallyLocked
 desc The planet is tidally locked to its sun. One side is in constant day, the other in constant night, and a narrow band of twilight stretches around it.
 
@@ -375,6 +384,13 @@ blocker flora treeTowers
 blocker flora dottedShrubs
 leafColor yellow
 leafColor crimson
+leafColor pink
+leafColor light blue
+leafColor dark green
+leafColor grey
+leafColor dark orange
+leafColor light green
+leafColor brown
 
 animalColor black
 animalColor striped
@@ -396,30 +412,92 @@ animalTexture spongy
 blocker climate veryCold
 animalTexture spiny
 
+plantDecoColor red
+plantDecoColor green
+plantDecoColor orange
+plantDecoColor green
+plantDecoColor purple
+plantDecoColor black
+plantDecoColor blue
+plantDecoColor white
+plantDecoColor yellow
+plantDecoColor crimson
+plantDecoColor pink
+plantDecoColor light blue
+plantDecoColor dark green
+plantDecoColor grey
+plantDecoColor dark orange
+plantDecoColor light green
+plantDecoColor brown
+
+plantDeco hairs
+desc fine {plantDecoColor} hairs
+
+plantDeco thinLeaves
+desc thin {leafColor} leaves
+
+plantDeco broadLeaves
+desc broad {leafColor} leaves
+
+plantDeco spines
+desc {plantDecoColor} spines
+
+plantDeco thorns
+desc {plantDecoColor} thorns
+
+plantDeco barbs
+desc {plantDecoColor} barbs
+
+plantDeco warts
+desc {plantDecoColor} warts
+
+plantDeco fruit
+desc {plantDecoColor} fruit
+
+plantDeco flowers
+desc {plantDecoColor} flowers
+
+plantDeco tentacles
+desc {plantDecoColor} tentacles
+
+plantDeco blisters
+desc {plantDecoColor} blisters
+
+plantTexture smooth
+plantTexture knotted
+plantTexture brittle
+plantTexture spongy
+plantTexture reticulated
+
 flora tubules
 blocker surface desert
 blocker surface icyDesert
-land There are clusters of {leafColor} tubules everywhere.
+land There are clusters of {plantTexture} {leafColor} tubules everywhere.
+plural tubules
 lurk in the tubules.
-treeish tubules
+tall yes
 
 flora bubbles
 blocker surface jungle
 land The local plant life takes the shape of small {leafColor} bubbles.
+plural bubbles
 lurk between the bubbles.
+tall no
 
 flora stalks
 blocker surface icyDesert
 land There are groups of tall, {leafColor} stalks everywhere.
+plural stalks
 lurk in the stalks.
-treeish stalks
+tall yes
 
 flora domes
 blocker surface desert
 blocker surface icyDesert
 land The plants take the shape of giant geodesic domes.
+plural domes
 lurk high up in the dome-plants.
-treeish domes
+tall yes
 
 flora deepForests
 blocker surface tundra
@@ -429,8 +507,9 @@ blocker surface rocks
 blocker surface jaggedRocks
 blocker surface jungle
 land Deep, dark forests cover the land.
+plural trees
 lurk in the branches.
-treeish trees
+tall yes
 
 flora fungalThicket
 blocker surface tundra
@@ -439,18 +518,22 @@ blocker surface icyDesert
 blocker surface rocks
 blocker surface jungle
 land An impassable {leafColor} fungal thicket covers the land.
+plural fungal towers
 lurk in the deepest fungal thickets.
-treeish fungal towers
+tall yes
 
 flora treeTowers
-land Giant tower-like trees.
+land Giant tower-like trees with {leafColor} leaves.
+plural trees
 lurk in the branches.
-treeish trees
+tall yes
 
 flora dottedShrubs
 blocker surface jungle
 land The occasional {leafColor} shrub.
+plural shrubs
 lurk in the leaves.
+tall no
 
 flora grass
 blocker surface desert
@@ -458,7 +541,9 @@ blocker surface icyDesert
 blocker surface rocks
 blocker surface jungle
 land Deep {leafColor} grass covers everything.
+plural blades of grass
 lurk in the grass.
+tall no
 
 flora grassClumps
 blocker surface desert
@@ -466,22 +551,76 @@ blocker surface icyDesert
 blocker surface rocks
 blocker surface jungle
 land Clumps of {leafColor} grass.
+plural blades of grass
 lurk in the grass.
+tall no
 
 flora lichen
 blocker surface jungle
 land A thin dusting of {leafColor} lichen covers the land.
+plural clumps of lichen
 lurk in nooks and crannies.
+tall no
 
 flora floatingPlants
 land Some local plants hover in mid-air, held aloft by gas bags.
+plural floating plants
 lurk between the tentacles of the flying plants.
-treeish floating plants
+tall yes
 
 flora giantFlowers
 land The local plants produce massive flowers in all kinds of colors, sitting atop thick {leafColor} stems.
+plural flowers
 lurk in the flowers.
-treeish flowers
+tall yes
+
+flora fungi
+land There are scattered {leafColor} fungi.
+plural fungi
+lurk under the fungi.
+tall no
+
+flora moss
+land The surface is covered in thick mats of {leafColor} moss.
+plural clumps of moss
+lurk in the moss.
+tall no
+
+flora spines
+land The plants are tall, {plantTexture} spines.
+plural spines
+lurk in the spines.
+tall yes
+
+flora sheets
+land The land is covered in tall, {leafColor} sheets of plant matter.
+plural sheets
+lurk between the sheets
+tall yes
+
+flora toppedStalks
+land The plants are tall stalks covered in {plantDeco:desc} with a single {leafColor}, circular leaf at the top.
+plural stalks
+lurk in the leaves
+tall yes
+
+flora nonToppedStalks
+land The plants are {leafColor}, {plantTexture} stalks with {plantDeco:desc} at the top.
+plural stalks
+lurk on the stalks
+tall yes
+
+flora squatTrunks
+land The plants are squat, {plantTexture} trunks with {plantDeco:desc}.
+plural trunks
+lurk between the plants
+tall no
+
+flora barrels
+land The local plants take the shape of squat {leafColor} barrels covered with {plantDeco:desc}.
+plural barrels
+lurk between the plants.
+tall no
 
 fauna giantHives
 blocker surface:land no
@@ -525,12 +664,8 @@ blocker surface:land no
 desc The land is teeming with {symmetry:many}-legged {animalColor} scuttling creatures. {lifeSpecial:plural}
 
 fauna furryFliers
-blocker flora dottedShrubs
-blocker flora grass
-blocker flora grassClumps
-blocker flora bubbles
-blocker flora lichen
-desc Small, {animalTexture}, flying creatures zip between the {flora:treeish}. {lifeSpecial:plural}
+blocker flora:tall no
+desc Small, {animalTexture}, flying creatures zip between the {flora:plural}. {lifeSpecial:plural}
 
 fauna sessileTentacles
 desc Sessile {animalTexture} tentacles lie in wait for their victims. {lifeSpecial:plural}
@@ -637,17 +772,9 @@ plural Their eyes are clustered at the end of long tentacles.
 desc The eyes of the local animals are clustered at the end of long tentacles.
 
 lifeSpecial treeEggs
-blocker flora fungalThicket
-blocker flora dottedShrubs
-blocker flora grass
-blocker flora lichen
-blocker flora floatingPlants
-blocker flora tubules
-blocker flora bubbles
-blocker flora stalks
-blocker flora domes
-plural They lay millions of tiny eggs in the trees.
-desc The trees are covered in millions of tiny eggs.
+blocker flora:tall no
+plural They lay millions of tiny eggs in the {flora:plural}.
+desc The {flora:plural} are covered in millions of tiny eggs.
 
 lifeSpecial pharmaceuticals
 blocker surface:land no
@@ -667,22 +794,27 @@ plural {lifeSpecial:desc}
 desc Life on the planet mutates and evolves at a rapid pace.
 
 lifeSpecial fires
-blocker flora fungalThicket
-blocker flora dottedShrubs
-blocker flora grass
-blocker flora lichen
-blocker flora floatingPlants
-blocker flora tubules
-blocker flora bubbles
-blocker flora stalks
-blocker flora domes
 plural {lifeSpecial:desc}
-desc There are constant forest fires filling the skies with smoke.
+desc There are constant fires filling the skies with smoke.
+
+lifeSpecial selfImmolation
+plural {lifeSpecial:desc}
+desc The local {flora:plural} periodically set themselves on fire to spread their seeds.
 
 lifeSpecial pollen
 blocker surface:land no
 plural {lifeSpecial:desc}
 desc The air is filled with a thick haze of pollen.
+
+lifeSpecial spores
+blocker surface:land no
+plural {lifeSpecial:desc}
+desc The air is filled with a thick haze of spores.
+
+lifeSpecial hairs
+blocker surface:land no
+plural {lifeSpecial:desc}
+desc The air is filled with a thick haze of hairs.
 
 lifeSpecial symbiosis
 plural {lifeSpecial:desc}
