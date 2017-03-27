@@ -274,6 +274,8 @@ special snowStorms
 blocker climate temperate
 blocker climate hot
 blocker climate veryHot
+blocker surface arid
+blocker surface desert
 desc Constant snowstorms make it hard to see anything.
 
 special hurricanes
@@ -326,30 +328,35 @@ many eight
 waterPropulsion tails
 fewLegged four-legged
 fold bilateral
+some two
 
 symmetry 3
 many nine
 waterPropulsion siphons
 fewLegged three-legged
 fold threefold
+some three
 
 symmetry 5
 many ten
 waterPropulsion flippers
 fewLegged five-legged
 fold fivefold
+some five
 
 symmetry 6
 many six
 waterPropulsion undulating bodies
 fewLegged six-legged
 fold hexagonal
+some six
 
 symmetry 0
 many many
 waterPropulsion mass of tentacles
 fewLegged tentacular
 fold no
+some several
 
 leafColor red
 blocker sun dullRed
@@ -550,6 +557,71 @@ desc The air is filled with {animalColor} fluttering flying creatures. {lifeSpec
 
 fauna ooze
 desc The animal life on this planet is a kind of protoplasmic ooze capable of temporarily forming itself into myriad shapes. {lifeSpecial:desc}
+
+lifeSpecial radar
+plural They use a biological radar to perceive the world around them.
+desc The local creatures use a biological radar to perceive the world.
+
+lifeSpecial masks
+blocker fauna sessileTentacles
+plural Their faces look like colorful masks.
+desc The faces of the local creatures look like colorful masks.
+
+lifeSpecial falseBodies
+plural They build decoy bodies from special secretions.
+desc The local creatures use their secretions to build decoy bodies.
+
+lifeSpecial horns
+plural Their heads have {symmetry:some} horns.
+desc Many animals on {nameStart}{nameEnd} {nameNumber} have {symmetry:some} horns.
+
+lifeSpecial cilia
+plural Their bodies are covered in sensory cilia.
+desc The bodies of the local fauna are covered in sensory cilia.
+
+lifeSpecial growth
+plural They keep growing as they age, leading to some massive specimens.
+desc The local animals keep growing as they age, leading to some massive specimens.
+
+lifeSpecial eyeStrip
+plural A narrow strip of eyes wraps around their bodies, giving them 360-degree vision.
+desc A narrow strip of eyes wraps around the bodies of most local animals, giving them 360-degree vision.
+
+lifeSpecial hollowSymbiotes
+plural Symbiotic creatures live on their skin, keeping away pests and attackers.
+desc Symbiotic creatures live on the skin of many of the local animals, keeping away pests and attackers.
+
+lifeSpecial psiShock
+plural When threatened, they use psionic powers to stun their potential attackers.
+desc The local lifeforms have psionic powers they use to stun potential threats.
+
+lifeSpecial humming
+plural They emit a constant humming sound.
+desc There is a constant humming sound.
+
+lifeSpecial braying
+plural They make loud braying sounds.
+desc One of the local creatures makes loud braying sounds.
+
+lifeSpecial hissing
+plural They make quiet hissing sounds.
+desc There are quiet hissing sounds coming from somewhere.
+
+lifeSpecial chittering
+plural They use a chittering sound to communicate.
+desc Chittering sounds occasionally erupt from groups of local animals.
+
+lifeSpecial soundStun
+plural They use extremely loud sounds to stun their victims.
+desc One of the local predators uses extremely loud sounds to stun its prey.
+
+lifeSpecial electricShocks
+plural They can produce powerful electric shocks to defend themselves.
+desc Some of the local animals can produce powerful electric shocks to defend themselves.
+
+lifeSpecial bioLaser
+plural They are able to emit laser-like blasts of light to hurt and disorient their enemies.
+desc Some of the wildlife can emit laser-like blasts of light to hurt and disorient their enemies.
 
 lifeSpecial fungalZombies
 blocker surface:land no
