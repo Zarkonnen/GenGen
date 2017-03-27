@@ -89,7 +89,7 @@ function doExpand(txt, context) {
 }
 
 jQuery.ajax({
-    url: "data.txt",
+    url: "data.txt?" + (new Date()).getTime(),
     success: function(txt) { doParse(txt); jQuery("#txt").html(doGen("planet")); }
 });
 </script>

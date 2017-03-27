@@ -141,8 +141,20 @@ ocean no
 land no
 
 surface jungle
-desc Dense jungles cover {nameStart}{nameEnd} {nameNumber}. {landscape:desc} {flora:land}
+desc Dense jungles of {flora:desc} cover {nameStart}{nameEnd} {nameNumber}. {landscape:desc}
 lurk in the jungles.
+ocean no
+land yes
+
+surface forests
+desc Dense forests of {flora:desc} cover {nameStart}{nameEnd} {nameNumber}. {landscape:desc}
+lurk in the forests.
+ocean no
+land yes
+
+surface scatteredForests
+desc There are scattered forests of {flora:desc}. {landscape:desc}
+lurk in the forests.
 ocean no
 land yes
 
@@ -284,7 +296,7 @@ blocker surface desert
 blocker surface rocks
 blocker surface jaggedRocks
 blocker surface muddy
-desc The land is covered in a maze of steep valleys.
+desc The land is a maze of steep valleys.
 
 landscape plateaus
 blocker surface:land no
@@ -297,6 +309,7 @@ landscape plains
 blocker surface:land no
 blocker surface swamps
 blocker surface jungle
+blocker surface forests
 blocker surface icyDesert
 blocker surface desert
 blocker surface rocks
@@ -312,6 +325,7 @@ blocker surface icyDesert
 blocker surface rocks
 blocker surface swamps
 blocker surface jungle
+blocker surface forests
 blocker surface muddy
 blocker surface jaggedRocks
 desc There are gentle rolling hills.
@@ -392,6 +406,9 @@ desc Tall ice spires formed by an unknown process cover much of the ground.
 special slowDayCycle
 desc A single day takes a very long time.
 
+special noStars
+desc An interstellar dust cloud hides most of the stars in the night sky.
+
 special fastDayCycle
 desc Day and night rapidly follow on from each other.
 
@@ -419,6 +436,42 @@ desc Powerful electrical storms disrupt electronics and light up the sky.
 special solarFlares
 desc Frequent strong solar flares cause beautiful displays of light in the sky and make electronics all but useless.
 
+special coldAir
+blocker climate temperate
+blocker climate hot
+blocker climate veryHot
+desc The air is bitterly cold.
+
+special hotAir
+blocker climate temperate
+blocker climate cold
+blocker climate veryCold
+desc The air is almost unbearably hot.
+
+special coldWind
+blocker climate temperate
+blocker climate hot
+blocker climate veryHot
+desc There is a constant cold wind.
+
+special hotWind
+blocker climate temperate
+blocker climate cold
+blocker climate veryCold
+desc There is a constant hot wind.
+
+special suddenColdWind
+blocker climate temperate
+blocker climate hot
+blocker climate veryHot
+desc There are sudden cold winds.
+
+special suddenHotWind
+blocker climate temperate
+blocker climate cold
+blocker climate veryCold
+desc There are sudden hot winds.
+
 special poisonedSoil
 blocker surface:land no
 desc The soil is poisoned with heavy metals.
@@ -437,6 +490,12 @@ desc There are deposits of a petroleum-like substance just under the surface.
 
 special constantWind
 desc A constant wind whips around the planet.
+
+special shootingStars
+desc There are frequent shooting stars.
+
+special variableGravity
+desc The gravity at the poles is much stronger than at the equator.
 
 symmetry 2
 many eight
@@ -596,6 +655,7 @@ plantTexture reticulated
 flora tubules
 blocker surface desert
 blocker surface icyDesert
+desc {plantTexture} {leafColor} tubules
 land There are clusters of {plantTexture} {leafColor} tubules everywhere.
 plural tubules
 lurk in the tubules.
@@ -603,6 +663,9 @@ tall yes
 
 flora bubbles
 blocker surface jungle
+blocker surface forests
+blocker surface scatteredForests
+desc small {leafColor} bubbles
 land The local plant life takes the shape of small {leafColor} bubbles.
 plural bubbles
 lurk between the bubbles.
@@ -610,6 +673,7 @@ tall no
 
 flora stalks
 blocker surface icyDesert
+desc tall, {leafColor} stalks
 land There are groups of tall, {leafColor} stalks everywhere.
 plural stalks
 lurk in the stalks.
@@ -618,6 +682,7 @@ tall yes
 flora domes
 blocker surface desert
 blocker surface icyDesert
+desc giant {leafColor} geodesic domes
 land The plants take the shape of giant {leafColor} geodesic domes.
 plural domes
 lurk high up in the dome-plants.
@@ -629,7 +694,7 @@ blocker surface desert
 blocker surface icyDesert
 blocker surface rocks
 blocker surface jaggedRocks
-blocker surface jungle
+desc tall trees
 land Deep, dark forests cover the land.
 plural trees
 lurk in the branches.
@@ -640,8 +705,8 @@ blocker surface tundra
 blocker surface desert
 blocker surface icyDesert
 blocker surface rocks
-blocker surface jungle
 blocker surface jaggedRocks
+desc {leafColor} fungal towers
 land An impassable {leafColor} fungal thicket covers the land.
 plural fungal towers
 lurk in the deepest fungal thickets.
@@ -652,6 +717,7 @@ blocker surface desert
 blocker surface icyDesert
 blocker surface rocks
 blocker surface jaggedRocks
+desc giant tower-like trees with {leafColor} leaves
 land There are giant tower-like trees with {leafColor} leaves.
 plural trees
 lurk in the branches.
@@ -659,6 +725,7 @@ tall yes
 
 flora dottedShrubs
 blocker surface jungle
+desc {leafColor} shrubs
 land The occasional {leafColor} shrub.
 plural shrubs
 lurk in the leaves.
@@ -669,7 +736,10 @@ blocker surface desert
 blocker surface icyDesert
 blocker surface rocks
 blocker surface jungle
+blocker surface forests
+blocker surface scatteredForests
 blocker surface jaggedRocks
+desc deep {leafColor} grass
 land Deep {leafColor} grass covers everything.
 plural blades of grass
 lurk in the grass.
@@ -680,6 +750,9 @@ blocker surface desert
 blocker surface icyDesert
 blocker surface rocks
 blocker surface jungle
+blocker surface forests
+blocker surface scatteredForests
+desc {leafColor} grass
 land Clumps of {leafColor} grass.
 plural blades of grass
 lurk in the grass.
@@ -687,12 +760,19 @@ tall no
 
 flora lichen
 blocker surface jungle
+blocker surface forests
+blocker surface scatteredForests
+desc {leafColor} lichen
 land A thin dusting of {leafColor} lichen covers the land.
 plural clumps of lichen
 lurk in nooks and crannies.
 tall no
 
 flora floatingPlants
+blocker surface jungle
+blocker surface forests
+blocker surface scatteredForests
+desc floating plants
 land Some local plants hover in mid-air, held aloft by gas bags.
 plural floating plants
 lurk between the tentacles of the flying plants.
@@ -702,12 +782,14 @@ flora giantFlowers
 blocker surface desert
 blocker surface icyDesert
 blocker surface rocks
+desc thick {leafColor} stems with massive flowers
 land The local plants produce massive flowers in all kinds of colors, sitting atop thick {leafColor} stems.
 plural flowers
 lurk in the flowers.
 tall yes
 
 flora fungi
+desc {leafColor} fungi
 land There are scattered {leafColor} fungi.
 plural fungi
 lurk under the fungi.
@@ -718,6 +800,10 @@ blocker surface desert
 blocker surface icyDesert
 blocker surface rocks
 blocker surface jaggedRocks
+blocker surface forests
+blocker surface scatteredForests
+blocker surface jungle
+desc {leafColor} moss
 land The surface is covered in thick mats of {leafColor} moss.
 plural clumps of moss
 lurk in the moss.
@@ -727,6 +813,7 @@ flora spines
 blocker surface desert
 blocker surface icyDesert
 blocker surface rocks
+desc tall {plantTexture} spines
 land The plants are tall {plantTexture} spines.
 plural spines
 lurk in the spines.
@@ -736,9 +823,9 @@ flora sheets
 blocker surface desert
 blocker surface icyDesert
 blocker surface rocks
-blocker surface jungle
 blocker surface jaggedRocks
-land The land is covered in {leafColor} vertical sheets of plant matter.
+desc vertical {leafColor} sheets of plant matter
+land The land is covered in vertical {leafColor} sheets of plant matter.
 plural sheets
 lurk between the sheets.
 tall yes
@@ -748,7 +835,8 @@ blocker surface desert
 blocker surface icyDesert
 blocker surface rocks
 blocker surface jaggedRocks
-land The plants are tall stalks covered in {plantDeco:desc}, with a single {leafColor}, circular leaf at the top.
+desc tall {leafColor} stalks covered in {plantDeco:desc}
+land The plants are tall {leafColor} stalks covered in {plantDeco:desc}, with a single circular leaf at the top.
 plural stalks
 lurk in the leaves.
 tall yes
@@ -758,6 +846,7 @@ blocker surface desert
 blocker surface icyDesert
 blocker surface rocks
 blocker surface jaggedRocks
+desc {leafColor}, {plantTexture} stalks
 land The plants are {leafColor}, {plantTexture} stalks with {plantDeco:desc} at the top.
 plural stalks
 lurk on the stalks.
@@ -765,6 +854,7 @@ tall yes
 
 flora squatTrunks
 blocker surface jungle
+desc squat, {plantTexture} trunks with {plantDeco:desc}
 land The plants are squat, {plantTexture} trunks with {plantDeco:desc}.
 plural trunks
 lurk between the plants.
@@ -772,6 +862,7 @@ tall no
 
 flora barrels
 blocker surface jungle
+desc squat {leafColor} barrels covered with {plantDeco:desc}
 land The local plants take the shape of squat {leafColor} barrels covered with {plantDeco:desc}.
 plural barrels
 lurk between the plants.
@@ -800,7 +891,7 @@ fauna ambushPredators
 desc Vicious {animalTexture} ambush predators lurk {surface:lurk} {lifeSpecial:plural}
 
 fauna lurkingSwarms
-desc Swarms of tiny {symmetry:fewLegged} animals {surface:lurk} {lifeSpecial:plural}
+desc Swarms of tiny {symmetry:fewLegged} animals hide {surface:lurk} {lifeSpecial:plural}
 
 fauna rapidHerds
 blocker surface:land no
@@ -1061,6 +1152,13 @@ desc Some of the wildlife can emit laser-like blasts of light to hurt and disori
 lifeSpecial nests
 plural They build nests in the {flora:plural}.
 desc There are many nests in the {flora:plural}.
+
+lifeSpecial foam
+blocker surface:ocean no
+blocker climate cold
+blocker climate veryCold
+plural {lifeSpecial:desc}
+desc A white foam of unknown origin covers much of the ocean.
 
 lifeSpecial climbers
 blocker flora:tall no
