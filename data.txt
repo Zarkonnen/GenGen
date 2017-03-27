@@ -265,8 +265,7 @@ special giantMoon
 desc A giant moon looms in the sky.
 
 special dustStorms
-blocker surface deepOcean
-blocker surface ocean
+blocker surface:land no
 blocker surface islands
 blocker surface swamps
 desc Constant dust storms make it hard to see anything.
@@ -288,8 +287,7 @@ blocker surface jaggedRocks
 desc Constant hurricanes ravage the surface.
 
 special iceSpires
-blocker surface deepOcean
-blocker surface ocean
+blocker surface:land no
 blocker climate temperate
 blocker climate hot
 blocker climate veryHot
@@ -317,8 +315,7 @@ special solarFlares
 desc Frequent strong solar flares cause beautiful displays of light in the sky and make electronics all but useless.
 
 special poisonedSoil
-blocker surface deepOcean
-blocker surface ocean
+blocker surface:land no
 desc The soil is poisoned with heavy metals.
 
 special constantWind
@@ -439,13 +436,13 @@ lurk in the deepest fungal thickets.
 treeish fungal towers
 
 flora treeTowers
-land Giant tower-like trees rise up on occasion.
+land Giant tower-like trees.
 lurk in the branches.
 treeish trees
 
 flora dottedShrubs
 blocker surface jungle
-land The occasional {leafColor} shrub can be found.
+land The occasional {leafColor} shrub.
 lurk in the leaves.
 
 flora grass
@@ -461,7 +458,7 @@ blocker surface desert
 blocker surface icyDesert
 blocker surface rocks
 blocker surface jungle
-land There are clumps of {leafColor} grass.
+land Clumps of {leafColor} grass.
 lurk in the grass.
 
 flora lichen
@@ -480,8 +477,7 @@ lurk in the flowers.
 treeish flowers
 
 fauna giantHives
-blocker surface deepOcean
-blocker surface ocean
+blocker surface:land no
 desc Giant hives of small, {animalTexture}, {symmetry:many}-legged creatures dominate. {lifeSpecial:plural}
 
 fauna brainParasites
@@ -494,13 +490,7 @@ fauna gasFloaters
 desc Grazing {animalColor} herbivores with {symmetry:fold} symmetry are held aloft by gas bags. {lifeSpecial:plural}
 
 fauna oceanGiants
-blocker surface swamps
-blocker surface tundra
-blocker surface arid
-blocker surface desert
-blocker surface icyDesert
-blocker surface rocks
-blocker surface jaggedRocks
+blocker surface:ocean no
 desc Gigantic {animalColor} creatures live in the ocean, moving slowly by using their {symmetry:waterPropulsion}. {lifeSpecial:plural}
 
 fauna hyperPredators
@@ -513,21 +503,18 @@ fauna swarmers
 desc Every {prime} years, billions of {animalTexture} creatures hatch all at once and begin to swarm, eating everything in their path. {lifeSpecial:plural}
 
 fauna massiveHerds
-blocker surface deepOcean
-blocker surface ocean
+blocker surface:land no
 desc Massive herds of {symmetry:fewLegged}, {animalColor} beasts move across the planet in time with the seasons. {lifeSpecial:desc}
 
 fauna invisiblePredators
 desc The planet is home to a predatory creature that can turn itself invisible. {lifeSpecial:desc}
 
 fauna landGiants
-blocker surface deepOcean
-blocker surface ocean
+blocker surface:land no
 desc Ancient, {symmetry:fewLegged}, {animalColor} giants move across the land. {lifeSpecial:plural}
 
 fauna scuttlers
-blocker surface deepOcean
-blocker surface ocean
+blocker surface:land no
 desc The land is teeming with {symmetry:many}-legged {animalColor} scuttling creatures. {lifeSpecial:plural}
 
 fauna furryFliers
@@ -542,8 +529,7 @@ fauna sessileTentacles
 desc Sessile {animalTexture} tentacles lie in wait for their victims. {lifeSpecial:plural}
 
 fauna burrowers
-blocker surface deepOcean
-blocker surface ocean
+blocker surface:land no
 desc Small {animalTexture} burrowers make giant nests. {lifeSpecial:plural}
 
 fauna packHunters
@@ -556,8 +542,7 @@ fauna motilePlants
 desc The "animals" on {nameStart}{nameEnd} {nameNumber} are heavily modified, mobile plants. {lifeSpecial:plural}
 
 fauna segmented
-blocker surface deepOcean
-blocker surface ocean
+blocker surface:land no
 desc Giant many-segmented {animalTexture} creatures slide along, crushing everything in their path. {lifeSpecial:plural}
 
 fauna prettyFliers
@@ -567,6 +552,7 @@ fauna ooze
 desc The animal life on this planet is a kind of protoplasmic ooze capable of temporarily forming itself into myriad shapes. {lifeSpecial:desc}
 
 lifeSpecial fungalZombies
+blocker surface:land no
 plural {lifeSpecial:desc}
 desc The local fungus takes over the motor functions of deceased animals, using their decaying bodies to spread and feed itself.
 
@@ -592,6 +578,7 @@ plural They lay millions of tiny eggs in the trees.
 desc The trees are covered in millions of tiny eggs.
 
 lifeSpecial pharmaceuticals
+blocker surface:land no
 plural {lifeSpecial:desc}
 desc Some of the local plants have interesting pharmaceutical properties.
 
@@ -621,8 +608,7 @@ plural {lifeSpecial:desc}
 desc There are constant forest fires filling the skies with smoke.
 
 lifeSpecial pollen
-blocker surface deepOcean
-blocker surface ocean
+blocker surface:land no
 plural {lifeSpecial:desc}
 desc The air is filled with a thick haze of pollen.
 
@@ -647,8 +633,7 @@ plural They produce eerie but beautiful songs.
 desc The local creatures produce eerie but beautiful songs.
 
 lifeSpecial dissolvingFungus
-blocker surface deepOcean
-blocker surface ocean
+blocker surface:land no
 plural {lifeSpecial:desc}
 desc The local fungus dissolves everything in its path, even spacecraft hulls.
 
@@ -657,8 +642,7 @@ plural They are functionally immortal.
 desc Most of the animal life is functionally immortal, dying only when eaten or otherwise killed.
 
 lifeSpecial echolocating
-blocker surface deepOcean
-blocker surface ocean
+blocker surface:land no
 plural They use echolocation to find their way around, filling the air with chirps and trills.
 desc Most of the local animals use echolocation to find their way around, filling the air with chirps and trills.
 
