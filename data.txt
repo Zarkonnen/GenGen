@@ -103,54 +103,80 @@ color blue
 surface deepOcean
 desc A planet-wide, deep {climate:ocean}. {landscape:desc}
 lurk in the ocean.
+ocean yes
+land no
 
 surface ocean
 desc A planet-wide {climate:ocean}. {landscape:desc}
 lurk in the ocean.
+ocean yes
+land no
 
 surface islands
 desc A few islands are dotted around the {climate:ocean}. {landscape:desc} {flora:land}
 lurk in the shallows.
+ocean yes
+land yes
 
 surface continents
 desc Large continents in an {climate:ocean}. {landscape:desc} {flora:land}
 lurk {flora:lurk}
+ocean yes
+land yes
 
 surface supercontinent
 desc A supercontinent and some small, shallow {climate:seas}. {landscape:desc} {flora:land}
 lurk {flora:lurk}
+ocean yes
+land yes
 
 surface swamps
 desc Shallow {climate:lakes} and swamps. {landscape:desc} {flora:land}
 lurk in the swamps.
+ocean no
+land no
 
 surface jungle
 desc Dense jungles cover {nameStart}{nameEnd} {nameNumber}. {landscape:desc} {flora:land}
 lurk in the jungles.
+ocean no
+land yes
 
 surface tundra
 desc Tundra and a few {climate:lakes}. {landscape:desc} {flora:land}
 lurk {flora:lurk}
+ocean no
+land yes
 
 surface arid
 desc Apart from a few {climate:lakes} and rivers, {nameStart}{nameEnd} {nameNumber} is dry. {landscape:desc} {flora:land}
 lurk {flora:lurk}
+ocean no
+land yes
 
 surface desert
 desc A sandy desert lit by a {sun:brightness} {sun:color} sun. {landscape:desc} {flora:land}
 lurk beneath the sand.
+ocean no
+land yes
 
 surface icyDesert
 desc An icy desert. {landscape:desc} {flora:land}
 lurk in the ice.
+ocean no
+land yes
 
 surface rocks
 desc A rocky desert lit by a {sun:brightness} {sun:color} sun. {landscape:desc} {flora:land}
 lurk in nooks and crannies.
+ocean no
+land yes
 
 surface jaggedRocks
 desc A desert of jagged rocks. {landscape:desc} {flora:land}
 lurk in nooks and crannies.
+ocean no
+land yes
 
 climate veryCold
 blocker sun brightBlue
@@ -201,14 +227,11 @@ seas seas that are constantly steaming
 lakes boiling lakes
 
 landscape mountains
-blocker surface deepOcean
-blocker surface ocean
+blocker surface:land no
 desc Tall mountains rise towards the sky.
 
 landscape plains
-blocker surface deepOcean
-blocker surface ocean
-blocker surface islands
+blocker surface:land no
 blocker surface swamps
 blocker surface jungles
 blocker surface icyDesert
@@ -217,19 +240,19 @@ blocker surface rocks
 desc Great plains stretch under the {sun:brightness} {sun:color} sun.
 
 landscape hills
-blocker surface deepOcean
-blocker surface ocean
+blocker surface:land no
 blocker surface desert
+blocker surface jaggedRocks
+blocker surface icyDesert
+blocker surface rocks
 desc There are gentle rolling hills.
 
 landscape canyons
-blocker surface deepOcean
-blocker surface ocean
+blocker surface:land no
 desc Deep canyons cut into the planet's crust.
 
 landscape tunnels
-blocker surface deepOcean
-blocker surface ocean
+blocker surface:land no
 desc A network of tunnels extends under much of the surface.
 
 landscape nothingSpecial
@@ -524,7 +547,7 @@ blocker surface ocean
 desc Small {animalTexture} burrowers make giant nests. {lifeSpecial:plural}
 
 fauna packHunters
-desc Hundreds of {animalColor} animals hunt in a single well-coordinated pack. {lifeSpecial:plural}
+desc Hundreds of {animalColor} animals hunt in well-coordinated packs. {lifeSpecial:plural}
 
 fauna poisonDarters
 desc The animals of {nameStart}{nameEnd} {nameNumber} avail themselves of poisonous darts used both for defense and hunting. {lifeSpecial:plural}
@@ -541,14 +564,14 @@ fauna prettyFliers
 desc The air is filled with {animalColor} fluttering flying creatures. {lifeSpecial:plural}
 
 fauna ooze
-desc The animal life on this planet is a kind of protoplasmic ooze capable of temporarily forming itself into a myriad of shapes. {lifeSpecial:desc}
+desc The animal life on this planet is a kind of protoplasmic ooze capable of temporarily forming itself into myriad shapes. {lifeSpecial:desc}
 
 lifeSpecial fungalZombies
 plural {lifeSpecial:desc}
 desc The local fungus takes over the motor functions of deceased animals, using their decaying bodies to spread and feed itself.
 
 lifeSpecial bigEyed
-plural They have a single, massive eye.
+plural They each have a single, massive eye.
 desc Most of the creatures on {nameStart}{nameEnd} {nameNumber} have a single, massive eye.
 
 lifeSpecial manyEyed
@@ -630,7 +653,7 @@ plural {lifeSpecial:desc}
 desc The local fungus dissolves everything in its path, even spacecraft hulls.
 
 lifeSpecial immortal
-plural They are functionally immortal, dying only when actively killed.
+plural They are functionally immortal.
 desc Most of the animal life is functionally immortal, dying only when eaten or otherwise killed.
 
 lifeSpecial echolocating

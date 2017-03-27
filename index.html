@@ -54,8 +54,15 @@ function doGen(structID) {
         var availableSlots = slots[slot].filter(function(value) {
             return !value.blockers.some(function(blocker) {
                 var blockerSlot = blocker[0];
-                var blockerID = blocker[1];
-                return result[blockerSlot] && result[blockerSlot].id == blockerID;
+                if (blockerSlot.indexOf(":") != -1) {
+                    var blockerKey = blockerSlot.substring(blockerSlot.indexOf(":") + 1);
+                    blockerSlot = blockerSlot.split(":")[0];
+                    var blockerValue = blocker[1];
+                    return result[blockerSlot] && result[blockerSlot][blockerKey] == blockerValue;
+                } else{
+                    var blockerID = blocker[1];
+                    return result[blockerSlot] && result[blockerSlot].id == blockerID;
+                }
             });
         });
         if (availableSlots.length == 0) {
