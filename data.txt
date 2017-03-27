@@ -255,6 +255,7 @@ desc Tall mountains rise towards the sky.
 
 landscape sinkholes
 blocker surface:land no
+blocker surface islands
 desc Sinkholes dot the land.
 
 landscape fissures
@@ -344,6 +345,15 @@ desc A band of glittering dust can be seen in the sky.
 
 special cloudCover
 desc The sky is constantly cloudy.
+
+special constantRain
+blocker surface:land no
+blocker surface desert
+blocker surface icyDesert
+blocker surface rocks
+blocker surface jaggedRocks
+blocker surface arid
+desc It is always raining.
 
 special impactCrater
 desc The remains of an ancient, massive impact crater can be seen all the way from orbit.
@@ -728,9 +738,9 @@ blocker surface icyDesert
 blocker surface rocks
 blocker surface jungle
 blocker surface jaggedRocks
-land The land is covered in tall, {leafColor} sheets of plant matter.
+land The land is covered in {leafColor} vertical sheets of plant matter.
 plural sheets
-lurk between the sheets
+lurk between the sheets.
 tall yes
 
 flora toppedStalks
@@ -738,9 +748,9 @@ blocker surface desert
 blocker surface icyDesert
 blocker surface rocks
 blocker surface jaggedRocks
-land The plants are tall stalks covered in {plantDeco:desc} with a single {leafColor}, circular leaf at the top.
+land The plants are tall stalks covered in {plantDeco:desc}, with a single {leafColor}, circular leaf at the top.
 plural stalks
-lurk in the leaves
+lurk in the leaves.
 tall yes
 
 flora nonToppedStalks
@@ -750,14 +760,14 @@ blocker surface rocks
 blocker surface jaggedRocks
 land The plants are {leafColor}, {plantTexture} stalks with {plantDeco:desc} at the top.
 plural stalks
-lurk on the stalks
+lurk on the stalks.
 tall yes
 
 flora squatTrunks
 blocker surface jungle
 land The plants are squat, {plantTexture} trunks with {plantDeco:desc}.
 plural trunks
-lurk between the plants
+lurk between the plants.
 tall no
 
 flora barrels
@@ -771,8 +781,34 @@ fauna giantHives
 blocker surface:land no
 desc Giant hives of small, {animalTexture}, {symmetry:many}-legged creatures dominate. {lifeSpecial:plural}
 
+fauna suckers
+desc The apex predators on {nameStart}{nameEnd} {nameNumber} inject their prey with digestive enzymes. {lifeSpecial:plural}
+
 fauna brainParasites
 desc Vicious brain parasites lurk {surface:lurk} {lifeSpecial:plural}
+
+fauna constantFliers
+desc Large, {animalColor}, winged creatures spend their lives in flight, not even landing to reproduce. {lifeSpecial:plural}
+
+fauna accumulators
+desc The local animals build shells for themselves out of precious metals. {lifeSpecial:plural}
+
+fauna skeletonRecyclers
+desc The skeletons of deceased animals are re-used as shells by small {animalTexture} creatures. {lifeSpecial:plural}
+
+fauna ambushPredators
+desc Vicious {animalTexture} ambush predators lurk {surface:lurk} {lifeSpecial:plural}
+
+fauna lurkingSwarms
+desc Swarms of tiny {symmetry:fewLegged} animals {surface:lurk} {lifeSpecial:plural}
+
+fauna rapidHerds
+blocker surface:land no
+desc Herds of fast-moving {symmetry:fewLegged} animals stampede across the land. {lifeSpecial:plural}
+
+fauna insidePlants
+blocker flora:tall no
+desc Colonies of small {animalColor} creatures live inside the {flora:plural}. {lifeSpecial:plural}
 
 fauna shapeShifters
 desc One of the local animals can imitate the shape and sounds of any creature, even a sentient one. {lifeSpecial:desc}
@@ -792,6 +828,18 @@ desc The ocean depths are home to {animalTexture} scuttling creatures. {lifeSpec
 fauna oceanWorms
 blocker surface:ocean no
 desc The ocean shallows are home to giant {animalColor} worms. {lifeSpecial:plural}
+
+fauna oceanDrifters
+blocker surface:ocean no
+desc Sheets of organic material drift through the ocean, ensnaring their prey in a passive fashion. {lifeSpecial:plural}
+
+fauna splashers
+blocker surface:ocean no
+desc Groups of {animalColor} creatures splash and frolic in the shallows. {lifeSpecial:plural}
+
+fauna grazers
+blocker surface:ocean no
+desc Far below the surface, slow-moving {animalTexture} creatures graze on the ocean floor. {lifeSpecial:plural}
 
 fauna oceanSails
 blocker surface:ocean no
@@ -857,6 +905,14 @@ desc Small {animalTexture} burrowers make giant nests. {lifeSpecial:plural}
 fauna packHunters
 desc Hundreds of {animalColor} animals hunt in well-coordinated packs. {lifeSpecial:plural}
 
+fauna giantNests
+blocker surface:land no
+blocker flora:tall no
+desc Groups of {animalTexture} animals work together to build giant, intricate dens out of the {flora:plural}. {lifeSpecial:plural}
+
+fauna psiConvincers
+desc Squat, {animalTexture} creatures use their psionic abilities to convince their prey to simply lie down and accept being eaten. {lifeSpecial:plural}
+
 fauna poisonDarters
 desc The animals of {nameStart}{nameEnd} {nameNumber} avail themselves of poisonous darts used both for defense and hunting. {lifeSpecial:plural}
 
@@ -901,8 +957,13 @@ desc The local creatures use a biological radar to perceive the world.
 
 lifeSpecial masks
 blocker fauna sessileTentacles
+blocker fauna ooze
 plural Their faces look like colorful masks.
 desc The faces of the local creatures look like colorful masks.
+
+lifeSpecial hibernate
+plural They spend most of their lives in hibernation, punctuated by rapid bursts of activity when conditions are right.
+desc The local creatures spend most of their lives in hibernation, punctuated by rapid bursts of activity when conditions are right.
 
 lifeSpecial falseBodies
 plural They build decoy bodies from special secretions.
@@ -932,6 +993,31 @@ lifeSpecial hollowSymbiotes
 plural Symbiotic creatures live on their skin, keeping away pests and attackers.
 desc Symbiotic creatures live on the skin of many of the local animals, keeping away pests and attackers.
 
+lifeSpecial buddingOff
+plural They reproduce by budding off.
+desc The local lifeforms reproduce by budding off.
+
+lifeSpecial sporeRepro
+blocker surface:land no
+plural They reproduce by sporulation.
+desc The local lifeforms reproduce by sporulation.
+
+lifeSpecial eatenByOffspring
+plural Their offspring eat their way out of them.
+desc The offspring of the animals on the planet simply eat their way out.
+
+lifeSpecial parasiticalReproduction
+plural They implant their eggs into the living tissues of animals they catch for this purpose.
+desc Many of the local animals implant their eggs into the tissues of other living animals.
+
+lifeSpecial splitting
+plural They reproduce by splitting along their seams, resulting in {symmetry:some} equally-sized offspring.
+desc The creatures on this planet reproduce by splitting along their seams, resulting in {symmetry:some} equally-sized  offspring.
+
+lifeSpecial temporaryEyes
+plural They have many eyes on stalks, which frequently drop off and regrow.
+desc The eyes of the local animals frequently drop off and regrow.
+
 lifeSpecial psiShock
 plural When threatened, they use psionic powers to stun their potential attackers.
 desc The local lifeforms have psionic powers they use to stun potential threats.
@@ -939,6 +1025,14 @@ desc The local lifeforms have psionic powers they use to stun potential threats.
 lifeSpecial humming
 plural They emit a constant humming sound.
 desc There is a constant humming sound.
+
+lifeSpecial psiNightmares
+plural Their psionic abilities cause constant nightmares.
+desc The psionic abilities of the local lifeforms cause constant nightmares.
+
+lifeSpecial psiEuphoria
+plural Their psionic abilities cause a dangerous feeling of constant euphoria.
+desc The psionic abilities of the local lifeforms cause a dangerous feeling of constant euphoria.
 
 lifeSpecial braying
 plural They make loud braying sounds.
