@@ -109,96 +109,112 @@ desc A planet-wide, deep {climate:ocean}. {landscape:desc}
 lurk in the ocean.
 ocean yes
 land no
+dry no
 
 surface ocean
 desc A planet-wide {climate:ocean}. {landscape:desc}
 lurk in the ocean.
 ocean yes
 land no
+dry no
 
 surface islands
 desc A few islands are dotted around an {climate:ocean}. {landscape:desc} {flora:land}
 lurk in the shallows.
 ocean yes
 land yes
+dry no
 
 surface continents
 desc Large continents. {landscape:desc} {flora:land}
 lurk {flora:lurk}
 ocean yes
 land yes
+dry no
 
 surface supercontinent
 desc A supercontinent and some small, shallow {climate:seas}. {landscape:desc} {flora:land}
 lurk {flora:lurk}
 ocean yes
 land yes
+dry no
 
 surface swamps
 desc Shallow {climate:lakes} and swamps. {landscape:desc} {flora:land}
 lurk in the swamps.
 ocean no
 land no
+dry no
 
 surface jungle
 desc Dense jungles of {flora:desc} cover {nameStart}{nameEnd} {nameNumber}. {landscape:desc}
 lurk in the jungles.
 ocean no
 land yes
+dry no
 
 surface forests
 desc Dense forests of {flora:desc} cover {nameStart}{nameEnd} {nameNumber}. {landscape:desc}
 lurk in the forests.
 ocean no
 land yes
+dry no
 
 surface scatteredForests
 desc There are scattered forests of {flora:desc}. {landscape:desc}
 lurk in the forests.
 ocean no
 land yes
+dry no
 
 surface tundra
 desc Tundra and a few {climate:lakes}. {landscape:desc} {flora:land}
 lurk {flora:lurk}
 ocean no
 land yes
+dry no
 
 surface muddy
 desc {soilColor:cap} mud and small rivulets cover the surface. {landscape:desc} {flora:land}
 lurk {flora:lurk}
 ocean no
 land yes
+dry no
 
 surface arid
 desc Apart from a few {climate:lakes} and rivers, {nameStart}{nameEnd} {nameNumber} is dry. {landscape:desc} {flora:land}
 lurk {flora:lurk}
 ocean no
 land yes
+dry yes
 
 surface desert
 desc A sandy desert lit by a {sun:brightness} {sun:color} sun. {landscape:desc} {flora:land}
 lurk beneath the sand.
 ocean no
 land yes
+dry yes
 
 surface icyDesert
 desc An icy desert. {landscape:desc} {flora:land}
 lurk in the ice.
 ocean no
 land yes
+dry no
 
 surface rocks
 desc A rocky desert lit by a {sun:brightness} {sun:color} sun. {landscape:desc} {flora:land}
 lurk in nooks and crannies.
 ocean no
 land yes
+dry yes
 
 surface jaggedRocks
 desc A desert of jagged rocks. {landscape:desc} {flora:land}
 lurk in nooks and crannies.
 ocean no
 land yes
+dry yes
 
 climate veryCold
 blocker sun brightBlue
@@ -259,6 +275,10 @@ soilColor black
 cap Black
 soilColor dark green
 cap Dark green
+
+landscape rocks
+blocker surface:land no
+desc Huge {soilColor} rocks litter the land.
 
 landscape mountains
 blocker surface:land no
@@ -362,38 +382,42 @@ desc The sky is constantly cloudy.
 
 special constantRain
 blocker surface:land no
-blocker surface desert
-blocker surface icyDesert
-blocker surface rocks
-blocker surface jaggedRocks
-blocker surface arid
+blocker surface:dry yes
 desc It is always raining.
+
+special suddenRain
+blocker surface:land no
+blocker surface:dry yes
+desc There are sudden, violent rains.
+
+special drizzle
+blocker surface:land no
+blocker surface:dry yes
+desc There is a constant drizzle.
+
+special fog
+blocker surface:land no
+blocker surface:dry yes
+desc There are frequent fogs.
 
 special impactCrater
 desc The remains of an ancient, massive impact crater can be seen all the way from orbit.
 
 special dustStorms
 blocker surface:land no
-blocker surface islands
-blocker surface swamps
+blocker surface:dry no
 desc Constant dust storms make it hard to see anything.
 
 special snowStorms
 blocker climate temperate
 blocker climate hot
 blocker climate veryHot
-blocker surface arid
-blocker surface desert
+blocker surface:dry yes
 desc Constant snowstorms make it hard to see anything.
 
 special hurricanes
 blocker climate veryCold
-blocker surface tundra
-blocker surface arid
-blocker surface desert
-blocker surface icyDesert
-blocker surface rocks
-blocker surface jaggedRocks
+blocker surface:dry
 desc Constant hurricanes ravage the surface.
 
 special iceSpires
@@ -503,6 +527,7 @@ waterPropulsion tails
 fewLegged four-legged
 fold bilateral
 some two
+nPods bipeds
 
 symmetry 3
 many nine
@@ -510,6 +535,7 @@ waterPropulsion siphons
 fewLegged three-legged
 fold threefold
 some three
+nPods tripods
 
 symmetry 5
 many ten
@@ -517,6 +543,7 @@ waterPropulsion flippers
 fewLegged five-legged
 fold fivefold
 some five
+nPods pentapods
 
 symmetry 6
 many six
@@ -524,6 +551,7 @@ waterPropulsion undulating bodies
 fewLegged six-legged
 fold hexagonal
 some six
+nPods hexapods
 
 symmetry 0
 many many
@@ -531,6 +559,7 @@ waterPropulsion mass of tentacles
 fewLegged tentacular
 fold no
 some several
+nPods heptapods
 
 leafColor red
 blocker sun dullRed
@@ -614,7 +643,7 @@ plantDecoColor light green
 plantDecoColor brown
 
 plantDeco hairs
-desc fine {plantDecoColor} hairs
+desc fine {plantDecoColor} hair
 
 plantDeco thinLeaves
 desc thin {leafColor} leaves
@@ -707,7 +736,7 @@ blocker surface icyDesert
 blocker surface rocks
 blocker surface jaggedRocks
 desc {leafColor} fungal towers
-land An impassable {leafColor} fungal thicket covers the land.
+land An impassable thicket of {leafColor} fungus covers the land.
 plural fungal towers
 lurk in the deepest fungal thickets.
 tall yes
@@ -725,10 +754,10 @@ tall yes
 
 flora dottedShrubs
 blocker surface jungle
-desc {leafColor} shrubs
-land The occasional {leafColor} shrub.
+desc {leafColor} shrubs with {plantDeco:desc}
+land There is the occasional {leafColor} shrub with {plantDeco:desc}.
 plural shrubs
-lurk in the leaves.
+lurk under the shrubs.
 tall no
 
 flora grass
@@ -783,7 +812,7 @@ blocker surface desert
 blocker surface icyDesert
 blocker surface rocks
 desc thick {leafColor} stems with massive flowers
-land The local plants produce massive flowers in all kinds of colors, sitting atop thick {leafColor} stems.
+land Massive flowers in all kinds of colors, sitting atop thick {leafColor} stems.
 plural flowers
 lurk in the flowers.
 tall yes
@@ -868,6 +897,48 @@ plural barrels
 lurk between the plants.
 tall no
 
+flora fronds
+desc {leafColor} fronds
+land Clusters of {leafColor} fronds.
+plural barrels
+lurk in the fronds.
+tall no
+
+flora sponges
+desc {leafColor} sponges
+land The local plants are {leafColor} sponges.
+plural sponges
+lurk in the sponges.
+tall no
+
+flora trumpets
+desc {plantTexture} trumpet-shaped plants
+land The plants are shaped like {plantTexture} trumpets pointing up at the sky.
+plural trumpets
+lurk in the trumpets.
+tall yes
+
+flora hexsegments
+desc hexagonal {leafColor} segments stacked atop each other
+land The plants are made of hexagonal {leafColor} segments stacked atop each other, with {plantDeco:desc} between the segments.
+plural stacks
+lurk in the stacks.
+tall yes
+
+flora roots
+blocker surface desert
+blocker surface icyDesert
+blocker surface rocks
+blocker surface jaggedRocks
+blocker surface forests
+blocker surface scatteredForests
+blocker surface jungle
+desc {plantTexture} {leafColor} roots
+land The surface is covered in {plantTexture} {leafColor} roots.
+plural roots
+lurk between the roots.
+tall no
+
 fauna giantHives
 blocker surface:land no
 desc Giant hives of small, {animalTexture}, {symmetry:many}-legged creatures dominate. {lifeSpecial:plural}
@@ -877,6 +948,16 @@ desc The apex predators on {nameStart}{nameEnd} {nameNumber} inject their prey w
 
 fauna brainParasites
 desc Vicious brain parasites lurk {surface:lurk} {lifeSpecial:plural}
+
+fauna tallNPods
+blocker flora:tall no
+blocker surface:land no
+desc Gangly {animalColor} {symmetry:nPods} move between the {flora:plural}, feeding tentacles seeking nourishment. {lifeSpecial:plural}
+
+fauna squatNPods
+blocker flora:tall no
+blocker surface:land no
+desc Squat {animalTexture} {symmetry:nPods} move between the {flora:plural}. {lifeSpecial:plural}
 
 fauna constantFliers
 desc Large, {animalColor}, winged creatures spend their lives in flight, not even landing to reproduce. {lifeSpecial:plural}
@@ -892,6 +973,13 @@ desc Vicious {animalTexture} ambush predators lurk {surface:lurk} {lifeSpecial:p
 
 fauna lurkingSwarms
 desc Swarms of tiny {symmetry:fewLegged} animals hide {surface:lurk} {lifeSpecial:plural}
+
+fauna nervoPods
+desc Groups of nervous {animalColor} {symmetry:nPods} graze on the {flora:plural}. {lifeSpecial:plural}
+
+fauna tribes
+blocker flora:tall no
+desc Tribes of boisterous {animalColor} {symmetry:nPods} live in the {flora:plural}. {lifeSpecial:plural}
 
 fauna rapidHerds
 blocker surface:land no
@@ -968,7 +1056,7 @@ desc Every {prime} years, billions of {animalTexture} creatures hatch all at onc
 
 fauna massiveHerds
 blocker surface:land no
-desc Massive herds of {symmetry:fewLegged}, {animalColor} beasts move across the planet in time with the seasons. {lifeSpecial:desc}
+desc Massive herds of {symmetry:fewLegged}, {animalColor} beasts move across the planet in time with the seasons. {lifeSpecial:plural}
 
 fauna invisiblePredators
 desc The planet is home to a predatory creature that can turn itself invisible. {lifeSpecial:desc}
@@ -1095,7 +1183,7 @@ desc The local lifeforms reproduce by sporulation.
 
 lifeSpecial eatenByOffspring
 plural Their offspring eat their way out of them.
-desc The offspring of the animals on the planet simply eat their way out.
+desc The offspring of the animals on the planet simply eat their way out of their parents.
 
 lifeSpecial parasiticalReproduction
 plural They implant their eggs into the living tissues of animals they catch for this purpose.
@@ -1150,6 +1238,9 @@ plural They are able to emit laser-like blasts of light to hurt and disorient th
 desc Some of the wildlife can emit laser-like blasts of light to hurt and disorient their enemies.
 
 lifeSpecial nests
+blocker surface:land no
+blocker fauna giantNests
+blocker fauna burrowers
 plural They build nests in the {flora:plural}.
 desc There are many nests in the {flora:plural}.
 
@@ -1203,6 +1294,13 @@ plural {lifeSpecial:desc}
 desc Life on the planet mutates and evolves at a rapid pace.
 
 lifeSpecial fires
+blocker surface:land no
+blocker surface tundra
+blocker surface icyDesert
+blocker surface desert
+blocker surface rocks
+blocker surface jaggedRocks
+blocker surface muddy
 plural {lifeSpecial:desc}
 desc There are constant fires filling the skies with smoke.
 
