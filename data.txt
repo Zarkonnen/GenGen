@@ -443,7 +443,7 @@ desc Towering columns of hexagonal {rockColor} stone.
 
 landscape fossilizedForests
 blocker surface:land no
-desc Fossilized forests cover much of the land.
+desc There are extensive fossilized forests.
 
 landscape slime
 blocker surface:land no
@@ -467,7 +467,7 @@ landscape bogs
 blocker surface:land no
 blocker climate veryCold
 blocker surface:dry yes
-desc Sprawling {soilColor} bogs.
+desc There are sprawling {soilColor} bogs.
 
 landscape waterCaves
 blocker surface:land no
