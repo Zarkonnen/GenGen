@@ -528,6 +528,8 @@ fewLegged four-legged
 fold bilateral
 some two
 nPods bipeds
+nGons blobs
+nPedal bipedal
 
 symmetry 3
 many nine
@@ -536,6 +538,8 @@ fewLegged three-legged
 fold threefold
 some three
 nPods tripods
+nGons triangles
+nPedal tripedal
 
 symmetry 5
 many ten
@@ -544,6 +548,8 @@ fewLegged five-legged
 fold fivefold
 some five
 nPods pentapods
+nGons pentagons
+nPedal five-legged
 
 symmetry 6
 many six
@@ -552,6 +558,8 @@ fewLegged six-legged
 fold hexagonal
 some six
 nPods hexapods
+nGons hexagons
+nPedal six-legged
 
 symmetry 0
 many many
@@ -560,6 +568,8 @@ fewLegged tentacular
 fold no
 some several
 nPods heptapods
+nGons blobs
+nPedal tentacular
 
 leafColor red
 blocker sun dullRed
@@ -623,6 +633,7 @@ animalTexture armored
 animalTexture gelatinous
 animalTexture rugose
 animalTexture segmented
+animalTexture leathery
 
 plantDecoColor red
 plantDecoColor green
@@ -812,7 +823,7 @@ blocker surface desert
 blocker surface icyDesert
 blocker surface rocks
 desc thick {leafColor} stems with massive flowers
-land Massive flowers in all kinds of colors, sitting atop thick {leafColor} stems.
+land There are massive flowers in all kinds of colors, sitting atop thick {leafColor} stems.
 plural flowers
 lurk in the flowers.
 tall yes
@@ -1129,6 +1140,33 @@ desc The planet's creatures have developed wheeled locomotion. {lifeSpecial:plur
 
 fauna ooze
 desc The animal life on this planet is a kind of protoplasmic ooze capable of temporarily forming itself into myriad shapes. {lifeSpecial:desc}
+
+fauna ngons
+blocker surface:land no
+desc Mobile stacks of {animalTexture} {symmetry:nGons} slowly move around. {lifeSpecial:plural}
+
+fauna persistence
+blocker surface:land no
+desc Packs of {symmetry:nPedal} persistence hunters roam. {lifeSpecial:plural}
+
+fauna flocks
+desc Great flocks of {animalTexture} {animalColor} fliers gather in the skies. {lifeSpecial:plural}
+
+fauna divers
+blocker surface:ocean no
+desc Large {animalColor} fliers patrol the oceans, diving suddenly to catch their prey. {lifeSpecial:plural}
+
+fauna divers
+blocker surface:ocean no
+desc Thin {animalColor} ribbons move through the oceans. {lifeSpecial:plural}
+
+fauna torpedoes
+blocker surface:ocean no
+desc Great {animalColor} torpedo-shaped hunters streak through the seas. {lifeSpecial:plural}
+
+fauna snailoids
+blocker surface:land no
+desc Large {animalTexture} creatures move across the land on trails of slime. {lifeSpecial:plural}
 
 lifeSpecial radar
 plural They use a biological radar to perceive the world around them.
