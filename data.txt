@@ -5,6 +5,7 @@ slot nameNumber
 slot prime
 slot sun
 slot soilColor
+slot rockColor
 slot surface
 slot climate
 slot landscape
@@ -273,14 +274,27 @@ soilColor brown
 cap Brown
 soilColor black
 cap Black
-soilColor dark green
+
+rockColor red
+cap Red
+rockColor grey
+cap Grey
+rockColor white
+cap White
+rockColor black
+cap Black
+rockColor dark green
 cap Dark green
+rockColor dark blue
+cap Dark blue
+rockColor speckled
+cap Speckled
 
 landscape rocks
 blocker surface:land no
 blocker surface rocks
 blocker surface jaggedRocks
-desc Huge {soilColor} rocks litter the land.
+desc Huge {rockColor} rocks litter the land.
 
 landscape mountains
 blocker surface:land no
@@ -308,7 +322,7 @@ desc There are wide beaches of fine {soilColor} sand.
 landscape rockBeach
 blocker surface:land no
 blocker surface:ocean no
-desc There are wide, {soilColor}, rocky beaches.
+desc There are wide, {rockColor}, rocky beaches.
 
 landscape maze
 blocker surface:land no
@@ -360,6 +374,49 @@ landscape tunnels
 blocker surface:land no
 blocker surface muddy
 desc A network of tunnels extends under much of the surface.
+
+landscape dustBasins
+blocker surface:land no
+blocker surface:dry no
+desc Basins of {soilColor} dust.
+
+landscape hexCols
+blocker surface:land no
+desc Towering columns of hexagonal {rockColor} stone.
+
+landscape fossilizedForests
+blocker surface:land no
+desc Fossilized forests cover much of the land.
+
+landscape slime
+blocker surface:land no
+blocker surface:dry yes
+blocker climate veryCold
+desc The ground is covered in thick {plantDecoColor} slime.
+
+landscape tidalPlains
+blocker surface:land no
+blocker surface:ocean no
+blocker climate veryCold
+desc There are great tidal plains.
+
+landscape cenotes
+blocker surface:land no
+blocker climate veryCold
+blocker surface:dry yes
+desc There are deep water-filled cenotes.
+
+landscape bogs
+blocker surface:land no
+blocker climate veryCold
+blocker surface:dry yes
+desc Sprawling {soilColor} bogs.
+
+landscape waterCaves
+blocker surface:land no
+blocker climate veryCold
+blocker surface:dry yes
+desc Large water-filled caves are present just beneath the surface.
 
 landscape nothingSpecial
 desc  
@@ -421,7 +478,7 @@ desc Constant snowstorms make it hard to see anything.
 
 special hurricanes
 blocker climate veryCold
-blocker surface:dry
+blocker surface:dry yes
 desc Constant hurricanes ravage the surface.
 
 special iceSpires
@@ -878,8 +935,8 @@ flora spines
 blocker surface desert
 blocker surface icyDesert
 blocker surface rocks
-desc tall {plantTexture} spines
-land The plants are tall {plantTexture} spines.
+desc tall {leafColor} {plantTexture} spines
+land The plants are tall {leafColor} {plantTexture} spines.
 plural spines
 lurk in the spines.
 tall yes
@@ -1011,10 +1068,12 @@ fauna lurkingSwarms
 desc Swarms of tiny {symmetry:fewLegged} animals hide {surface:lurk} {lifeSpecial:plural}
 
 fauna nervoPods
+blocker surface:land no
 desc Groups of nervous {animalColor} {symmetry:nPods} graze on the {flora:plural}. {lifeSpecial:plural}
 
 fauna tribes
 blocker flora:tall no
+blocker surface:land no
 desc Tribes of boisterous {animalColor} {symmetry:nPods} live in the {flora:plural}. {lifeSpecial:plural}
 
 fauna rapidHerds
@@ -1034,10 +1093,12 @@ desc Grazing {animalColor} herbivores with {symmetry:fold} symmetry are held alo
 
 fauna waterSwarms
 blocker surface:ocean no
+blocker animalTexture feathered
 desc Great swarms of {animalTexture} creatures inhabit the oceans. {lifeSpecial:plural}
 
 fauna deepScuttlers
 blocker surface:ocean no
+blocker animalTexture feathered
 desc The ocean depths are home to {animalTexture} scuttling creatures. {lifeSpecial:plural}
 
 fauna oceanWorms
@@ -1052,8 +1113,9 @@ fauna splashers
 blocker surface:ocean no
 desc Groups of {animalColor} creatures splash and frolic in the shallows. {lifeSpecial:plural}
 
-fauna grazers
+fauna oceanGrazers
 blocker surface:ocean no
+blocker animalTexture feathered
 desc Far below the surface, slow-moving {animalTexture} creatures graze on the ocean floor. {lifeSpecial:plural}
 
 fauna oceanSails
@@ -1068,6 +1130,7 @@ desc Swift hunters with {symmetry:fold} symmetry stalk the sea. {lifeSpecial:plu
 
 fauna oceanColonies
 blocker surface:ocean no
+blocker animalTexture feathered
 desc Large colonies of {animalTexture} {animalColor} creatures inhabit the shallows. {lifeSpecial:plural}
 
 fauna hydrothermals
