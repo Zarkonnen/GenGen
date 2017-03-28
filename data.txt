@@ -278,6 +278,8 @@ cap Dark green
 
 landscape rocks
 blocker surface:land no
+blocker surface rocks
+blocker surface jaggedRocks
 desc Huge {soilColor} rocks litter the land.
 
 landscape mountains
@@ -401,6 +403,8 @@ blocker surface:dry yes
 desc There are frequent fogs.
 
 special impactCrater
+blocker surface deepOcean
+blocker surface ocean
 desc The remains of an ancient, massive impact crater can be seen all the way from orbit.
 
 special dustStorms
@@ -597,26 +601,47 @@ leafColor light green
 leafColor brown
 
 animalColor black
+cap Black
 animalColor striped
+cap Striped
 animalColor spotted
+cap Spotted
 animalColor red
+cap Red
 animalColor brown
+cap Brown
 animalColor white
+cap White
 animalColor many-colored
+cap Many-colored
 animalColor orange
+cap Orange
 animalColor mottled
+cap Mottled
 animalColor translucent
+cap Translucent
 animalColor yellow
+cap Yellow
 animalColor crimson
+cap Crimson
 animalColor pink
+cap Pink
 animalColor light blue
+cap Light blue
 animalColor dark green
+cap Dark green
 animalColor grey
+cap Grey
 animalColor dark orange
+cap Dark orange
 animalColor light green
+cap Light green
 animalColor dark grey
+cap Dark grey
 animalColor scintillating
+cap Scintillating
 animalColor glowing
+cap Glowing
 
 animalTexture feathered
 animalTexture furry
@@ -911,7 +936,7 @@ tall no
 flora fronds
 desc {leafColor} fronds
 land Clusters of {leafColor} fronds.
-plural barrels
+plural fronds
 lurk in the fronds.
 tall no
 
@@ -971,7 +996,7 @@ blocker surface:land no
 desc Squat {animalTexture} {symmetry:nPods} move between the {flora:plural}. {lifeSpecial:plural}
 
 fauna constantFliers
-desc Large, {animalColor}, winged creatures spend their lives in flight, not even landing to reproduce. {lifeSpecial:plural}
+desc {animalColor:cap} winged creatures spend their lives in flight, not even landing to reproduce. {lifeSpecial:plural}
 
 fauna accumulators
 desc The local animals build shells for themselves out of precious metals. {lifeSpecial:plural}
@@ -1154,7 +1179,7 @@ desc Great flocks of {animalTexture} {animalColor} fliers gather in the skies. {
 
 fauna divers
 blocker surface:ocean no
-desc Large {animalColor} fliers patrol the oceans, diving suddenly to catch their prey. {lifeSpecial:plural}
+desc {animalColor:cap} fliers patrol the oceans, diving suddenly to catch their prey. {lifeSpecial:plural}
 
 fauna divers
 blocker surface:ocean no
@@ -1166,6 +1191,7 @@ desc Great {animalColor} torpedo-shaped hunters streak through the seas. {lifeSp
 
 fauna snailoids
 blocker surface:land no
+blocker surface:dry yes
 desc Large {animalTexture} creatures move across the land on trails of slime. {lifeSpecial:plural}
 
 lifeSpecial radar
@@ -1397,6 +1423,39 @@ lifeSpecial echolocating
 blocker surface:land no
 plural They use echolocation to find their way around, filling the air with chirps and trills.
 desc Most of the local animals use echolocation to find their way around, filling the air with chirps and trills.
+
+lifeSpecial claws
+plural They have large claws.
+desc Many of the local animals have large claws.
+
+lifeSpecial fangs
+plural They have large fangs.
+desc Many of the local animals have large fangs.
+
+lifeSpecial toolUse
+plural They are capable of using simple tools.
+desc Some of the species on the planet have developed simple tool use.
+
+lifeSpecial herders
+plural They keep herds of smaller creatures for sustenance.
+desc A few of the local species have taken to keeping herds of other animals for sustenance.
+
+lifeSpecial farmers
+blocker surface:land no
+plural They tend to patches of {flora:plural} as a food source.
+desc There are patches of {flora:plural} tended to by local lifeforms as a food source.
+
+lifeSpecial multiHead
+plural They have multiple heads.
+desc Many of the animals have multiple heads.
+
+lifeSpecial lightComms
+plural They use flashes of colored light to communicate.
+desc There are constant flashes of colored light used by the local wildlife to communicate.
+
+lifeSpecial falseHead
+plural They have a large false head to distract attackers.
+desc Many of the animals have false heads used to distract attackers.
 
 lifeSpecial nothingSpecial
 plural  
