@@ -151,6 +151,7 @@ lurk in the ocean.
 ocean yes
 land no
 dry no
+ground ocean
 
 surface ocean
 desc A planet-wide {climate:ocean}. {landscape:desc}
@@ -158,6 +159,7 @@ lurk in the ocean.
 ocean yes
 land no
 dry no
+ground ocean
 
 surface islands
 desc A few islands are dotted around an {climate:ocean}. {landscape:desc} {flora:land}
@@ -165,6 +167,7 @@ lurk in the shallows.
 ocean yes
 land yes
 dry no
+ground earth
 
 surface continents
 desc Large continents. {landscape:desc} {flora:land}
@@ -172,6 +175,7 @@ lurk {flora:lurk}
 ocean yes
 land yes
 dry no
+ground earth
 
 surface supercontinent
 desc A supercontinent and some small, shallow {climate:seas}. {landscape:desc} {flora:land}
@@ -179,6 +183,7 @@ lurk {flora:lurk}
 ocean yes
 land yes
 dry no
+ground earth
 
 surface swamps
 desc Shallow {climate:lakes} and swamps. {landscape:desc} {flora:land}
@@ -186,6 +191,7 @@ lurk in the swamps.
 ocean no
 land no
 dry no
+ground earth
 
 surface jungle
 desc Dense jungles of {flora:desc} cover {nameStart}{nameEnd} {nameNumber}. {landscape:desc}
@@ -193,6 +199,7 @@ lurk in the jungles.
 ocean no
 land yes
 dry no
+ground soil
 
 surface forests
 desc Dense forests of {flora:desc} cover {nameStart}{nameEnd} {nameNumber}. {landscape:desc}
@@ -200,6 +207,7 @@ lurk in the forests.
 ocean no
 land yes
 dry no
+ground soil
 
 surface scatteredForests
 desc There are scattered forests of {flora:desc}. {landscape:desc}
@@ -207,6 +215,7 @@ lurk in the forests.
 ocean no
 land yes
 dry no
+ground soil
 
 surface tundra
 desc Tundra and a few {climate:lakes}. {landscape:desc} {flora:land}
@@ -214,13 +223,15 @@ lurk {flora:lurk}
 ocean no
 land yes
 dry no
+ground frozen ground
 
 surface muddy
-desc {soilColor:cap} mud and small rivulets cover the surface. {landscape:desc} {flora:land}
+desc {soilColor:cap} mud and small rivulets. {landscape:desc} {flora:land}
 lurk {flora:lurk}
 ocean no
 land yes
 dry no
+ground mud
 
 surface arid
 desc Apart from a few {climate:lakes} and rivers, {nameStart}{nameEnd} {nameNumber} is dry. {landscape:desc} {flora:land}
@@ -228,6 +239,7 @@ lurk {flora:lurk}
 ocean no
 land yes
 dry yes
+ground soil
 
 surface desert
 desc A sandy desert lit by a {sun:brightness} {sun:color} sun. {landscape:desc} {flora:land}
@@ -235,6 +247,7 @@ lurk beneath the sand.
 ocean no
 land yes
 dry yes
+ground sand
 
 surface icyDesert
 desc An icy desert. {landscape:desc} {flora:land}
@@ -242,6 +255,7 @@ lurk in the ice.
 ocean no
 land yes
 dry no
+ground ice
 
 surface rocks
 desc A rocky desert lit by a {sun:brightness} {sun:color} sun. {landscape:desc} {flora:land}
@@ -249,6 +263,7 @@ lurk in nooks and crannies.
 ocean no
 land yes
 dry yes
+ground stone
 
 surface jaggedRocks
 desc A desert of jagged rocks. {landscape:desc} {flora:land}
@@ -256,6 +271,7 @@ lurk in nooks and crannies.
 ocean no
 land yes
 dry yes
+ground stone
 
 climate veryCold
 blocker sun brightBlue
@@ -408,6 +424,7 @@ desc There are gentle rolling hills.
 
 landscape canyons
 blocker surface:land no
+blocker surface islands
 desc Deep canyons cut into the planet's crust.
 
 landscape tunnels
@@ -516,6 +533,13 @@ blocker climate veryHot
 blocker surface:dry yes
 desc Constant snowstorms make it hard to see anything.
 
+special hailStorms
+blocker climate temperate
+blocker climate hot
+blocker climate veryHot
+blocker surface:dry yes
+desc Constant hail storms batter the surface.
+
 special hurricanes
 blocker climate veryCold
 blocker surface:dry yes
@@ -621,6 +645,33 @@ desc There are frequent shooting stars.
 
 special variableGravity
 desc The gravity at the poles is much stronger than at the equator.
+
+special radioDust
+blocker surface:land no
+blocker surface:dry no
+desc Radioactive dust pollutes the air.
+
+special volcanoes
+blocker surface:land no
+desc There are many active volcanoes.
+
+special dormantVolcanoes
+blocker surface:land no
+desc There are many dormant volcanoes.
+
+special dormantOceanVolcanoes
+blocker surface:ocean no
+desc There are many dormant underwater volcanoes.
+
+special meteoriteHail
+desc There is a constant hail of small meteorite impacts.
+
+special colorWater
+blocker surface:dry yes
+desc The water is colored {plantDecoColor} by microorganisms.
+
+special ecoCollapseCycle
+desc The ecosystem of the planet goes through a cycle of collapsing every few hundred years.
 
 symmetry 2
 many eight
@@ -998,7 +1049,7 @@ blocker surface icyDesert
 blocker surface rocks
 blocker surface jaggedRocks
 desc tall {leafColor} stalks covered in {plantDeco:desc}
-land The plants are tall {leafColor} stalks covered in {plantDeco:desc}, with a single circular leaf at the top.
+land The plants are tall {leafColor} stalks covered in {plantDeco:desc}, each with a single circular leaf at the top.
 plural stalks
 lurk in the leaves.
 tall yes
@@ -1052,7 +1103,7 @@ lurk in the trumpets.
 tall yes
 
 flora hexsegments
-desc hexagonal {leafColor} segments stacked atop each other
+desc {leafColor} segmented plants
 land The plants are made of hexagonal {leafColor} segments stacked atop each other, with {plantDeco:desc} between the segments.
 plural stacks
 lurk in the stacks.
@@ -1086,6 +1137,14 @@ fauna tallNPods
 blocker flora:tall no
 blocker surface:land no
 desc Gangly {animalColor} {symmetry:nPods} move between the {flora:plural}, feeding tentacles seeking nourishment. {lifeSpecial:plural}
+
+fauna nPodMatriarchs
+blocker surface:land no
+desc The clan matriarchs of {animalColor} {symmetry:nPods} noisily fight for status. {lifeSpecial:plural}
+
+nPodClans
+blocker surface:land no
+desc Clan groups of {animalColor} {symmetry:nPods} constantly vie for territory. {lifeSpecial:plural}
 
 fauna squatNPods
 blocker flora:tall no
@@ -1207,6 +1266,10 @@ desc Ancient, {symmetry:fewLegged}, {animalColor} giants move across the land. {
 fauna scuttlers
 blocker surface:land no
 desc The land is teeming with {symmetry:many}-legged {animalColor} scuttling creatures. {lifeSpecial:plural}
+
+fauna giantWorms
+blocker surface:land no
+desc Giant {animalTexture} worms burrow in the {surface:ground}. {lifeSpecial:plural}
 
 fauna furryFliers
 blocker flora:tall no
@@ -1559,6 +1622,50 @@ desc There are constant flashes of colored light used by the local wildlife to c
 lifeSpecial falseHead
 plural They have a large false head to distract attackers.
 desc Many of the animals have false heads used to distract attackers.
+
+lifeSpecial juvieHunt
+plural The adults hunt their own juveniles for food.
+desc Many of the animals on {nameStart}{nameEnd} {nameNumber} hunt their own juveniles for food.
+
+lifeSpecial bigEgg
+plural They lay large eggs and guard them carefully.
+desc The animals on this planet tend to lay single large eggs, and guard them carefully.
+
+lifeSpecial noxiousFluid
+plural When threatened, they release a noxious fluid.
+desc Some of the animals release a noxious fluid when threatened.
+
+lifeSpecial noxiousGas
+plural When threatened, they release a noxious gas.
+desc Some of the animals release a noxious gas when threatened.
+
+lifeSpecial slimeDefense
+plural They exude a sticky slime when threatened.
+desc Some of the animals release a sticky slime when threatened.
+
+lifeSpecial slimeOffense
+plural They can exude a rapidly-hardening slime to trap their prey.
+desc Many of the local creatures can exude a rapidly-hardening slime to trap their prey.
+
+lifeSpecial secretionExo
+plural They construct exoskeletons from special, rapidly hardening secretions.
+desc Many of the animals construct exoskeletons from special, rapidly hardening secretions.
+
+lifeSpecial shellCarvers
+plural They carve perfectly fitting shells out of the local {rockColor} rocks.
+desc Many of the creatures on {nameStart}{nameEnd} {nameNumber} carve shells for themselves out of the local {rockColor} rocks.
+
+lifeSpecial adultNoEat
+plural Their adult stage does not eat, and only mates and then dies.
+desc Adults of most species on the planet do not eat, living only to mate and then die.
+
+lifeSpecial scentHunt
+plural They track down their prey by scent.
+desc The local predators track down their prey by scent.
+
+lifeSpecial psiHunt
+plural They track down their prey using their psionic powers.
+desc The local predators track down their prey using their psionic powers.
 
 lifeSpecial nothingSpecial
 plural  
