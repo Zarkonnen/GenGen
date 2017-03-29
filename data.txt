@@ -21,6 +21,10 @@ slot plantDeco
 slot fauna
 slot lifeSpecial
 desc <h1>{nameStart}{nameEnd} {nameNumber}</h1>{surface:desc}<br><br>{fauna:desc}<br><br>{special:desc}
+hab {surface:hab} {climate:hab} {flora:hab} {fauna:hab} {lifeSpecial:hab} {special:hab}
+sze {surface:sze} {climate:sze} {flora:sze} {fauna:sze} {lifeSpecial:sze} {special:sze}
+min 3 {surface:min} {climate:min} {flora:min} {fauna:min} {lifeSpecial:min} {special:min}
+sci 3 {surface:sci} {climate:sci} {flora:sci} {fauna:sci} {lifeSpecial:sci} {special:sci}
 
 nameStart Bi
 nameStart Tor
@@ -152,6 +156,9 @@ ocean yes
 land no
 dry no
 ground ocean
+hab 5
+sze 3
+min -1
 
 surface ocean
 desc A planet-wide {climate:ocean}. {landscape:desc}
@@ -160,6 +167,9 @@ ocean yes
 land no
 dry no
 ground ocean
+hab 5
+sze 3
+min -1
 
 surface islands
 desc A few islands are dotted around an {climate:ocean}. {landscape:desc} {flora:land}
@@ -168,6 +178,9 @@ ocean yes
 land yes
 dry no
 ground earth
+hab 7 {landscape:hab}
+sze 5 {landscape:sze}
+min {landscape:min}
 
 surface continents
 desc Large continents. {landscape:desc} {flora:land}
@@ -176,6 +189,9 @@ ocean yes
 land yes
 dry no
 ground earth
+hab 8 {landscape:hab}
+sze 7 {landscape:sze}
+min {landscape:min}
 
 surface supercontinent
 desc A supercontinent and some small, shallow {climate:seas}. {landscape:desc} {flora:land}
@@ -184,6 +200,9 @@ ocean yes
 land yes
 dry no
 ground earth
+hab 8 {landscape:hab}
+sze 8 {landscape:sze}
+min {landscape:min}
 
 surface swamps
 desc Shallow {climate:lakes} and swamps. {landscape:desc} {flora:land}
@@ -192,6 +211,9 @@ ocean no
 land no
 dry no
 ground earth
+hab 6 {landscape:hab}
+sze 6 {landscape:sze}
+min -1 {landscape:min}
 
 surface jungle
 desc Dense jungles of {flora:desc} cover {nameStart}{nameEnd} {nameNumber}. {landscape:desc}
@@ -200,6 +222,9 @@ ocean no
 land yes
 dry no
 ground soil
+hab 7 {landscape:hab}
+sze 7 {landscape:sze}
+min {landscape:min}
 
 surface forests
 desc Dense forests of {flora:desc} cover {nameStart}{nameEnd} {nameNumber}. {landscape:desc}
@@ -208,6 +233,9 @@ ocean no
 land yes
 dry no
 ground soil
+hab 8 {landscape:hab}
+sze 7 {landscape:sze}
+min +1 {landscape:min}
 
 surface scatteredForests
 desc There are scattered forests of {flora:desc}. {landscape:desc}
@@ -216,6 +244,9 @@ ocean no
 land yes
 dry no
 ground soil
+hab 7 {landscape:hab}
+sze 7 {landscape:sze}
+min {landscape:min}
 
 surface tundra
 desc Tundra and a few {climate:lakes}. {landscape:desc} {flora:land}
@@ -224,6 +255,9 @@ ocean no
 land yes
 dry no
 ground frozen ground
+hab 6 {landscape:hab}
+sze 6 {landscape:sze}
+min {landscape:min}
 
 surface muddy
 desc {soilColor:cap} mud and small rivulets. {landscape:desc} {flora:land}
@@ -232,6 +266,9 @@ ocean no
 land yes
 dry no
 ground mud
+hab 6 {landscape:hab}
+sze 6 {landscape:sze}
+min {landscape:min}
 
 surface arid
 desc Apart from a few {climate:lakes} and rivers, {nameStart}{nameEnd} {nameNumber} is dry. {landscape:desc} {flora:land}
@@ -240,6 +277,9 @@ ocean no
 land yes
 dry yes
 ground soil
+hab 6 {landscape:hab}
+sze 8
+min {landscape:min}
 
 surface desert
 desc A sandy desert lit by a {sun:brightness} {sun:color} sun. {landscape:desc} {flora:land}
@@ -248,6 +288,9 @@ ocean no
 land yes
 dry yes
 ground sand
+hab 4 {landscape:hab}
+sze 7 {landscape:sze}
+min {landscape:min}
 
 surface icyDesert
 desc An icy desert. {landscape:desc} {flora:land}
@@ -256,6 +299,9 @@ ocean no
 land yes
 dry no
 ground ice
+hab 4 {landscape:hab}
+sze 7 {landscape:sze}
+min -1 {landscape:min}
 
 surface rocks
 desc A rocky desert lit by a {sun:brightness} {sun:color} sun. {landscape:desc} {flora:land}
@@ -264,6 +310,9 @@ ocean no
 land yes
 dry yes
 ground stone
+hab 4 {landscape:hab}
+sze 8 {landscape:sze}
+min {landscape:min}
 
 surface jaggedRocks
 desc A desert of jagged rocks. {landscape:desc} {flora:land}
@@ -272,6 +321,9 @@ ocean no
 land yes
 dry yes
 ground stone
+hab 4 {landscape:hab}
+sze 8 {landscape:sze}
+min {landscape:min}
 
 climate veryCold
 blocker sun brightBlue
@@ -284,6 +336,7 @@ blocker surface muddy
 ocean ocean covered by a thick ice sheet
 seas seas covered with thick ice sheets
 lakes frozen lakes
+hab -2
 
 climate cold
 blocker sun brightBlue
@@ -321,6 +374,7 @@ blocker surface tundra
 ocean ocean that is constantly steaming
 seas seas that are constantly steaming
 lakes boiling lakes
+hab -2
 
 soilColor red
 cap Red
@@ -365,6 +419,7 @@ desc Sinkholes dot the land.
 landscape fissures
 blocker surface:land no
 desc Noxious gases erupt from deep fissures.
+hab -2
 
 landscape rockSpires
 blocker surface:land no
@@ -426,20 +481,26 @@ landscape canyons
 blocker surface:land no
 blocker surface islands
 desc Deep canyons cut into the planet's crust.
+sze -1
+min +2
 
 landscape tunnels
 blocker surface:land no
 blocker surface muddy
 desc A network of tunnels extends under much of the surface.
+sze +3
+min +1
 
 landscape dustBasins
 blocker surface:land no
 blocker surface:dry no
 desc Basins of {soilColor} dust.
+sze -1
 
 landscape hexCols
 blocker surface:land no
 desc Towering columns of hexagonal {rockColor} stone.
+min +1
 
 landscape fossilizedForests
 blocker surface:land no
@@ -450,42 +511,50 @@ blocker surface:land no
 blocker surface:dry yes
 blocker climate veryCold
 desc The ground is covered in thick {plantDecoColor} slime.
+hab -1
 
 landscape tidalPlains
 blocker surface:land no
 blocker surface:ocean no
 blocker climate veryCold
 desc There are great tidal plains.
+hab +1
 
 landscape cenotes
 blocker surface:land no
 blocker climate veryCold
 blocker surface:dry yes
 desc There are deep water-filled cenotes.
+hab +1
 
 landscape bogs
 blocker surface:land no
 blocker climate veryCold
 blocker surface:dry yes
 desc There are sprawling {soilColor} bogs.
+sze -1
 
 landscape waterCaves
 blocker surface:land no
 blocker climate veryCold
 blocker surface:dry yes
 desc Large water-filled caves are present just beneath the surface.
+hab +1
 
 landscape nothingSpecial
 desc  
 
 special radioactive
 desc Much of the planet is heavily radioactive.
+hab -2
+min +1
 
 special giantMoon
 desc A giant moon looms in the sky.
 
 special darkness
 desc Due to a celestial conjunction, the planet is plunged into darkness every {prime} years.
+hab -1
 
 special manyMoons
 desc Many moons can be seen in the sky.
@@ -520,11 +589,13 @@ special impactCrater
 blocker surface deepOcean
 blocker surface ocean
 desc The remains of an ancient, massive impact crater can be seen all the way from orbit.
+min +1
 
 special dustStorms
 blocker surface:land no
 blocker surface:dry no
 desc Constant dust storms make it hard to see anything.
+hab -1
 
 special snowStorms
 blocker climate temperate
@@ -532,6 +603,7 @@ blocker climate hot
 blocker climate veryHot
 blocker surface:dry yes
 desc Constant snowstorms make it hard to see anything.
+hab -1
 
 special hailStorms
 blocker climate temperate
@@ -539,11 +611,13 @@ blocker climate hot
 blocker climate veryHot
 blocker surface:dry yes
 desc Constant hail storms batter the surface.
+hab -1
 
 special hurricanes
 blocker climate veryCold
 blocker surface:dry yes
 desc Constant hurricanes ravage the surface.
+hab -1
 
 special iceSpires
 blocker surface:land no
@@ -551,6 +625,7 @@ blocker climate temperate
 blocker climate hot
 blocker climate veryHot
 desc Tall ice spires formed by an unknown process cover much of the ground.
+sze -1
 
 special slowDayCycle
 desc A single day takes a very long time.
@@ -566,24 +641,37 @@ desc Day and night have an irregular pattern due to the presence of two suns.
 
 special heavyGravity
 desc The gravity is very strong.
+hab -1
+sze +2
+min -1
 
 special lowGravity
 desc The gravity is quite low.
+sze -1
 
 special thinAir
 desc The air is thin.
+hab -1
 
 special thickAir
 desc The air pressure is very high.
+hab -1
 
 special tidallyLocked
 desc The planet is tidally locked to its sun. One side is in constant day, the other in constant night, and a narrow band of twilight stretches around it.
+hab -2
+sze -3
+sci +1
 
 special electricalStorms
 desc Powerful electrical storms disrupt electronics and light up the sky.
+hab -1
+sci -1
 
 special solarFlares
 desc Frequent strong solar flares cause beautiful displays of light in the sky and make electronics all but useless.
+hab -1
+sci -1
 
 special coldAir
 blocker climate temperate
@@ -624,18 +712,23 @@ desc There are sudden hot winds.
 special poisonedSoil
 blocker surface:land no
 desc The soil is poisoned with heavy metals.
+hab -3
+min +1
 
 special richSurface
 blocker surface:land no
 desc Deposits of valuable ores can be seen all over the surface.
+min +3
 
 special deepRiches
 blocker surface:land yes
 desc There are deposits of valuable ores in the ocean depths.
+min +2
 
 special petroleum
 blocker surface:land no
 desc There are deposits of a petroleum-like substance just under the surface.
+min +3
 
 special constantWind
 desc A constant wind whips around the planet.
@@ -650,14 +743,19 @@ special radioDust
 blocker surface:land no
 blocker surface:dry no
 desc Radioactive dust pollutes the air.
+hab -4
 
 special volcanoes
 blocker surface:land no
 desc There are many active volcanoes.
+hab -1
+sze -2
+min +1
 
 special dormantVolcanoes
 blocker surface:land no
 desc There are many dormant volcanoes.
+sze -1
 
 special dormantOceanVolcanoes
 blocker surface:ocean no
@@ -669,9 +767,12 @@ desc There is a constant hail of small meteorite impacts.
 special colorWater
 blocker surface:dry yes
 desc The water is colored {plantDecoColor} by microorganisms.
+hab -1
 
 special ecoCollapseCycle
 desc The ecosystem of the planet goes through a cycle of collapsing every few hundred years.
+hab -1
+sci +1
 
 symmetry 2
 many eight
@@ -912,6 +1013,8 @@ land Deep, dark forests cover the land.
 plural trees
 lurk in the branches.
 tall yes
+hab +1
+min +1
 
 flora fungalThicket
 blocker surface tundra
@@ -924,6 +1027,8 @@ land An impassable thicket of {leafColor} fungus covers the land.
 plural fungal towers
 lurk in the deepest fungal thickets.
 tall yes
+hab -1
+sze -1
 
 flora treeTowers
 blocker surface desert
@@ -935,6 +1040,7 @@ land There are giant tower-like trees with {leafColor} leaves.
 plural trees
 lurk in the branches.
 tall yes
+hab +1
 
 flora dottedShrubs
 blocker surface jungle
@@ -1132,6 +1238,8 @@ desc The apex predators on {nameStart}{nameEnd} {nameNumber} inject their prey w
 
 fauna brainParasites
 desc Vicious brain parasites lurk {surface:lurk} {lifeSpecial:plural}
+hab -3
+sci +1
 
 fauna tallNPods
 blocker flora:tall no
@@ -1153,15 +1261,18 @@ desc Squat {animalTexture} {symmetry:nPods} move between the {flora:plural}. {li
 
 fauna constantFliers
 desc {animalColor:cap} winged creatures spend their lives in flight, not even landing to reproduce. {lifeSpecial:plural}
+sci +1
 
 fauna accumulators
 desc The local animals build shells for themselves out of precious metals. {lifeSpecial:plural}
+min +2
 
 fauna skeletonRecyclers
 desc The skeletons of deceased animals are re-used as shells by small {animalTexture} creatures. {lifeSpecial:plural}
 
 fauna ambushPredators
 desc Vicious {animalTexture} ambush predators lurk {surface:lurk} {lifeSpecial:plural}
+hab -1
 
 fauna lurkingSwarms
 desc Swarms of tiny {symmetry:fewLegged} animals hide {surface:lurk} {lifeSpecial:plural}
@@ -1185,6 +1296,8 @@ desc Colonies of small {animalColor} creatures live inside the {flora:plural}. {
 
 fauna shapeShifters
 desc One of the local animals can imitate the shape and sounds of any creature, even a sentient one. {lifeSpecial:desc}
+hab -1
+sci +2
 
 fauna gasFloaters
 blocker surface:land no
@@ -1238,6 +1351,7 @@ blocker climate hot
 blocker climate veryHot
 blocker climate temperate
 desc Small {animalColor} creatures cluster around hydrothermal vents. {lifeSpecial:plural}
+sci +1
 
 fauna oceanGiants
 blocker surface:ocean no
@@ -1245,19 +1359,27 @@ desc Gigantic {animalColor} creatures live in the ocean, moving slowly by using 
 
 fauna hyperPredators
 desc The planet is home to extremely dangerous apex predators, {animalTexture} {animalColor} creatures that move faster than the eye can track. {lifeSpecial:plural}
+hab -2
+sci +2
 
 fauna radiovores
 desc The {animalTexture} local animals are able to feed on radioactivity. {lifeSpecial:plural}
+sci +2
 
 fauna swarmers
 desc Every {prime} years, billions of {animalTexture} creatures hatch all at once and begin to swarm, eating everything in their path. {lifeSpecial:plural}
+hab -1
 
 fauna massiveHerds
 blocker surface:land no
 desc Massive herds of {symmetry:fewLegged}, {animalColor} beasts move across the planet in time with the seasons. {lifeSpecial:plural}
+hab +1
+min +1
 
 fauna invisiblePredators
 desc The planet is home to a predatory creature that can turn itself invisible. {lifeSpecial:desc}
+hab -1
+sci +3
 
 fauna landGiants
 blocker surface:land no
@@ -1270,6 +1392,7 @@ desc The land is teeming with {symmetry:many}-legged {animalColor} scuttling cre
 fauna giantWorms
 blocker surface:land no
 desc Giant {animalTexture} worms burrow in the {surface:ground}. {lifeSpecial:plural}
+sze -1
 
 fauna furryFliers
 blocker flora:tall no
@@ -1290,12 +1413,17 @@ fauna giantNests
 blocker surface:land no
 blocker flora:tall no
 desc Groups of {animalTexture} animals work together to build giant, intricate dens out of the {flora:plural}. {lifeSpecial:plural}
+sze -1
+sci +1
 
 fauna psiConvincers
 desc Squat, {animalTexture} creatures use their psionic abilities to convince their prey to simply lie down and accept being eaten. {lifeSpecial:plural}
+hab -2
+sci +3
 
 fauna poisonDarters
 desc The animals of {nameStart}{nameEnd} {nameNumber} avail themselves of poisonous darts used both for defense and hunting. {lifeSpecial:plural}
+hab -1
 
 fauna motilePlants
 blocker surface:land no
@@ -1328,6 +1456,7 @@ desc Small {animalTexture} creatures rapidly leap between the {flora:plural}. {l
 fauna wheels
 blocker surface:land no
 desc The planet's creatures have developed wheeled locomotion. {lifeSpecial:plural}
+sci +1
 
 fauna ooze
 desc The animal life on this planet is a kind of protoplasmic ooze capable of temporarily forming itself into myriad shapes. {lifeSpecial:desc}
@@ -1397,10 +1526,12 @@ desc A narrow strip of eyes wraps around the bodies of most local animals, givin
 lifeSpecial explode
 plural As a last-ditch defense mechanism, they will literally explode.
 desc Some of the local creatures will literally explode as a last-ditch defense mechanism.
+sci +1
 
 lifeSpecial hollowSymbiotes
 plural Symbiotic creatures live on their skin, keeping away pests and attackers.
 desc Symbiotic creatures live on the skin of many of the local animals, keeping away pests and attackers.
+sci +1
 
 lifeSpecial buddingOff
 plural They reproduce by budding off.
@@ -1430,6 +1561,7 @@ desc The eyes of the local animals frequently drop off and regrow.
 lifeSpecial psiShock
 plural When threatened, they use psionic powers to stun their potential attackers.
 desc The local lifeforms have psionic powers they use to stun potential threats.
+sci +2
 
 lifeSpecial humming
 plural They emit a constant humming sound.
@@ -1438,10 +1570,13 @@ desc There is a constant humming sound.
 lifeSpecial psiNightmares
 plural Their psionic abilities cause constant nightmares.
 desc The psionic abilities of the local lifeforms cause constant nightmares.
+hab -4
 
 lifeSpecial psiEuphoria
 plural Their psionic abilities cause a dangerous feeling of constant euphoria.
 desc The psionic abilities of the local lifeforms cause a dangerous feeling of constant euphoria.
+hab -1
+sci +1
 
 lifeSpecial braying
 plural They make loud braying sounds.
@@ -1458,6 +1593,7 @@ desc Chittering sounds occasionally erupt from groups of local animals.
 lifeSpecial soundStun
 plural They use extremely loud sounds to stun their victims.
 desc One of the local predators uses extremely loud sounds to stun its prey.
+hab -1
 
 lifeSpecial electricShocks
 plural They can produce powerful electric shocks to defend themselves.
@@ -1466,6 +1602,8 @@ desc Some of the local animals can produce powerful electric shocks to defend th
 lifeSpecial bioLaser
 plural They are able to emit laser-like blasts of light to hurt and disorient their enemies.
 desc Some of the wildlife can emit laser-like blasts of light to hurt and disorient their enemies.
+hab -1
+sci +2
 
 lifeSpecial nests
 blocker surface:land no
@@ -1491,6 +1629,8 @@ lifeSpecial fungalZombies
 blocker surface:land no
 plural {lifeSpecial:desc}
 desc The local fungus takes over the motor functions of deceased animals, using their decaying bodies to spread and feed itself.
+hab -1
+sci +2
 
 lifeSpecial bigEyed
 plural They each have a single, massive eye.
@@ -1510,10 +1650,13 @@ lifeSpecial pharmaceuticals
 blocker surface:land no
 plural {lifeSpecial:desc}
 desc Some of the local plants have interesting pharmaceutical properties.
+hab +1
+sci +3
 
 lifeSpecial toxic
 plural {lifeSpecial:desc}
 desc The biochemistry of the local life is toxic.
+hab -2
 
 lifeSpecial clingons
 plural They have a tendency to cling on to the hulls of visiting spaceships.
@@ -1522,6 +1665,7 @@ desc The local wildlife has a tendency to cling on to the hulls of visiting spac
 lifeSpecial rapidMutation
 plural {lifeSpecial:desc}
 desc Life on the planet mutates and evolves at a rapid pace.
+sci +2
 
 lifeSpecial fires
 blocker surface:land no
@@ -1533,57 +1677,73 @@ blocker surface jaggedRocks
 blocker surface muddy
 plural {lifeSpecial:desc}
 desc There are constant fires filling the skies with smoke.
+hab -1
+sze -1
 
 lifeSpecial selfImmolation
 plural {lifeSpecial:desc}
 desc The local {flora:plural} periodically set themselves on fire to spread their seeds.
+hab -1
+sze -1
 
 lifeSpecial pollen
 blocker surface:land no
 blocker special thinAir
 plural {lifeSpecial:desc}
 desc The air is filled with a thick haze of pollen.
+hab -1
 
 lifeSpecial spores
 blocker surface:land no
 blocker special thinAir
 plural {lifeSpecial:desc}
 desc The air is filled with a thick haze of spores.
+hab -1
 
 lifeSpecial hairs
 blocker surface:land no
 blocker special thinAir
 plural {lifeSpecial:desc}
 desc The air is filled with a thick haze of hairs.
+hab -1
 
 lifeSpecial symbiosis
 plural {lifeSpecial:desc}
 desc The local life is enmeshed in a complex symbiotic network.
+sci +2
 
 lifeSpecial morphs
 plural {lifeSpecial:desc}
 desc Most of the local animals are different morphs of the same highly versatile species.
+sci +1
 
 lifeSpecial superorganism
 plural {lifeSpecial:desc}
 desc The lifeforms on this planet appear to be part of a kind of superorganism.
+sci +2
 
 lifeSpecial hallucinogens
 plural {lifeSpecial:desc}
 desc The air is filled with organic compounds that induce hallucinations.
+hab -1
 
 lifeSpecial songs
 plural They produce eerie but beautiful songs.
 desc The local creatures produce eerie but beautiful songs.
+hab +1
 
 lifeSpecial dissolvingFungus
 blocker surface:land no
 plural {lifeSpecial:desc}
 desc The local fungus dissolves everything in its path, even spacecraft hulls.
+hab -3
+sze -3
+sci +1
 
 lifeSpecial immortal
 plural They are functionally immortal.
 desc Most of the animal life is functionally immortal, dying only when eaten or otherwise killed.
+sci +1
 
 lifeSpecial echolocating
 blocker surface:land no
@@ -1601,6 +1761,7 @@ desc Many of the local animals have large fangs.
 lifeSpecial toolUse
 plural They are capable of using simple tools.
 desc Some of the species on the planet have developed simple tool use.
+sci +1
 
 lifeSpecial herders
 plural They keep herds of smaller creatures for sustenance.
@@ -1666,6 +1827,8 @@ desc The local predators track down their prey by scent.
 lifeSpecial psiHunt
 plural They track down their prey using their psionic powers.
 desc The local predators track down their prey using their psionic powers.
+hab -1
+sci +1
 
 lifeSpecial nothingSpecial
 plural  

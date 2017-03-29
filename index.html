@@ -1,9 +1,36 @@
 <!DOCTYPE html>
 
-<html onclick="jQuery('#txt').html(doGen('planet'));">
+<html onclick="doDisplay(doGen('planet'));">
 <head><title>GenGen</title></head>
 <script src="jquery-3.2.0.min.js"></script>
-<body style="background: #eeeeee;">
+<style>
+h1 { margin-top: 0; padding-top: 0; }
+body {
+    background: black;
+    color: #222222;
+    font-size: 16pt;
+    line-height: 1.5;
+}
+#stats, #txt {
+    background: #eeeeee;
+    padding: 1em;
+    border-radius: 1em;
+    border: 4px solid white;
+}
+#stats {
+    position: fixed;
+    right: 0;
+    padding-right: 2em;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+#txt {
+    padding-top: 0.5em;
+    position: fixed;
+    width: 24em;
+}
+</style>
+<body>
 <script>
 var structs = {};
 var slots = {};
@@ -72,10 +99,23 @@ function doGen(structID) {
         }
         result[slot] = availableSlots[Math.floor(Math.random() * availableSlots.length)];
     });
-    return doExpand(structs[structID].vals["desc"], result).replace(/\\n/g, "<br>");
+    return result;
+}
+
+function doDisplay(result) {
+    jQuery("#txt").html(doExpand(result.struct.vals["desc"], result)).
+    css("top", (jQuery(window).height() / 2 - jQuery("#txt").height() / 2) + "px").
+    css("left", (jQuery(window).width() / 2 - jQuery("#txt").width() / 2) + "px");
+    jQuery("#stats").html(
+        "Habitability: " + (Math.max(1, Math.min(9, eval(doExpand(result.struct.vals["hab"], result)))) * 10) + "%<br>" +
+        "Size: " + (Math.max(1, Math.min(9, eval(doExpand(result.struct.vals["sze"], result))))) + "<br>" +
+        "Industry: " + (Math.max(1, Math.min(9, eval(doExpand(result.struct.vals["min"], result))))) + "<br>" +
+        "Science: " + (Math.max(1, Math.min(9, eval(doExpand(result.struct.vals["sci"], result)))))
+    ).css("top", (jQuery(window).height() / 2 - jQuery("#stats").height() / 2) + "px");
 }
 
 function doExpand(txt, context) {
+    if (!txt) { return ""; }
     if (txt.indexOf("{") == -1) { return txt; }
     return txt.replace(/[{]([^}]*)[}]/g, function(m, capture) {
         if (capture.indexOf(":") == -1) {
@@ -90,9 +130,10 @@ function doExpand(txt, context) {
 
 jQuery.ajax({
     url: "data.txt?" + (new Date()).getTime(),
-    success: function(txt) { doParse(txt); jQuery("#txt").html(doGen("planet")); }
+    success: function(txt) { doParse(txt); doDisplay(doGen("planet")); }
 });
 </script>
-<div id="txt" style="font-size: 16pt; color: #222222; margin: auto; margin-top: 4em; width: 24em; line-height: 1.5;"></div>
+<div id="stats"></div>
+<div id="txt"></div>
 </body>
 </html>
