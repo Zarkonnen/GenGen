@@ -102,6 +102,10 @@ uniform vec2 cloudNoise;
 
 uniform float cloudiness;
 
+uniform float waterLevel;
+uniform float rivers;
+uniform float temperature;
+
 uniform vec3 ocean;
 uniform vec3 ice;
 uniform vec3 cold;
@@ -214,10 +218,10 @@ vec4 planet(in vec2 pix) {
 	float n2 = pnoise(uv * noiseScale2, noiseScale2) * 0.05;
 	float n = pnoise(uv * noiseScale, noiseScale) + n2;
 	
-	float temp = cos(nor.y * 4.0) + pnoise(uv * noiseScale3, noiseScale3) * 0.8 + n * 0.5;
+	float temp = cos(nor.y * 4.0) + pnoise(uv * noiseScale3, noiseScale3) * 0.8 + n * 0.5 + temperature;
 	
-	float oceanity = min(1.0, 1.0 - smoothstep(0.19, 0.2, n) + 1.0 - smoothstep(0.05, 0.08, mod(temp - uv.x * 35.0 + 0.3, 1.0) + n * n * 0.35));
-			
+	float oceanity = min(1.0, 1.0 - smoothstep(0.19, 0.2, n - waterLevel) + rivers * (1.0 - smoothstep(0.01, 0.04, mod(temp - uv.x * 35.0 + 0.3, 1.0) + n * n * 0.35))) * smoothstep(-1.2, -1.05, temp);
+
 	float iceity = max(0.0, 1.0 - oceanity - smoothstep(-0.8, -0.6, temp));
 	float coldity = max(0.0, 1.0 - iceity - oceanity - smoothstep(-0.4, 0.0, temp));
 	float temperateity = max(0.0, 1.0 - iceity - coldity - oceanity - smoothstep(0.3, 0.8, temp));
@@ -336,6 +340,9 @@ var uCold = gl.getUniformLocation(program, "cold");
 var uTemperate = gl.getUniformLocation(program, "temperate");
 var uWarm = gl.getUniformLocation(program, "warm");
 var uHot = gl.getUniformLocation(program, "hot");
+var uWaterLevel = gl.getUniformLocation(program, "waterLevel");
+var uRivers = gl.getUniformLocation(program, "rivers");
+var uTemperature = gl.getUniformLocation(program, "temperature");
 
 var positionBuffer = gl.createBuffer();
 gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
@@ -377,13 +384,13 @@ function renderPlanet() {
     gl.uniform1f(uLeft, 0);
     gl.uniform1f(uTop, 0);
     gl.uniform2f(uResolution, 300, 300);
-    gl.uniform1f(uAngle, 0.7);
+    gl.uniform1f(uAngle, 0.3);
     gl.uniform1f(uRotspeed, 0.01);
     gl.uniform1f(uLight, 1.9);
     gl.uniform1f(uZLight, 0.5);
-    gl.uniform1f(uModValue, 21);
+    gl.uniform1f(uModValue, 29);
     gl.uniform2f(uNoiseOffset, 0, 0);
-    gl.uniform2f(uNoiseScale, 16, 16);
+    gl.uniform2f(uNoiseScale, 11, 8);
     gl.uniform2f(uNoiseScale2, 200, 200);
     gl.uniform2f(uNoiseScale3, 50, 50);
     gl.uniform2f(uCloudNoise, 6, 30);
@@ -394,6 +401,9 @@ function renderPlanet() {
     gl.uniform3f(uTemperate, 79/255.0, 109/255.0, 68/255.0);
     gl.uniform3f(uWarm, 119/255.0, 141/255.0, 82/255.0);
     gl.uniform3f(uHot, 223/255.0, 193/255.0, 148/255.0);
+    gl.uniform1f(uWaterLevel, 0.4);
+    gl.uniform1f(uRivers, 0.5);
+    gl.uniform1f(uTemperature, 1.4);
 
     var primitiveType = gl.TRIANGLES;
     var offset = 0;

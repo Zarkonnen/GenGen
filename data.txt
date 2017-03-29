@@ -824,12 +824,12 @@ nPods heptapods
 nGons blobs
 nPedal tentacular
 
+leafColor green
 leafColor red
 blocker sun dullRed
 blocker sun harshRed
 leafColor green
 leafColor orange
-leafColor green
 leafColor purple
 leafColor black
 leafColor blue
