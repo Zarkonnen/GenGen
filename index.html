@@ -3,38 +3,36 @@
 <html onclick="doDisplay(doGen('planet'));">
 <head><title>GenGen</title></head>
 <script src="jquery-3.2.0.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Dosis|Raleway" rel="stylesheet">
 <style>
-h1 { margin-top: 0; padding-top: 0; }
+h1 { margin-top: 0; padding-top: 0; font-family: Raleway; }
 body {
     background: black;
     background-image: url('starfield.png');
-    color: #eeeeee;
+    color: #ffffff;
     font-size: 16pt;
+    font-family: Dosis;
     line-height: 1.5;
+    padding: 0;
+    margin: 0;
 }
 #stats, #txt {
+    top: 1em;
     padding: 1em;
     border-radius: 1em;
-    border: 2px solid white;
-    background: rgba(222, 255, 255, 0.2);
+    border: 2px solid rgba(222, 255, 255, 0.2);
+    background: url('boxbg.png');
 }
 #stats {
     position: fixed;
-    right: 0;
-    padding-right: 2em;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    border-right: none;
+    right: 1em;
 }
 #txt {
     padding-top: 0.5em;
     position: fixed;
+    left: 1em;
     width: 24em;
     max-width: 25%;
-    padding-left: 2em;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    border-left: none;
 }
 #c {
   position: fixed;
@@ -244,7 +242,7 @@ vec4 planet(in vec2 pix) {
 	col = col * (1.0 - cloudN) + clouds * cloudN;
 
     float lighting = max(sin(light) * nor.y * 2.0 + cos(light) * nor.x * 2.0 + nor.z * zLight,0.0);
-	col = col * 0.2 + col * lightColor * lighting * 0.7;
+	col = col * 0.2 + col * lightColor * lighting * 0.8;
 	
 	if (
 		cities == 1 &&
@@ -531,17 +529,17 @@ function doGen(structID) {
 }
 
 function doDisplay(result) {
+    jQuery("body").css("background-position", Math.ceil(Math.random() * 2000) + "px " + Math.ceil(Math.random() * 2000) + "px");
     jQuery("#c").
-    css("top", (jQuery(window).height() / 2 - jQuery("#c").height() / 2) + "px").
-    css("left", (jQuery(window).width() / 2 - jQuery("#c").width() / 2) + "px");
-    jQuery("#txt").html(doExpand(result.struct.vals["desc"], result)).
-    css("top", (jQuery(window).height() / 2 - jQuery("#txt").height() / 2) + "px");
+    css("top", (jQuery(window).innerHeight() / 2 - jQuery("#c").height() / 2) + "px").
+    css("left", (jQuery(window).innerWidth() / 2 - jQuery("#c").width() / 2) + "px");
+    jQuery("#txt").html(doExpand(result.struct.vals["desc"], result));
     jQuery("#stats").html(
         "Habitability: " + (Math.max(1, Math.min(9, eval(doExpand(result.struct.vals["hab"], result)))) * 10) + "%<br>" +
         "Size: " + (Math.max(1, Math.min(9, eval(doExpand(result.struct.vals["sze"], result))))) + "<br>" +
         "Industry: " + (Math.max(1, Math.min(9, eval(doExpand(result.struct.vals["min"], result))))) + "<br>" +
         "Science: " + (Math.max(1, Math.min(9, eval(doExpand(result.struct.vals["sci"], result)))))
-    ).css("top", (jQuery(window).height() / 2 - jQuery("#stats").height() / 2) + "px");
+    );
     vWaterLevel = eval(doExpand(result.struct.vals["watL"], result));
     vTemperature = eval(doExpand(result.struct.vals["temp"], result));
     vRivers = eval(doExpand(result.struct.vals["rive"], result));
