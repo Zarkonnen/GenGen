@@ -114,6 +114,7 @@ uniform vec3 warm;
 uniform vec3 hot;
 uniform vec3 speckle;
 uniform vec3 clouds;
+uniform vec3 haze;
 uniform vec3 lightColor;
 
 //
@@ -256,7 +257,7 @@ vec4 planet(in vec2 pix) {
 	}
 
     //return vec4(col, smoothstep(0.0, 8.0 / resolution.x, h));
-    return vec4(clamp(col, vec3(0.0, 0.0, 0.0), vec3(1.0, 1.0, 1.0)) * smoothstep(0.0, 8.0 / resolution.x, h) + vec3(0.5, 0.0, 0.5) * smoothstep(0.0, 30.0 / resolution.x, h + 0.1), smoothstep(0.0, 8.0 / resolution.x, h + 0.2));
+    return vec4(clamp(col, vec3(0.0, 0.0, 0.0), vec3(1.0, 1.0, 1.0)) * smoothstep(0.0, 8.0 / resolution.x, h) + haze * smoothstep(0.0, 30.0 / resolution.x, h + 0.1), smoothstep(0.0, 8.0 / resolution.x, h + 0.2));
 }
 
 void main(void)
@@ -351,6 +352,7 @@ var uClouds = gl.getUniformLocation(program, "clouds");
 var uWaterLevel = gl.getUniformLocation(program, "waterLevel");
 var uRivers = gl.getUniformLocation(program, "rivers");
 var uTemperature = gl.getUniformLocation(program, "temperature");
+var uHaze = gl.getUniformLocation(program, "haze");
 
 var positionBuffer = gl.createBuffer();
 gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
@@ -376,6 +378,7 @@ var vSpeckle = [0.5, 0.5, 0.5];
 var vClouds = [0.9, 0.9, 0.9];
 var vCloudiness = 0.35;
 var vLightColor = [1.0, 1.0, 1.0];
+var vHaze = [0.15, 0.15, 0.2];
 
 var vAngle = 0.3;
 var vRotspeed = 0.01;
@@ -435,6 +438,7 @@ function renderPlanet() {
     gl.uniform3fv(uHot, vHot);//223/255.0, 193/255.0, 148/255.0);
     gl.uniform3fv(uSpeckle, vSpeckle);
     gl.uniform3fv(uClouds, vClouds);
+    gl.uniform3fv(uHaze, vHaze);
     gl.uniform1f(uWaterLevel, vWaterLevel);
     gl.uniform1f(uRivers, vRivers);
     gl.uniform1f(uTemperature, vTemperature);
