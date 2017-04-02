@@ -37,6 +37,7 @@ clouds {surface:clouds} {special:clouds}
 cloudC {special:cloudC}
 rotspeedMult 1.0 {special:rotspeedMult}
 lightC {sun:lightC}
+hazeC {special:hazeC}
 
 nameStart Bi
 nameStart Tor
@@ -745,41 +746,50 @@ desc Much of the planet is heavily radioactive.
 hab -2
 min +1
 cloudC [0.8, 0.85, 0.9]
+hazeC [0.2, 0.24, 0.25]
 
 special giantMoon
 desc A giant moon looms in the sky.
+hazeC {lifeSpecial:hazeC}
 
 special darkness
 desc Due to a celestial conjunction, the planet is plunged into darkness every {prime} years.
 hab -1
+hazeC {lifeSpecial:hazeC}
 
 special manyMoons
 desc Many moons can be seen in the sky.
+hazeC {lifeSpecial:hazeC}
 
 special dustBand
 desc A band of glittering dust can be seen in the sky.
+hazeC {lifeSpecial:hazeC}
 
 special cloudCover
 desc The sky is constantly cloudy.
-clouds + 1.2
+clouds + 2.4
+hazeC {lifeSpecial:hazeC}
 
 special constantRain
 blocker surface:land no
 blocker surface:dry yes
 desc It is always raining.
 clouds + 0.3
+hazeC {lifeSpecial:hazeC}
 
 special suddenRain
 blocker surface:land no
 blocker surface:dry yes
 desc There are sudden, violent rains.
 clouds + 0.2
+hazeC {lifeSpecial:hazeC}
 
 special drizzle
 blocker surface:land no
 blocker surface:dry yes
 desc There is a constant drizzle.
 clouds + 0.2
+hazeC {lifeSpecial:hazeC}
 
 special fog
 blocker surface:land no
@@ -787,12 +797,14 @@ blocker surface:dry yes
 desc There are frequent fogs.
 clouds + 0.7
 cloudC [0.7, 0.7, 0.7]
+hazeC [0.4, 0.4, 0.4]
 
 special impactCrater
 blocker surface deepOcean
 blocker surface ocean
 desc The remains of an ancient, massive impact crater can be seen all the way from orbit.
 min +1
+hazeC {lifeSpecial:hazeC}
 
 special dustStorms
 blocker surface:land no
@@ -801,6 +813,7 @@ desc Constant dust storms make it hard to see anything.
 hab -1
 clouds + 0.3
 cloudC {soilColor:c}
+hazeC {lifeSpecial:hazeC}
 
 special snowStorms
 blocker climate temperate
@@ -810,6 +823,7 @@ blocker surface:dry yes
 desc Constant snowstorms make it hard to see anything.
 hab -1
 clouds + 0.4
+hazeC {lifeSpecial:hazeC}
 
 special hailStorms
 blocker climate temperate
@@ -826,6 +840,7 @@ blocker surface:dry yes
 desc Constant hurricanes ravage the surface.
 hab -1
 clouds + 0.7
+hazeC {lifeSpecial:hazeC}
 
 special iceSpires
 blocker surface:land no
@@ -834,17 +849,21 @@ blocker climate hot
 blocker climate veryHot
 desc Tall ice spires formed by an unknown process cover much of the ground.
 sze -1
+hazeC {lifeSpecial:hazeC}
 
 special slowDayCycle
 desc A single day takes a very long time.
 rotspeedMult * 0.1
+hazeC {lifeSpecial:hazeC}
 
 special noStars
 desc An interstellar dust cloud hides most of the stars in the night sky.
+hazeC {lifeSpecial:hazeC}
 
 special fastDayCycle
 desc Day and night rapidly follow on from each other.
 rotspeedMult * 3
+hazeC {lifeSpecial:hazeC}
 
 special heavyGravity
 desc The gravity is very strong.
@@ -852,102 +871,122 @@ hab -1
 sze +2
 min -1
 clouds - 0.2
+hazeC {lifeSpecial:hazeC}
 
 special lowGravity
 desc The gravity is quite low.
 sze -1
 clouds - 0.2
+hazeC {lifeSpecial:hazeC}
 
 special thinAir
 desc The air is thin.
 hab -1
 clouds - 0.7
+hazeC [0.1, 0.1, 0.12]
 
 special thickAir
 desc The air pressure is very high.
 hab -1
+hazeC [0.3, 0.3, 0.4]
 
 special electricalStorms
 desc Powerful electrical storms disrupt electronics and light up the sky.
 hab -1
 sci -1
+hazeC {lifeSpecial:hazeC}
 
 special solarFlares
 desc Frequent strong solar flares cause beautiful displays of light in the sky and make electronics all but useless.
 hab -1
 sci -1
+hazeC {lifeSpecial:hazeC}
 
 special coldAir
 blocker climate temperate
 blocker climate hot
 blocker climate veryHot
 desc The air is bitterly cold.
+hazeC {lifeSpecial:hazeC}
 
 special hotAir
 blocker climate temperate
 blocker climate cold
 blocker climate veryCold
 desc The air is almost unbearably hot.
+hazeC {lifeSpecial:hazeC}
 
 special coldWind
 blocker climate temperate
 blocker climate hot
 blocker climate veryHot
 desc There is a constant cold wind.
+hazeC {lifeSpecial:hazeC}
 
 special hotWind
 blocker climate temperate
 blocker climate cold
 blocker climate veryCold
 desc There is a constant hot wind.
+hazeC {lifeSpecial:hazeC}
 
 special suddenColdWind
 blocker climate temperate
 blocker climate hot
 blocker climate veryHot
 desc There are sudden cold winds.
+hazeC {lifeSpecial:hazeC}
 
 special suddenHotWind
 blocker climate temperate
 blocker climate cold
 blocker climate veryCold
 desc There are sudden hot winds.
+hazeC {lifeSpecial:hazeC}
 
 special poisonedSoil
 blocker surface:land no
 desc The soil is poisoned with heavy metals.
 hab -3
 min +1
+hazeC {lifeSpecial:hazeC}
 
 special richSurface
 blocker surface:land no
 desc Deposits of valuable ores can be seen all over the surface.
 min +3
+hazeC {lifeSpecial:hazeC}
 
 special deepRiches
 blocker surface:land yes
 desc There are deposits of valuable ores in the ocean depths.
 min +2
+hazeC {lifeSpecial:hazeC}
 
 special petroleum
 blocker surface:land no
 desc There are deposits of a petroleum-like substance just under the surface.
 min +3
+hazeC {lifeSpecial:hazeC}
 
 special constantWind
 desc A constant wind whips around the planet.
+hazeC {lifeSpecial:hazeC}
 
 special shootingStars
 desc There are frequent shooting stars.
+hazeC {lifeSpecial:hazeC}
 
 special variableGravity
 desc The gravity at the poles is much stronger than at the equator.
+hazeC {lifeSpecial:hazeC}
 
 special radioDust
 blocker surface:land no
 blocker surface:dry no
 desc Radioactive dust pollutes the air.
 hab -4
+hazeC [0.4, 0.42, 0.45]
 
 special volcanoes
 blocker surface:land no
@@ -957,28 +996,34 @@ sze -2
 min +1
 clouds + 0.7
 cloudC {soilColor:c}
+hazeC {soilColor:c}
 
 special dormantVolcanoes
 blocker surface:land no
 desc There are many dormant volcanoes.
 sze -1
+hazeC {lifeSpecial:hazeC}
 
 special dormantOceanVolcanoes
 blocker surface:ocean no
 desc There are many dormant underwater volcanoes.
+hazeC {lifeSpecial:hazeC}
 
 special meteoriteHail
 desc There is a constant hail of small meteorite impacts.
+hazeC {lifeSpecial:hazeC}
 
 special colorWater
 blocker surface:dry yes
 desc The water is colored {plantDecoColor} by microorganisms.
 hab -1
+hazeC {lifeSpecial:hazeC}
 
 special ecoCollapseCycle
 desc The ecosystem of the planet goes through a cycle of collapsing every few hundred years.
 hab -1
 sci +1
+hazeC {lifeSpecial:hazeC}
 
 symmetry 2
 many eight
@@ -1940,6 +1985,7 @@ lifeSpecial sporeRepro
 blocker surface:land no
 plural They reproduce by sporulation.
 desc The local lifeforms reproduce by sporulation.
+hazeC [0.3, 0.3, 0.3]
 
 lifeSpecial eatenByOffspring
 plural Their offspring eat their way out of them.
@@ -2078,6 +2124,7 @@ plural {lifeSpecial:desc}
 desc There are constant fires filling the skies with smoke.
 hab -1
 sze -1
+hazeC [0.35, 0.35, 0.3]
 
 lifeSpecial selfImmolation
 plural {lifeSpecial:desc}
@@ -2091,6 +2138,7 @@ blocker special thinAir
 plural {lifeSpecial:desc}
 desc The air is filled with a thick haze of pollen.
 hab -1
+hazeC [0.4, 0.4, 0.1]
 
 lifeSpecial spores
 blocker surface:land no
@@ -2098,6 +2146,7 @@ blocker special thinAir
 plural {lifeSpecial:desc}
 desc The air is filled with a thick haze of spores.
 hab -1
+hazeC [0.2, 0.35, 0.22]
 
 lifeSpecial hairs
 blocker surface:land no
@@ -2105,6 +2154,7 @@ blocker special thinAir
 plural {lifeSpecial:desc}
 desc The air is filled with a thick haze of hairs.
 hab -1
+hazeC [0.3, 0.12, 0.12]
 
 lifeSpecial symbiosis
 plural {lifeSpecial:desc}
@@ -2125,6 +2175,7 @@ lifeSpecial hallucinogens
 plural {lifeSpecial:desc}
 desc The air is filled with organic compounds that induce hallucinations.
 hab -1
+hazeC [0.3, 0.1, 0.3]
 
 lifeSpecial songs
 plural They produce eerie but beautiful songs.
