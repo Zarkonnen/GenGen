@@ -113,6 +113,7 @@ uniform vec3 temperate;
 uniform vec3 warm;
 uniform vec3 hot;
 uniform vec3 clouds;
+uniform vec3 lightColor;
 
 //
 // GLSL textureless classic 2D noise "cnoise",
@@ -239,7 +240,7 @@ vec4 planet(in vec2 pix) {
 	col = col * (1.0 - cloudN) + clouds * cloudN;
 
     float lighting = max(sin(light) * nor.y * 2.0 + cos(light) * nor.x * 2.0 + nor.z * zLight,0.0);
-	col *= 0.2 + lighting * 0.7;
+	col = col * 0.2 + col * lightColor * lighting * 0.7;
 	
 	if (
 		cities == 1 &&
@@ -327,6 +328,7 @@ var uAngle = gl.getUniformLocation(program, "angle");
 var uRotspeed = gl.getUniformLocation(program, "rotspeed");
 var uLight = gl.getUniformLocation(program, "light");
 var uZLight = gl.getUniformLocation(program, "zLight");
+var uLightColor = gl.getUniformLocation(program, "lightColor");
 var uModValue = gl.getUniformLocation(program, "modValue");
 var uNoiseOffset = gl.getUniformLocation(program, "noiseOffset");
 var uNoiseScale = gl.getUniformLocation(program, "noiseScale");
@@ -367,6 +369,7 @@ var vWarm = [0.5, 0.5, 0.5];
 var vHot = [0.5, 0.5, 0.5];
 var vClouds = [0.9, 0.9, 0.9];
 var vCloudiness = 0.35;
+var vLightColor = [1.0, 1.0, 1.0];
 
 var vAngle = 0.3;
 var vRotspeed = 0.01;
@@ -410,6 +413,7 @@ function renderPlanet() {
     gl.uniform1f(uRotspeed, vRotspeed);
     gl.uniform1f(uLight, vLight);
     gl.uniform1f(uZLight, vZLight);
+    gl.uniform3fv(uLightColor, vLightColor);
     gl.uniform1f(uModValue, vModValue);
     gl.uniform2fv(uNoiseOffset, vNoiseOffset);
     gl.uniform2fv(uNoiseScale, vNoiseScale);
@@ -534,6 +538,8 @@ function doDisplay(result) {
     vTemperate = eval(doExpand(result.struct.vals["temperateC"], result));
     vWarm = eval(doExpand(result.struct.vals["warmC"], result));
     vHot = eval(doExpand(result.struct.vals["hotC"], result));
+    vLightColor = eval(doExpand(result.struct.vals["lightC"], result));
+    console.log(vLightColor);
     
     vCloudiness = Math.min(1.5, Math.max(0, eval(doExpand(result.struct.vals["clouds"], result))));
     vClouds = eval(doExpand(result.struct.vals["cloudC"], result)) || [0.9, 0.9, 0.9];
