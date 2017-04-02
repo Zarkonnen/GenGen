@@ -32,6 +32,7 @@ coldC {surface:coldC}
 temperateC {surface:temperateC}
 warmC {surface:warmC}
 hotC {surface:hotC}
+clouds {surface:clouds} {special:clouds}
 
 nameStart Bi
 nameStart Tor
@@ -172,6 +173,7 @@ coldC [0,0,0]
 temperateC [0,0,0]
 warmC [0,0,0]
 hotC [0,0,0]
+clouds 0.35 * {climate:clouds}
 
 surface ocean
 desc A planet-wide {climate:ocean}. {landscape:desc}
@@ -189,6 +191,7 @@ coldC [0,0,0]
 temperateC [0,0,0]
 warmC [0,0,0]
 hotC [0,0,0]
+clouds 0.35 * {climate:clouds}
 
 surface islands
 desc A few islands are dotted around an {climate:ocean}. {landscape:desc} {flora:land}
@@ -206,6 +209,7 @@ coldC {flora:coldC}
 temperateC {flora:temperateC}
 warmC {flora:warmC}
 hotC {soilColor:c}
+clouds 0.4 * {climate:clouds}
 
 surface continents
 desc Large continents. {landscape:desc} {flora:land}
@@ -223,6 +227,7 @@ coldC {flora:coldC}
 temperateC {flora:temperateC}
 warmC {flora:warmC}
 hotC {flora:hotC}
+clouds 0.35 * {climate:clouds}
 
 surface supercontinent
 desc A supercontinent and some small, shallow {climate:seas}. {landscape:desc} {flora:land}
@@ -240,6 +245,7 @@ coldC {flora:coldC}
 temperateC {flora:temperateC}
 warmC {flora:warmC}
 hotC {soilColor:c}
+clouds 0.3 * {climate:clouds}
 
 surface swamps
 desc Shallow {climate:lakes} and swamps. {landscape:desc} {flora:land}
@@ -257,6 +263,7 @@ coldC {flora:coldC}
 temperateC {flora:temperateC}
 warmC {flora:warmC}
 hotC {flora:hotC}
+clouds 0.45 * {climate:clouds}
 
 surface jungle
 desc Dense jungles of {flora:desc} cover {nameStart}{nameEnd} {nameNumber}. {landscape:desc}
@@ -274,6 +281,7 @@ coldC {flora:coldC}
 temperateC {flora:warmC}
 warmC {flora:hotC}
 hotC {flora:hotC}
+clouds 0.45 * {climate:clouds}
 
 surface forests
 desc Dense forests of {flora:desc} cover {nameStart}{nameEnd} {nameNumber}. {landscape:desc}
@@ -291,6 +299,7 @@ coldC {flora:coldC}
 temperateC {flora:temperateC}
 warmC {flora:warmC}
 hotC {flora:hotC}
+clouds 0.35 * {climate:clouds}
 
 surface scatteredForests
 desc There are scattered forests of {flora:desc}. {landscape:desc}
@@ -308,6 +317,7 @@ coldC {flora:coldC}
 temperateC {flora:temperateC}
 warmC {soilColor:c}
 hotC {flora:hotC}
+clouds 0.3 * {climate:clouds}
 
 surface tundra
 desc Tundra and a few {climate:lakes}. {landscape:desc} {flora:land}
@@ -325,6 +335,7 @@ coldC {rockColor:c}
 temperateC {flora:coldC}
 warmC {flora:coldC}
 hotC {flora:temperateC}
+clouds 0.3 * {climate:clouds}
 
 surface muddy
 desc {soilColor:cap} mud and small rivulets. {landscape:desc} {flora:land}
@@ -359,6 +370,7 @@ coldC {soilColor:c}
 temperateC {flora:temperateC}
 warmC {soilColor:c}
 hotC {rockColor:c}
+clouds 0.2 * {climate:clouds}
 
 surface desert
 desc A sandy desert lit by a {sun:brightness} {sun:color} sun. {landscape:desc} {flora:land}
@@ -376,6 +388,7 @@ coldC {soilColor:c}
 temperateC {soilColor:c}
 warmC {soilColor:c}
 hotC {soilColor:c}
+clouds 0.1 * {climate:clouds}
 
 surface icyDesert
 desc An icy desert. {landscape:desc} {flora:land}
@@ -393,6 +406,7 @@ coldC {soilColor:c}
 temperateC {soilColor:c}
 warmC {flora:coldC}
 hotC {soilColor:c}
+clouds 0.2 * {climate:clouds}
 
 surface rocks
 desc A rocky desert lit by a {sun:brightness} {sun:color} sun. {landscape:desc} {flora:land}
@@ -410,6 +424,7 @@ coldC {rockColor:c}
 temperateC {soilColor:c}
 warmC {rockColor:c}
 hotC {rockColor:c}
+clouds 0.15 * {climate:clouds}
 
 surface jaggedRocks
 desc A desert of jagged rocks. {landscape:desc} {flora:land}
@@ -427,6 +442,7 @@ coldC {rockColor:c}
 temperateC {soilColor:c}
 warmC {rockColor:c}
 hotC {rockColor:c}
+clouds 0.15 * {climate:clouds}
 
 climate veryCold
 blocker sun brightBlue
@@ -441,6 +457,7 @@ seas seas covered with thick ice sheets
 lakes frozen lakes
 hab -2
 temp -1.95
+clouds 0.5
 
 climate cold
 blocker sun brightBlue
@@ -450,6 +467,7 @@ ocean ocean covered by ice everywhere except near the equator
 seas seas mostly covered with ice
 lakes frozen lakes
 temp -1.3
+clouds 0.85
 
 climate temperate
 blocker sun dimWhite
@@ -460,6 +478,7 @@ ocean ocean mostly free of ice, except at the poles
 seas seas
 lakes lakes
 temp 0.0
+clouds 1.0
 
 climate hot
 blocker sun dimWhite
@@ -470,6 +489,7 @@ ocean ocean
 seas seas
 lakes warm lakes
 temp 0.7
+clouds 1.3
 
 climate veryHot
 blocker sun dimWhite
@@ -483,6 +503,7 @@ seas seas that are constantly steaming
 lakes boiling lakes
 hab -2
 temp 1.8
+clouds 0.8
 
 soilColor red
 cap Red
@@ -683,26 +704,31 @@ desc A band of glittering dust can be seen in the sky.
 
 special cloudCover
 desc The sky is constantly cloudy.
+clouds + 0.6
 
 special constantRain
 blocker surface:land no
 blocker surface:dry yes
 desc It is always raining.
+clouds + 0.3
 
 special suddenRain
 blocker surface:land no
 blocker surface:dry yes
 desc There are sudden, violent rains.
+clouds + 0.2
 
 special drizzle
 blocker surface:land no
 blocker surface:dry yes
 desc There is a constant drizzle.
+clouds + 0.2
 
 special fog
 blocker surface:land no
 blocker surface:dry yes
 desc There are frequent fogs.
+clouds + 0.2
 
 special impactCrater
 blocker surface deepOcean
@@ -715,6 +741,7 @@ blocker surface:land no
 blocker surface:dry no
 desc Constant dust storms make it hard to see anything.
 hab -1
+clouds - 0.4
 
 special snowStorms
 blocker climate temperate
@@ -723,6 +750,7 @@ blocker climate veryHot
 blocker surface:dry yes
 desc Constant snowstorms make it hard to see anything.
 hab -1
+clouds + 0.2
 
 special hailStorms
 blocker climate temperate
@@ -731,12 +759,14 @@ blocker climate veryHot
 blocker surface:dry yes
 desc Constant hail storms batter the surface.
 hab -1
+clouds + 0.2
 
 special hurricanes
 blocker climate veryCold
 blocker surface:dry yes
 desc Constant hurricanes ravage the surface.
 hab -1
+clouds + 0.4
 
 special iceSpires
 blocker surface:land no
@@ -763,24 +793,21 @@ desc The gravity is very strong.
 hab -1
 sze +2
 min -1
+clouds - 0.2
 
 special lowGravity
 desc The gravity is quite low.
 sze -1
+clouds - 0.2
 
 special thinAir
 desc The air is thin.
 hab -1
+clouds - 0.2
 
 special thickAir
 desc The air pressure is very high.
 hab -1
-
-special tidallyLocked
-desc The planet is tidally locked to its sun. One side is in constant day, the other in constant night, and a narrow band of twilight stretches around it.
-hab -2
-sze -3
-sci +1
 
 special electricalStorms
 desc Powerful electrical storms disrupt electronics and light up the sky.
@@ -870,6 +897,7 @@ desc There are many active volcanoes.
 hab -1
 sze -2
 min +1
+clouds + 0.2
 
 special dormantVolcanoes
 blocker surface:land no
