@@ -365,6 +365,17 @@ var vTemperate = [0.5, 0.5, 0.5];
 var vWarm = [0.5, 0.5, 0.5];
 var vHot = [0.5, 0.5, 0.5];
 
+var vAngle = 0.3;
+var vRotspeed = 0.01;
+var vLight = 1.9;
+var vZLight = 0.5;
+var vModValue = 29;
+var vNoiseOffset = [0, 0];
+var vNoiseScale = [11, 8];
+var vNoiseScale2 = [200, 200];
+var vNoiseScale3 = [50, 50];
+var vCloudNoise = [6, 30];
+
 function renderPlanet() {
     resize(gl.canvas);
     gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
@@ -392,16 +403,16 @@ function renderPlanet() {
     gl.uniform1f(uLeft, 0);
     gl.uniform1f(uTop, 0);
     gl.uniform2f(uResolution, 300, 300);
-    gl.uniform1f(uAngle, 0.3);
-    gl.uniform1f(uRotspeed, 0.01);
-    gl.uniform1f(uLight, 1.9);
-    gl.uniform1f(uZLight, 0.5);
-    gl.uniform1f(uModValue, 29);
-    gl.uniform2f(uNoiseOffset, 0, 0);
-    gl.uniform2f(uNoiseScale, 11, 8);
-    gl.uniform2f(uNoiseScale2, 200, 200);
-    gl.uniform2f(uNoiseScale3, 50, 50);
-    gl.uniform2f(uCloudNoise, 6, 30);
+    gl.uniform1f(uAngle, vAngle);
+    gl.uniform1f(uRotspeed, vRotspeed);
+    gl.uniform1f(uLight, vLight);
+    gl.uniform1f(uZLight, vZLight);
+    gl.uniform1f(uModValue, vModValue);
+    gl.uniform2fv(uNoiseOffset, vNoiseOffset);
+    gl.uniform2fv(uNoiseScale, vNoiseScale);
+    gl.uniform2fv(uNoiseScale2, vNoiseScale2);
+    gl.uniform2fv(uNoiseScale3, vNoiseScale3);
+    gl.uniform2fv(uCloudNoise, vCloudNoise);
     gl.uniform1f(uCloudiness, 0.35);
     gl.uniform3f(uOcean, 13/255.0, 55/255.0, 97/255.0);
     gl.uniform3f(uIce, 250/255.0, 250/255.0, 250/255.0);
@@ -519,6 +530,19 @@ function doDisplay(result) {
     vTemperate = eval(doExpand(result.struct.vals["temperateC"], result));
     vWarm = eval(doExpand(result.struct.vals["warmC"], result));
     vHot = eval(doExpand(result.struct.vals["hotC"], result));
+    
+    vAngle = 0.6 * Math.random();
+    vRotspeed = (0.005 + Math.random() * 0.01) * (Math.random() < 0.3 ? -1 : 1);
+    vLight = 4 * Math.random();
+    vZLight = 0.2 + Math.random();
+    vModValue = 17 + Math.ceil(Math.random() * 20);
+    vNoiseOffset = [Math.ceil(Math.random() * 100), Math.ceil(Math.random() * 100)];
+    vNoiseScale = [7 + Math.ceil(Math.random() * 10), 5 + Math.ceil(Math.random() * 7)];
+    var sc = 80 + Math.ceil(Math.random() * 220);
+    vNoiseScale2 = [sc, sc];
+    sc = 20 + Math.ceil(Math.random() * 80);
+    vNoiseScale3 = [sc, sc];
+    vCloudNoise = [4 + Math.ceil(Math.random() * 9), 20 + Math.ceil(Math.random() * 40)];
 }
 
 function doExpand(txt, context) {
