@@ -32,6 +32,7 @@ coldC {surface:coldC}
 temperateC {surface:temperateC}
 warmC {surface:warmC}
 hotC {surface:hotC}
+speckleC {surface:speckleC}
 clouds {surface:clouds} {special:clouds}
 cloudC {special:cloudC}
 rotspeedMult 1.0 {special:rotspeedMult}
@@ -185,6 +186,7 @@ temperateC [0,0,0]
 warmC [0,0,0]
 hotC [0,0,0]
 clouds 0.3 * {climate:clouds}
+speckleC {flora:speckleC}
 
 surface ocean
 desc A planet-wide {climate:ocean}. {landscape:desc}
@@ -203,6 +205,7 @@ temperateC [0,0,0]
 warmC [0,0,0]
 hotC [0,0,0]
 clouds 0.3 * {climate:clouds}
+speckleC {flora:speckleC}
 
 surface islands
 desc A few islands are dotted around an {climate:ocean}. {landscape:desc} {flora:land}
@@ -221,6 +224,7 @@ temperateC {flora:temperateC}
 warmC {flora:warmC}
 hotC {soilColor:c}
 clouds 0.3 * {climate:clouds}
+speckleC {flora:speckleC}
 
 surface continents
 desc Large continents. {landscape:desc} {flora:land}
@@ -239,6 +243,7 @@ temperateC {flora:temperateC}
 warmC {flora:warmC}
 hotC {flora:hotC}
 clouds 0.28 * {climate:clouds}
+speckleC {flora:speckleC}
 
 surface supercontinent
 desc A supercontinent and some small, shallow {climate:seas}. {landscape:desc} {flora:land}
@@ -257,6 +262,7 @@ temperateC {flora:temperateC}
 warmC {flora:warmC}
 hotC {soilColor:c}
 clouds 0.25 * {climate:clouds}
+speckleC {flora:speckleC}
 
 surface swamps
 desc Shallow {climate:lakes} and swamps. {landscape:desc} {flora:land}
@@ -275,6 +281,7 @@ temperateC {flora:temperateC}
 warmC {flora:warmC}
 hotC {flora:hotC}
 clouds 0.3 * {climate:clouds}
+speckleC {flora:speckleC}
 
 surface jungle
 desc Dense jungles of {flora:desc} cover {nameStart}{nameEnd} {nameNumber}. {landscape:desc}
@@ -293,6 +300,7 @@ temperateC {flora:warmC}
 warmC {flora:hotC}
 hotC {flora:hotC}
 clouds 0.3 * {climate:clouds}
+speckleC {flora:speckleC}
 
 surface forests
 desc Dense forests of {flora:desc} cover {nameStart}{nameEnd} {nameNumber}. {landscape:desc}
@@ -311,6 +319,7 @@ temperateC {flora:temperateC}
 warmC {flora:warmC}
 hotC {flora:hotC}
 clouds 0.25 * {climate:clouds}
+speckleC {flora:speckleC}
 
 surface scatteredForests
 desc There are scattered forests of {flora:desc}. {landscape:desc}
@@ -329,6 +338,7 @@ temperateC {flora:temperateC}
 warmC {soilColor:c}
 hotC {flora:hotC}
 clouds 0.2 * {climate:clouds}
+speckleC {flora:speckleC}
 
 surface tundra
 desc Tundra and a few {climate:lakes}. {landscape:desc} {flora:land}
@@ -347,6 +357,7 @@ temperateC {flora:coldC}
 warmC {flora:coldC}
 hotC {flora:temperateC}
 clouds 0.15 * {climate:clouds}
+speckleC {landscape:speckleC}
 
 surface muddy
 desc {soilColor:cap} mud and small rivulets. {landscape:desc} {flora:land}
@@ -363,8 +374,9 @@ rive 0.3
 coldC {soilColor:c}
 temperateC {soilColor:c}
 warmC {soilColor:c}
-hotC {flora:warmC}
+hotC {soilColor:c}
 clouds 0.15 * {climate:clouds}
+speckleC {flora:speckleC}
 
 surface arid
 desc Apart from a few {climate:lakes} and rivers, {nameStart}{nameEnd} {nameNumber} is dry. {landscape:desc} {flora:land}
@@ -383,6 +395,7 @@ temperateC {flora:temperateC}
 warmC {soilColor:c}
 hotC {rockColor:c}
 clouds 0.08 * {climate:clouds}
+speckleC {flora:speckleC}
 
 surface desert
 desc A sandy desert lit by a {sun:brightness} {sun:color} sun. {landscape:desc} {flora:land}
@@ -401,6 +414,7 @@ temperateC {soilColor:c}
 warmC {soilColor:c}
 hotC {soilColor:c}
 clouds 0.05 * {climate:clouds}
+speckleC {landscape:speckleC}
 
 surface icyDesert
 desc An icy desert. {landscape:desc} {flora:land}
@@ -419,6 +433,7 @@ temperateC {soilColor:c}
 warmC {flora:coldC}
 hotC {soilColor:c}
 clouds 0.1 * {climate:clouds}
+speckleC {landscape:speckleC}
 
 surface rocks
 desc A rocky desert lit by a {sun:brightness} {sun:color} sun. {landscape:desc} {flora:land}
@@ -437,6 +452,7 @@ temperateC {soilColor:c}
 warmC {rockColor:c}
 hotC {rockColor:c}
 clouds 0.1 * {climate:clouds}
+speckleC {landscape:speckleC}
 
 surface jaggedRocks
 desc A desert of jagged rocks. {landscape:desc} {flora:land}
@@ -455,6 +471,7 @@ temperateC {soilColor:c}
 warmC {rockColor:c}
 hotC {rockColor:c}
 clouds 0.1 * {climate:clouds}
+speckleC {landscape:speckleC}
 
 climate veryCold
 blocker sun brightBlue
@@ -464,6 +481,11 @@ blocker surface jungle
 blocker surface swamps
 blocker surface islands
 blocker surface muddy
+blocker surface continents
+blocker surface supercontinent
+blocker surface forests
+blocker surface scatteredforests
+blocker surface desert
 ocean ocean covered by a thick ice sheet
 seas seas covered with thick ice sheets
 lakes frozen lakes
@@ -557,35 +579,42 @@ blocker surface:land no
 blocker surface rocks
 blocker surface jaggedRocks
 desc Huge {rockColor} rocks litter the land.
+speckleC {rockColor:c}
 
 landscape mountains
 blocker surface:land no
 blocker surface muddy
 desc Tall mountains rise towards the sky.
+speckleC {rockColor:c}
 
 landscape sinkholes
 blocker surface:land no
 blocker surface islands
 desc Sinkholes dot the land.
+speckleC {soilColor:c}
 
 landscape fissures
 blocker surface:land no
 desc Noxious gases erupt from deep fissures.
 hab -2
+speckleC [0.75, 0.69, 0.48]
 
 landscape rockSpires
 blocker surface:land no
 desc Spires of sharp stone interrupt the otherwise flat terrain.
+speckleC {rockColor:c}
 
 landscape sandBeach
 blocker surface:land no
 blocker surface:ocean no
 desc There are wide beaches of fine {soilColor} sand.
+speckleC {flora:temperateC}
 
 landscape rockBeach
 blocker surface:land no
 blocker surface:ocean no
 desc There are wide, {rockColor}, rocky beaches.
+speckleC {flora:temperateC}
 
 landscape maze
 blocker surface:land no
@@ -596,6 +625,7 @@ blocker surface rocks
 blocker surface jaggedRocks
 blocker surface muddy
 desc The land is a maze of steep valleys.
+speckleC {flora:coldC}
 
 landscape plateaus
 blocker surface:land no
@@ -603,6 +633,7 @@ blocker surface islands
 blocker surface swamps
 blocker surface muddy
 desc There are large plateaus with steep sides.
+speckleC {flora:warmC}
 
 landscape plains
 blocker surface:land no
@@ -615,6 +646,7 @@ blocker surface rocks
 blocker surface jaggedRocks
 blocker surface muddy
 desc Great plains stretch under the {sun:brightness} {sun:color} sun.
+speckleC {flora:hotC}
 
 landscape hills
 blocker surface:land no
@@ -628,6 +660,7 @@ blocker surface forests
 blocker surface muddy
 blocker surface jaggedRocks
 desc There are gentle rolling hills.
+speckleC {flora:temperateC}
 
 landscape canyons
 blocker surface:land no
@@ -635,6 +668,7 @@ blocker surface islands
 desc Deep canyons cut into the planet's crust.
 sze -1
 min +2
+speckleC {soilColor:c}
 
 landscape tunnels
 blocker surface:land no
@@ -642,28 +676,33 @@ blocker surface muddy
 desc A network of tunnels extends under much of the surface.
 sze +3
 min +1
+speckleC {soilColor:c}
 
 landscape dustBasins
 blocker surface:land no
 blocker surface:dry no
 desc Basins of {soilColor} dust.
 sze -1
+speckleC {soilColor:c}
 
 landscape hexCols
 blocker surface:land no
 desc Towering columns of hexagonal {rockColor} stone.
 min +1
+speckleC {rockColor:c}
 
 landscape fossilizedForests
 blocker surface:land no
 desc There are extensive fossilized forests.
+speckleC {rockColor:c}
 
 landscape slime
 blocker surface:land no
 blocker surface:dry yes
 blocker climate veryCold
-desc The ground is covered in thick {plantDecoColor} slime.
+desc The ground is covered in thick {leafColor} slime.
 hab -1
+speckleC {leafColor:temperateC}
 
 landscape tidalPlains
 blocker surface:land no
@@ -671,6 +710,7 @@ blocker surface:ocean no
 blocker climate veryCold
 desc There are great tidal plains.
 hab +1
+speckleC {flora:temperateC}
 
 landscape cenotes
 blocker surface:land no
@@ -678,6 +718,7 @@ blocker climate veryCold
 blocker surface:dry yes
 desc There are deep water-filled cenotes.
 hab +1
+speckleC [0.050980392, 0.215686275, 0.380392157]
 
 landscape bogs
 blocker surface:land no
@@ -685,6 +726,7 @@ blocker climate veryCold
 blocker surface:dry yes
 desc There are sprawling {soilColor} bogs.
 sze -1
+speckleC {soilColor:c}
 
 landscape waterCaves
 blocker surface:land no
@@ -692,9 +734,11 @@ blocker climate veryCold
 blocker surface:dry yes
 desc Large water-filled caves are present just beneath the surface.
 hab +1
+speckleC {flora:warmC}
 
 landscape nothingSpecial
 desc  
+speckleC {flora:temperateC}
 
 special radioactive
 desc Much of the planet is heavily radioactive.
@@ -1203,6 +1247,7 @@ coldC {leafColor:coldC}
 temperateC {leafColor:temperateC}
 warmC {leafColor:warmC}
 hotC {leafColor:hotC}
+speckleC {landscape:speckleC}
 
 flora bubbles
 blocker surface jungle
@@ -1217,6 +1262,7 @@ coldC {leafColor:coldC}
 temperateC {leafColor:temperateC}
 warmC {leafColor:warmC}
 hotC {leafColor:warmC}
+speckleC {landscape:speckleC}
 
 flora stalks
 blocker surface icyDesert
@@ -1229,6 +1275,7 @@ coldC {leafColor:coldC}
 temperateC {leafColor:temperateC}
 warmC {leafColor:warmC}
 hotC {leafColor:hotC}
+speckleC {landscape:speckleC}
 
 flora domes
 blocker surface desert
@@ -1242,6 +1289,7 @@ coldC {leafColor:coldC}
 temperateC {leafColor:temperateC}
 warmC {leafColor:warmC}
 hotC {leafColor:hotC}
+speckleC {landscape:speckleC}
 
 flora deepForests
 blocker surface tundra
@@ -1260,6 +1308,7 @@ coldC {leafColor:coldC}
 temperateC {leafColor:temperateC}
 warmC {leafColor:temperateC}
 hotC {leafColor:temperateC}
+speckleC {landscape:speckleC}
 
 flora fungalThicket
 blocker surface tundra
@@ -1278,6 +1327,7 @@ coldC {leafColor:coldC}
 temperateC {leafColor:warmC}
 warmC {leafColor:warmC}
 hotC {leafColor:hotC}
+speckleC {landscape:speckleC}
 
 flora treeTowers
 blocker surface desert
@@ -1294,6 +1344,7 @@ coldC {leafColor:coldC}
 temperateC {leafColor:temperateC}
 warmC {leafColor:warmC}
 hotC {leafColor:warmC}
+speckleC {landscape:speckleC}
 
 flora dottedShrubs
 blocker surface jungle
@@ -1304,8 +1355,9 @@ lurk under the shrubs.
 tall no
 coldC {soilColor:c}
 temperateC {soilColor:c}
-warmC {leafColor:warmC}
+warmC {soilColor:c}
 hotC {rockColor:c}
+speckleC {leafColor:warmC}
 
 flora grass
 blocker surface desert
@@ -1324,6 +1376,7 @@ coldC {leafColor:coldC}
 temperateC {leafColor:temperateC}
 warmC {leafColor:hotC}
 hotC {leafColor:hotC}
+speckleC {landscape:speckleC}
 
 flora grassClumps
 blocker surface desert
@@ -1337,10 +1390,11 @@ land Clumps of {leafColor} grass.
 plural blades of grass
 lurk in the grass.
 tall no
-coldC {soilColor:c}
-temperateC {leafColor:temperateC}
-warmC {leafColor:warmC}
+coldC {rockColor:c}
+temperateC {soilColor:c}
+warmC {soilColor:c}
 hotC {soilColor:c}
+speckleC {leafColor:temperateC}
 
 flora lichen
 blocker surface jungle
@@ -1355,6 +1409,7 @@ coldC {leafColor:coldC}
 temperateC {leafColor:coldC}
 warmC {leafColor:coldC}
 hotC {leafColor:warmC}
+speckleC {landscape:speckleC}
 
 flora floatingPlants
 blocker surface jungle
@@ -1369,6 +1424,7 @@ coldC {leafColor:coldC}
 temperateC {leafColor:temperateC}
 warmC {leafColor:warmC}
 hotC {leafColor:hotC}
+speckleC {landscape:speckleC}
 
 flora giantFlowers
 blocker surface desert
@@ -1383,6 +1439,7 @@ coldC {leafColor:coldC}
 temperateC {leafColor:temperateC}
 warmC {leafColor:warmC}
 hotC {leafColor:hotC}
+speckleC {landscape:speckleC}
 
 flora fungi
 desc {leafColor} fungi
@@ -1391,9 +1448,10 @@ plural fungi
 lurk under the fungi.
 tall no
 coldC {soilColor:c}
-temperateC {leafColor:temperateC}
-warmC {leafColor:warmC}
+temperateC {soilColor:c}
+warmC {soilColor:c}
 hotC {soilColor:c}
+speckleC {leafColor:temperateC}
 
 flora moss
 blocker surface desert
@@ -1412,6 +1470,7 @@ coldC {leafColor:coldC}
 temperateC {leafColor:temperateC}
 warmC {leafColor:temperateC}
 hotC {leafColor:hotC}
+speckleC {landscape:speckleC}
 
 flora spines
 blocker surface desert
@@ -1426,6 +1485,7 @@ coldC {leafColor:coldC}
 temperateC {leafColor:temperateC}
 warmC {leafColor:warmC}
 hotC {leafColor:hotC}
+speckleC {landscape:speckleC}
 
 flora sheets
 blocker surface desert
@@ -1441,6 +1501,7 @@ coldC {leafColor:coldC}
 temperateC {leafColor:temperateC}
 warmC {leafColor:warmC}
 hotC {leafColor:hotC}
+speckleC {landscape:speckleC}
 
 flora toppedStalks
 blocker surface desert
@@ -1456,6 +1517,7 @@ coldC {leafColor:coldC}
 temperateC {leafColor:temperateC}
 warmC {leafColor:warmC}
 hotC {leafColor:hotC}
+speckleC {landscape:speckleC}
 
 flora nonToppedStalks
 blocker surface desert
@@ -1471,6 +1533,7 @@ coldC {leafColor:coldC}
 temperateC {leafColor:temperateC}
 warmC {leafColor:warmC}
 hotC {leafColor:hotC}
+speckleC {landscape:speckleC}
 
 flora squatTrunks
 blocker surface jungle
@@ -1483,6 +1546,7 @@ coldC {leafColor:coldC}
 temperateC {leafColor:temperateC}
 warmC {leafColor:warmC}
 hotC {leafColor:hotC}
+speckleC {landscape:speckleC}
 
 flora barrels
 blocker surface jungle
@@ -1495,6 +1559,7 @@ coldC {leafColor:coldC}
 temperateC {leafColor:temperateC}
 warmC {leafColor:warmC}
 hotC {leafColor:hotC}
+speckleC {landscape:speckleC}
 
 flora fronds
 desc {leafColor} fronds
@@ -1506,6 +1571,7 @@ coldC {leafColor:coldC}
 temperateC {leafColor:temperateC}
 warmC {leafColor:warmC}
 hotC {leafColor:hotC}
+speckleC {landscape:speckleC}
 
 flora sponges
 desc {leafColor} sponges
@@ -1517,6 +1583,7 @@ coldC {leafColor:coldC}
 temperateC {leafColor:temperateC}
 warmC {leafColor:hotC}
 hotC {leafColor:hotC}
+speckleC {landscape:speckleC}
 
 flora trumpets
 desc {plantTexture} trumpet-shaped plants
@@ -1528,6 +1595,7 @@ coldC {leafColor:temperateC}
 temperateC {leafColor:temperateC}
 warmC {leafColor:warmC}
 hotC {leafColor:hotC}
+speckleC {landscape:speckleC}
 
 flora hexsegments
 desc {leafColor} segmented plants
@@ -1539,6 +1607,7 @@ coldC {leafColor:coldC}
 temperateC {leafColor:temperateC}
 warmC {leafColor:warmC}
 hotC {leafColor:hotC}
+speckleC {landscape:speckleC}
 
 flora roots
 blocker surface desert
@@ -1557,6 +1626,7 @@ coldC {leafColor:coldC}
 temperateC {leafColor:coldC}
 warmC {leafColor:coldC}
 hotC {leafColor:coldC}
+speckleC {landscape:speckleC}
 
 fauna giantHives
 blocker surface:land no
