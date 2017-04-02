@@ -112,6 +112,7 @@ uniform vec3 cold;
 uniform vec3 temperate;
 uniform vec3 warm;
 uniform vec3 hot;
+uniform vec3 clouds;
 
 //
 // GLSL textureless classic 2D noise "cnoise",
@@ -235,8 +236,7 @@ vec4 planet(in vec2 pix) {
 	col *= 1.0 + step(0.39, mod(n + uv.x, 0.4)) * 0.1;
 	
 	float cloudN = max(0.0, pnoise((uv + vec2(rotspeed * time, 0)) * cloudNoise, cloudNoise) + cloudiness + n2);
-	col *= 0.7;
-	col += vec3(cloudN, cloudN, cloudN) * 0.5;
+	col = col * (1.0 - cloudN) + clouds * cloudN;
 
     float lighting = max(sin(light) * nor.y * 2.0 + cos(light) * nor.x * 2.0 + nor.z * zLight,0.0);
 	col *= 0.2 + lighting * 0.7;
@@ -340,6 +340,7 @@ var uCold = gl.getUniformLocation(program, "cold");
 var uTemperate = gl.getUniformLocation(program, "temperate");
 var uWarm = gl.getUniformLocation(program, "warm");
 var uHot = gl.getUniformLocation(program, "hot");
+var uClouds = gl.getUniformLocation(program, "clouds");
 var uWaterLevel = gl.getUniformLocation(program, "waterLevel");
 var uRivers = gl.getUniformLocation(program, "rivers");
 var uTemperature = gl.getUniformLocation(program, "temperature");
@@ -364,7 +365,8 @@ var vCold = [0.5, 0.5, 0.5];
 var vTemperate = [0.5, 0.5, 0.5];
 var vWarm = [0.5, 0.5, 0.5];
 var vHot = [0.5, 0.5, 0.5];
-var vClouds = 0.35;
+var vClouds = [0.9, 0.9, 0.9];
+var vCloudiness = 0.35;
 
 var vAngle = 0.3;
 var vRotspeed = 0.01;
@@ -414,13 +416,14 @@ function renderPlanet() {
     gl.uniform2fv(uNoiseScale2, vNoiseScale2);
     gl.uniform2fv(uNoiseScale3, vNoiseScale3);
     gl.uniform2fv(uCloudNoise, vCloudNoise);
-    gl.uniform1f(uCloudiness, vClouds);
+    gl.uniform1f(uCloudiness, vCloudiness);
     gl.uniform3f(uOcean, 13/255.0, 55/255.0, 97/255.0);
     gl.uniform3f(uIce, 250/255.0, 250/255.0, 250/255.0);
     gl.uniform3fv(uCold, vCold);//53/255.0, 102/255.0, 100/255.0);
     gl.uniform3fv(uTemperate, vTemperate);//79/255.0, 109/255.0, 68/255.0);
     gl.uniform3fv(uWarm, vWarm);//119/255.0, 141/255.0, 82/255.0);
     gl.uniform3fv(uHot, vHot);//223/255.0, 193/255.0, 148/255.0);
+    gl.uniform3fv(uClouds, vClouds);
     gl.uniform1f(uWaterLevel, vWaterLevel);
     gl.uniform1f(uRivers, vRivers);
     gl.uniform1f(uTemperature, vTemperature);
@@ -532,9 +535,10 @@ function doDisplay(result) {
     vWarm = eval(doExpand(result.struct.vals["warmC"], result));
     vHot = eval(doExpand(result.struct.vals["hotC"], result));
     
-    vClouds = Math.min(1.5, Math.max(0, eval(doExpand(result.struct.vals["clouds"], result))));
+    vCloudiness = Math.min(1.5, Math.max(0, eval(doExpand(result.struct.vals["clouds"], result))));
+    vClouds = eval(doExpand(result.struct.vals["cloudC"], result)) || [0.9, 0.9, 0.9];
     vAngle = 0.6 * Math.random();
-    vRotspeed = (0.005 + Math.random() * 0.01) * (Math.random() < 0.3 ? -1 : 1);
+    vRotspeed = (0.005 + Math.random() * 0.01) * (Math.random() < 0.3 ? -1 : 1) * eval(doExpand(result.struct.vals["rotspeedMult"], result));;
     vLight = 4 * Math.random();
     vZLight = 0.2 + Math.random();
     vModValue = 17 + Math.ceil(Math.random() * 20);
