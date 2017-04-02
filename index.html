@@ -252,7 +252,8 @@ vec4 planet(in vec2 pix) {
 		col += vec3(1.0, 1.0, 0.7) * (1.0 - smoothstep(0.4, 0.8, lighting)) * (max(0.7, pnoise(uv * vec2(122.0, 122.0), vec2(122.0, 122.0))) - 0.7) * 3.0;
 	}
 
-    return vec4(col, smoothstep(0.0, 8.0 / resolution.x, h));
+    //return vec4(col, smoothstep(0.0, 8.0 / resolution.x, h));
+    return vec4(col * smoothstep(0.0, 8.0 / resolution.x, h), smoothstep(0.0, 8.0 / resolution.x, h + 0.1));
 }
 
 void main(void)
@@ -539,7 +540,6 @@ function doDisplay(result) {
     vWarm = eval(doExpand(result.struct.vals["warmC"], result));
     vHot = eval(doExpand(result.struct.vals["hotC"], result));
     vLightColor = eval(doExpand(result.struct.vals["lightC"], result));
-    console.log(vLightColor);
     
     vCloudiness = Math.min(1.5, Math.max(0, eval(doExpand(result.struct.vals["clouds"], result))));
     vClouds = eval(doExpand(result.struct.vals["cloudC"], result)) || [0.9, 0.9, 0.9];
@@ -554,7 +554,7 @@ function doDisplay(result) {
     vNoiseScale2 = [sc, sc];
     sc = 20 + Math.ceil(Math.random() * 80);
     vNoiseScale3 = [sc, sc];
-    vCloudNoise = [4 + Math.ceil(Math.random() * 9), 20 + Math.ceil(Math.random() * 40)];
+    vCloudNoise = [4 + Math.ceil(Math.random() * 9), 20 + Math.ceil(Math.random() * 20)];
 }
 
 function doExpand(txt, context) {

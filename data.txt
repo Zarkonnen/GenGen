@@ -131,7 +131,7 @@ prime nineteen
 sun brightBlue
 brightness bright
 color blue
-lightC [0.7, 0.7, 1.0]
+lightC [0.75, 0.75, 1.2]
 
 sun dullRed
 brightness dull
