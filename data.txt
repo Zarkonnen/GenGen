@@ -25,6 +25,13 @@ hab {surface:hab} {climate:hab} {flora:hab} {fauna:hab} {lifeSpecial:hab} {speci
 sze {surface:sze} {climate:sze} {flora:sze} {fauna:sze} {lifeSpecial:sze} {special:sze}
 min 3 {surface:min} {climate:min} {flora:min} {fauna:min} {lifeSpecial:min} {special:min}
 sci 3 {surface:sci} {climate:sci} {flora:sci} {fauna:sci} {lifeSpecial:sci} {special:sci}
+watL {surface:watL}
+temp {climate:temp}
+rive {surface:rive}
+coldC {surface:coldC}
+temperateC {surface:temperateC}
+warmC {surface:warmC}
+hotC {surface:hotC}
 
 nameStart Bi
 nameStart Tor
@@ -159,6 +166,12 @@ ground ocean
 hab 5
 sze 3
 min -1
+watL 1.0
+rive 0
+coldC [0,0,0]
+temperateC [0,0,0]
+warmC [0,0,0]
+hotC [0,0,0]
 
 surface ocean
 desc A planet-wide {climate:ocean}. {landscape:desc}
@@ -170,6 +183,12 @@ ground ocean
 hab 5
 sze 3
 min -1
+watL 0.8
+rive 0
+coldC [0,0,0]
+temperateC [0,0,0]
+warmC [0,0,0]
+hotC [0,0,0]
 
 surface islands
 desc A few islands are dotted around an {climate:ocean}. {landscape:desc} {flora:land}
@@ -181,6 +200,12 @@ ground earth
 hab 7 {landscape:hab}
 sze 5 {landscape:sze}
 min {landscape:min}
+watL 0.4
+rive 0.5
+coldC {flora:coldC}
+temperateC {flora:temperateC}
+warmC {flora:warmC}
+hotC {soilColor:c}
 
 surface continents
 desc Large continents. {landscape:desc} {flora:land}
@@ -192,6 +217,12 @@ ground earth
 hab 8 {landscape:hab}
 sze 7 {landscape:sze}
 min {landscape:min}
+watL 0.0
+rive 1
+coldC {flora:coldC}
+temperateC {flora:temperateC}
+warmC {flora:warmC}
+hotC {flora:hotC}
 
 surface supercontinent
 desc A supercontinent and some small, shallow {climate:seas}. {landscape:desc} {flora:land}
@@ -203,6 +234,12 @@ ground earth
 hab 8 {landscape:hab}
 sze 8 {landscape:sze}
 min {landscape:min}
+watL -0.4
+rive 1
+coldC {flora:coldC}
+temperateC {flora:temperateC}
+warmC {flora:warmC}
+hotC {soilColor:c}
 
 surface swamps
 desc Shallow {climate:lakes} and swamps. {landscape:desc} {flora:land}
@@ -214,6 +251,12 @@ ground earth
 hab 6 {landscape:hab}
 sze 6 {landscape:sze}
 min -1 {landscape:min}
+watL -0.5
+rive 1
+coldC {flora:coldC}
+temperateC {flora:temperateC}
+warmC {flora:warmC}
+hotC {flora:hotC}
 
 surface jungle
 desc Dense jungles of {flora:desc} cover {nameStart}{nameEnd} {nameNumber}. {landscape:desc}
@@ -225,6 +268,12 @@ ground soil
 hab 7 {landscape:hab}
 sze 7 {landscape:sze}
 min {landscape:min}
+watL -0.5
+rive 0.7
+coldC {flora:coldC}
+temperateC {flora:warmC}
+warmC {flora:hotC}
+hotC {flora:hotC}
 
 surface forests
 desc Dense forests of {flora:desc} cover {nameStart}{nameEnd} {nameNumber}. {landscape:desc}
@@ -236,6 +285,12 @@ ground soil
 hab 8 {landscape:hab}
 sze 7 {landscape:sze}
 min +1 {landscape:min}
+watL -0.5
+rive 0.7
+coldC {flora:coldC}
+temperateC {flora:temperateC}
+warmC {flora:warmC}
+hotC {flora:hotC}
 
 surface scatteredForests
 desc There are scattered forests of {flora:desc}. {landscape:desc}
@@ -247,6 +302,12 @@ ground soil
 hab 7 {landscape:hab}
 sze 7 {landscape:sze}
 min {landscape:min}
+watL -0.5
+rive 0.8
+coldC {flora:coldC}
+temperateC {flora:temperateC}
+warmC {soilColor:c}
+hotC {flora:hotC}
 
 surface tundra
 desc Tundra and a few {climate:lakes}. {landscape:desc} {flora:land}
@@ -258,6 +319,12 @@ ground frozen ground
 hab 6 {landscape:hab}
 sze 6 {landscape:sze}
 min {landscape:min}
+watL -0.8
+rive 0.3
+coldC {rockColor:c}
+temperateC {flora:coldC}
+warmC {flora:coldC}
+hotC {flora:temperateC}
 
 surface muddy
 desc {soilColor:cap} mud and small rivulets. {landscape:desc} {flora:land}
@@ -269,6 +336,12 @@ ground mud
 hab 6 {landscape:hab}
 sze 6 {landscape:sze}
 min {landscape:min}
+watL -0.7
+rive 0.3
+coldC {soilColor:c}
+temperateC {soilColor:c}
+warmC {soilColor:c}
+hotC {flora:warmC}
 
 surface arid
 desc Apart from a few {climate:lakes} and rivers, {nameStart}{nameEnd} {nameNumber} is dry. {landscape:desc} {flora:land}
@@ -280,6 +353,12 @@ ground soil
 hab 6 {landscape:hab}
 sze 8
 min {landscape:min}
+watL -0.9
+rive 0.4
+coldC {soilColor:c}
+temperateC {flora:temperateC}
+warmC {soilColor:c}
+hotC {rockColor:c}
 
 surface desert
 desc A sandy desert lit by a {sun:brightness} {sun:color} sun. {landscape:desc} {flora:land}
@@ -291,6 +370,12 @@ ground sand
 hab 4 {landscape:hab}
 sze 7 {landscape:sze}
 min {landscape:min}
+watL -2
+rive 0
+coldC {soilColor:c}
+temperateC {soilColor:c}
+warmC {soilColor:c}
+hotC {soilColor:c}
 
 surface icyDesert
 desc An icy desert. {landscape:desc} {flora:land}
@@ -302,6 +387,12 @@ ground ice
 hab 4 {landscape:hab}
 sze 7 {landscape:sze}
 min -1 {landscape:min}
+watL -2
+rive 0
+coldC {soilColor:c}
+temperateC {soilColor:c}
+warmC {flora:coldC}
+hotC {soilColor:c}
 
 surface rocks
 desc A rocky desert lit by a {sun:brightness} {sun:color} sun. {landscape:desc} {flora:land}
@@ -313,6 +404,12 @@ ground stone
 hab 4 {landscape:hab}
 sze 8 {landscape:sze}
 min {landscape:min}
+watL -2
+rive 0
+coldC {rockColor:c}
+temperateC {soilColor:c}
+warmC {rockColor:c}
+hotC {rockColor:c}
 
 surface jaggedRocks
 desc A desert of jagged rocks. {landscape:desc} {flora:land}
@@ -324,6 +421,12 @@ ground stone
 hab 4 {landscape:hab}
 sze 8 {landscape:sze}
 min {landscape:min}
+watL -2
+rive 0
+coldC {rockColor:c}
+temperateC {soilColor:c}
+warmC {rockColor:c}
+hotC {rockColor:c}
 
 climate veryCold
 blocker sun brightBlue
@@ -337,6 +440,7 @@ ocean ocean covered by a thick ice sheet
 seas seas covered with thick ice sheets
 lakes frozen lakes
 hab -2
+temp -1.95
 
 climate cold
 blocker sun brightBlue
@@ -345,6 +449,7 @@ blocker surface icyDesert
 ocean ocean covered by ice everywhere except near the equator
 seas seas mostly covered with ice
 lakes frozen lakes
+temp -1.3
 
 climate temperate
 blocker sun dimWhite
@@ -354,6 +459,7 @@ blocker surface tundra
 ocean ocean mostly free of ice, except at the poles
 seas seas
 lakes lakes
+temp 0.0
 
 climate hot
 blocker sun dimWhite
@@ -363,6 +469,7 @@ blocker surface tundra
 ocean ocean
 seas seas
 lakes warm lakes
+temp 0.7
 
 climate veryHot
 blocker sun dimWhite
@@ -375,30 +482,42 @@ ocean ocean that is constantly steaming
 seas seas that are constantly steaming
 lakes boiling lakes
 hab -2
+temp 1.8
 
 soilColor red
 cap Red
+c [0.56, 0.19, 0.1]
 soilColor grey
 cap Grey
+c [0.46, 0.43, 0.43]
 soilColor brown
 cap Brown
+c [0.52, 0.35, 0.26]
 soilColor black
 cap Black
+c [0.25, 0.25, 0.28]
 
 rockColor red
 cap Red
+c [0.53, 0.14, 0.04]
 rockColor grey
 cap Grey
+c [0.39, 0.39, 0.41]
 rockColor white
 cap White
+c [0.77, 0.79, 0.8]
 rockColor black
 cap Black
+c [0.1, 0.1, 0.13]
 rockColor dark green
 cap Dark green
+c [0.2, 0.3, 0.25]
 rockColor dark blue
 cap Dark blue
+c [0.16, 0.23, 0.29]
 rockColor speckled
 cap Speckled
+c [0.49, 0.46, 0.47]
 
 landscape rocks
 blocker surface:land no
@@ -825,29 +944,92 @@ nGons blobs
 nPedal tentacular
 
 leafColor green
+coldC [0.250980392157, 0.266666666667, 0.164705882353]
+temperateC [0.239215686275, 0.333333333333, 0.137254901961]
+warmC [0.223529411765, 0.501960784314, 0.121568627451]
+hotC [0.486274509804, 0.458823529412, 0.117647058824]
 leafColor red
+coldC [0.521568627451, 0.262745098039, 0.180392156863]
+temperateC [0.745098039216, 0.133333333333, 0.176470588235]
+warmC [0.654901960784, 0.0823529411765, 0.101960784314]
+hotC [0.760784313725, 0.274509803922, 0.133333333333]
 blocker sun dullRed
 blocker sun harshRed
-leafColor green
 leafColor orange
+coldC [0.709803921569, 0.325490196078, 0.0313725490196]
+temperateC [0.78431372549, 0.364705882353, 0.0705882352941]
+warmC [0.83137254902, 0.309803921569, 0.0352941176471]
+hotC [0.996078431373, 0.592156862745, 0.0078431372549]
 leafColor purple
+coldC [0.4, 0.419607843137, 0.443137254902]
+temperateC [0.380392156863, 0.376470588235, 0.41568627451]
+warmC [0.309803921569, 0.223529411765, 0.345098039216]
+hotC [0.376470588235, 0.227450980392, 0.372549019608]
 leafColor black
+coldC [0.180392156863, 0.2, 0.2]
+temperateC [0.192156862745, 0.239215686275, 0.219607843137]
+warmC [0.109803921569, 0.117647058824, 0.121568627451]
+hotC [0.454901960784, 0.388235294118, 0.364705882353]
 leafColor blue
+coldC [0.160784313725, 0.470588235294, 0.529411764706]
+temperateC [0.145098039216, 0.411764705882, 0.490196078431]
+warmC [0.137254901961, 0.450980392157, 0.603921568627]
+hotC [0.149019607843, 0.462745098039, 0.525490196078]
 blocker sun brightBlue
 blocker sun dimBlue
 leafColor white
 blocker flora deepForests
 blocker flora treeTowers
 blocker flora dottedShrubs
+coldC [0.756862745098, 0.717647058824, 0.549019607843]
+temperateC [0.807843137255, 0.81568627451, 0.721568627451]
+warmC [0.729411764706, 0.729411764706, 0.729411764706]
+hotC [0.678431372549, 0.643137254902, 0.560784313725]
 leafColor yellow
+coldC [0.737254901961, 0.439215686275, 0.321568627451]
+temperateC [0.988235294118, 0.839215686275, 0.0941176470588]
+warmC [0.996078431373, 0.823529411765, 0.0666666666667]
+hotC [0.839215686275, 0.760784313725, 0.466666666667]
 leafColor crimson
+coldC [0.486274509804, 0.223529411765, 0.0823529411765]
+temperateC [0.83137254902, 0.0941176470588, 0.0745098039216]
+warmC [0.980392156863, 0.0, 0.0980392156863]
+hotC [0.960784313725, 0.180392156863, 0.160784313725]
 leafColor pink
+coldC [0.733333333333, 0.0941176470588, 0.282352941176]
+temperateC [0.83137254902, 0.364705882353, 0.537254901961]
+warmC [0.807843137255, 0.380392156863, 0.560784313725]
+hotC [0.639215686275, 0.278431372549, 0.38431372549]
 leafColor light blue
+coldC [0.278431372549, 0.588235294118, 0.647058823529]
+temperateC [0.262745098039, 0.529411764706, 0.607843137255]
+warmC [0.254901960784, 0.56862745098, 0.721568627451]
+hotC [0.266666666667, 0.580392156863, 0.643137254902]
 leafColor dark green
+coldC [0.133333333333, 0.188235294118, 0.0470588235294]
+temperateC [0.121568627451, 0.254901960784, 0.0196078431373]
+warmC [0.105882352941, 0.423529411765, 0.00392156862745]
+hotC [0.36862745098, 0.380392156863, 0.0]
 leafColor grey
+coldC [0.498039215686, 0.43137254902, 0.376470588235]
+temperateC [0.63137254902, 0.623529411765, 0.603921568627]
+warmC [0.6, 0.6, 0.592156862745]
+hotC [0.478431372549, 0.486274509804, 0.486274509804]
 leafColor dark orange
+coldC [0.552941176471, 0.16862745098, 0.0]
+temperateC [0.627450980392, 0.207843137255, 0.0]
+warmC [0.674509803922, 0.152941176471, 0.0]
+hotC [0.839215686275, 0.435294117647, 0.0]
 leafColor light green
+coldC [0.329411764706, 0.38431372549, 0.243137254902]
+temperateC [0.317647058824, 0.450980392157, 0.21568627451]
+warmC [0.301960784314, 0.619607843137, 0.2]
+hotC [0.564705882353, 0.576470588235, 0.196078431373]
 leafColor brown
+coldC [0.564705882353, 0.254901960784, 0.18431372549]
+temperateC [0.662745098039, 0.317647058824, 0.196078431373]
+warmC [0.556862745098, 0.23137254902, 0.172549019608]
+hotC [0.937254901961, 0.592156862745, 0.360784313725]
 
 animalColor black
 cap Black
@@ -974,6 +1156,10 @@ land There are clusters of {plantTexture} {leafColor} tubules everywhere.
 plural tubules
 lurk in the tubules.
 tall yes
+coldC {leafColor:coldC}
+temperateC {leafColor:temperateC}
+warmC {leafColor:warmC}
+hotC {leafColor:hotC}
 
 flora bubbles
 blocker surface jungle
@@ -984,6 +1170,10 @@ land The local plant life takes the shape of small {leafColor} bubbles.
 plural bubbles
 lurk between the bubbles.
 tall no
+coldC {leafColor:coldC}
+temperateC {leafColor:temperateC}
+warmC {leafColor:warmC}
+hotC {leafColor:warmC}
 
 flora stalks
 blocker surface icyDesert
@@ -992,6 +1182,10 @@ land There are groups of tall, {leafColor} stalks everywhere.
 plural stalks
 lurk in the stalks.
 tall yes
+coldC {leafColor:coldC}
+temperateC {leafColor:temperateC}
+warmC {leafColor:warmC}
+hotC {leafColor:hotC}
 
 flora domes
 blocker surface desert
@@ -1001,6 +1195,10 @@ land The plants take the shape of giant {leafColor} geodesic domes.
 plural domes
 lurk high up in the dome-plants.
 tall yes
+coldC {leafColor:coldC}
+temperateC {leafColor:temperateC}
+warmC {leafColor:warmC}
+hotC {leafColor:hotC}
 
 flora deepForests
 blocker surface tundra
@@ -1015,6 +1213,10 @@ lurk in the branches.
 tall yes
 hab +1
 min +1
+coldC {leafColor:coldC}
+temperateC {leafColor:temperateC}
+warmC {leafColor:temperateC}
+hotC {leafColor:temperateC}
 
 flora fungalThicket
 blocker surface tundra
@@ -1029,6 +1231,10 @@ lurk in the deepest fungal thickets.
 tall yes
 hab -1
 sze -1
+coldC {leafColor:coldC}
+temperateC {leafColor:temperateC}
+warmC {leafColor:warmC}
+hotC {leafColor:hotC}
 
 flora treeTowers
 blocker surface desert
@@ -1041,6 +1247,10 @@ plural trees
 lurk in the branches.
 tall yes
 hab +1
+coldC {leafColor:coldC}
+temperateC {leafColor:temperateC}
+warmC {leafColor:warmC}
+hotC {leafColor:warmC}
 
 flora dottedShrubs
 blocker surface jungle
@@ -1049,6 +1259,10 @@ land There is the occasional {leafColor} shrub with {plantDeco:desc}.
 plural shrubs
 lurk under the shrubs.
 tall no
+coldC {soilColor:c}
+temperateC {soilColor:c}
+warmC {leafColor:warmC}
+hotC {leafColor:rockC}
 
 flora grass
 blocker surface desert
@@ -1063,6 +1277,10 @@ land Deep {leafColor} grass covers everything.
 plural blades of grass
 lurk in the grass.
 tall no
+coldC {leafColor:coldC}
+temperateC {leafColor:temperateC}
+warmC {leafColor:hotC}
+hotC {leafColor:hotC}
 
 flora grassClumps
 blocker surface desert
@@ -1076,6 +1294,10 @@ land Clumps of {leafColor} grass.
 plural blades of grass
 lurk in the grass.
 tall no
+coldC {soilColor:c}
+temperateC {leafColor:temperateC}
+warmC {leafColor:warmC}
+hotC {soilColor:c}
 
 flora lichen
 blocker surface jungle
@@ -1086,6 +1308,10 @@ land A thin dusting of {leafColor} lichen covers the land.
 plural clumps of lichen
 lurk in nooks and crannies.
 tall no
+coldC {leafColor:coldC}
+temperateC {leafColor:coldC}
+warmC {leafColor:coldC}
+hotC {leafColor:warmC}
 
 flora floatingPlants
 blocker surface jungle
@@ -1096,6 +1322,10 @@ land Some local plants hover in mid-air, held aloft by gas bags.
 plural floating plants
 lurk between the tentacles of the flying plants.
 tall yes
+coldC {leafColor:coldC}
+temperateC {leafColor:temperateC}
+warmC {leafColor:warmC}
+hotC {leafColor:hotC}
 
 flora giantFlowers
 blocker surface desert
@@ -1106,6 +1336,10 @@ land There are massive flowers in all kinds of colors, sitting atop thick {leafC
 plural flowers
 lurk in the flowers.
 tall yes
+coldC {leafColor:coldC}
+temperateC {leafColor:temperateC}
+warmC {leafColor:warmC}
+hotC {leafColor:hotC}
 
 flora fungi
 desc {leafColor} fungi
@@ -1113,6 +1347,10 @@ land There are scattered {leafColor} fungi.
 plural fungi
 lurk under the fungi.
 tall no
+coldC {soilColor:c}
+temperateC {leafColor:temperateC}
+warmC {leafColor:warmC}
+hotC {soilColor:c}
 
 flora moss
 blocker surface desert
@@ -1127,6 +1365,10 @@ land The surface is covered in thick mats of {leafColor} moss.
 plural clumps of moss
 lurk in the moss.
 tall no
+coldC {leafColor:coldC}
+temperateC {leafColor:temperateC}
+warmC {leafColor:temperateC}
+hotC {leafColor:hotC}
 
 flora spines
 blocker surface desert
@@ -1137,6 +1379,10 @@ land The plants are tall {leafColor} {plantTexture} spines.
 plural spines
 lurk in the spines.
 tall yes
+coldC {leafColor:coldC}
+temperateC {leafColor:temperateC}
+warmC {leafColor:warmC}
+hotC {leafColor:hotC}
 
 flora sheets
 blocker surface desert
@@ -1148,6 +1394,10 @@ land The land is covered in vertical {leafColor} sheets of plant matter.
 plural sheets
 lurk between the sheets.
 tall yes
+coldC {leafColor:coldC}
+temperateC {leafColor:temperateC}
+warmC {leafColor:warmC}
+hotC {leafColor:hotC}
 
 flora toppedStalks
 blocker surface desert
@@ -1159,6 +1409,10 @@ land The plants are tall {leafColor} stalks covered in {plantDeco:desc}, each wi
 plural stalks
 lurk in the leaves.
 tall yes
+coldC {leafColor:coldC}
+temperateC {leafColor:temperateC}
+warmC {leafColor:warmC}
+hotC {leafColor:hotC}
 
 flora nonToppedStalks
 blocker surface desert
@@ -1170,6 +1424,10 @@ land The plants are {leafColor}, {plantTexture} stalks with {plantDeco:desc} at 
 plural stalks
 lurk on the stalks.
 tall yes
+coldC {leafColor:coldC}
+temperateC {leafColor:temperateC}
+warmC {leafColor:warmC}
+hotC {leafColor:hotC}
 
 flora squatTrunks
 blocker surface jungle
@@ -1178,6 +1436,10 @@ land The plants are squat, {plantTexture} trunks with {plantDeco:desc}.
 plural trunks
 lurk between the plants.
 tall no
+coldC {leafColor:coldC}
+temperateC {leafColor:temperateC}
+warmC {leafColor:warmC}
+hotC {leafColor:hotC}
 
 flora barrels
 blocker surface jungle
@@ -1186,6 +1448,10 @@ land The local plants take the shape of squat {leafColor} barrels covered with {
 plural barrels
 lurk between the plants.
 tall no
+coldC {leafColor:coldC}
+temperateC {leafColor:temperateC}
+warmC {leafColor:warmC}
+hotC {leafColor:hotC}
 
 flora fronds
 desc {leafColor} fronds
@@ -1193,6 +1459,10 @@ land Clusters of {leafColor} fronds.
 plural fronds
 lurk in the fronds.
 tall no
+coldC {leafColor:coldC}
+temperateC {leafColor:temperateC}
+warmC {leafColor:warmC}
+hotC {leafColor:hotC}
 
 flora sponges
 desc {leafColor} sponges
@@ -1200,6 +1470,10 @@ land The local plants are {leafColor} sponges.
 plural sponges
 lurk in the sponges.
 tall no
+coldC {leafColor:coldC}
+temperateC {leafColor:temperateC}
+warmC {leafColor:hotC}
+hotC {leafColor:hotC}
 
 flora trumpets
 desc {plantTexture} trumpet-shaped plants
@@ -1207,6 +1481,10 @@ land The plants are shaped like {plantTexture} trumpets pointing up at the sky.
 plural trumpets
 lurk in the trumpets.
 tall yes
+coldC {leafColor:temperateC}
+temperateC {leafColor:temperateC}
+warmC {leafColor:warmC}
+hotC {leafColor:hotC}
 
 flora hexsegments
 desc {leafColor} segmented plants
@@ -1214,6 +1492,10 @@ land The plants are made of hexagonal {leafColor} segments stacked atop each oth
 plural stacks
 lurk in the stacks.
 tall yes
+coldC {leafColor:coldC}
+temperateC {leafColor:temperateC}
+warmC {leafColor:warmC}
+hotC {leafColor:hotC}
 
 flora roots
 blocker surface desert
@@ -1228,6 +1510,10 @@ land The surface is covered in {plantTexture} {leafColor} roots.
 plural roots
 lurk between the roots.
 tall no
+coldC {leafColor:coldC}
+temperateC {leafColor:coldC}
+warmC {leafColor:coldC}
+hotC {leafColor:coldC}
 
 fauna giantHives
 blocker surface:land no

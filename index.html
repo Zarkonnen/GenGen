@@ -220,9 +220,9 @@ vec4 planet(in vec2 pix) {
 	
 	float temp = cos(nor.y * 4.0) + pnoise(uv * noiseScale3, noiseScale3) * 0.8 + n * 0.5 + temperature;
 	
-	float oceanity = min(1.0, 1.0 - smoothstep(0.19, 0.2, n - waterLevel) + rivers * (1.0 - smoothstep(0.01, 0.04, mod(temp - uv.x * 35.0 + 0.3, 1.0) + n * n * 0.35))) * smoothstep(-1.2, -1.05, temp);
+	float oceanity = min(1.0, 1.0 - smoothstep(0.19, 0.2, n - waterLevel) + rivers * (1.0 - smoothstep(0.01, 0.04, mod(temp - uv.x * 35.0 + 0.3, 1.0) + n * n * 0.35))) * smoothstep(-0.9, -0.75, temp);
 
-	float iceity = max(0.0, 1.0 - oceanity - smoothstep(-0.8, -0.6, temp));
+	float iceity = max(0.0, 1.0 + waterLevel - oceanity - smoothstep(-0.8, -0.6, temp));
 	float coldity = max(0.0, 1.0 - iceity - oceanity - smoothstep(-0.4, 0.0, temp));
 	float temperateity = max(0.0, 1.0 - iceity - coldity - oceanity - smoothstep(0.3, 0.8, temp));
 	float warmity = max(0.0, 1.0 - iceity - coldity - temperateity - oceanity - smoothstep(1.05, 1.3, temp));
@@ -357,6 +357,14 @@ var positions = [
 ];
 gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
 
+var vWaterLevel = 0;
+var vRivers = 0;
+var vTemperature = 0;
+var vCold = [0.5, 0.5, 0.5];
+var vTemperate = [0.5, 0.5, 0.5];
+var vWarm = [0.5, 0.5, 0.5];
+var vHot = [0.5, 0.5, 0.5];
+
 function renderPlanet() {
     resize(gl.canvas);
     gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
@@ -397,13 +405,13 @@ function renderPlanet() {
     gl.uniform1f(uCloudiness, 0.35);
     gl.uniform3f(uOcean, 13/255.0, 55/255.0, 97/255.0);
     gl.uniform3f(uIce, 250/255.0, 250/255.0, 250/255.0);
-    gl.uniform3f(uCold, 53/255.0, 102/255.0, 100/255.0);
-    gl.uniform3f(uTemperate, 79/255.0, 109/255.0, 68/255.0);
-    gl.uniform3f(uWarm, 119/255.0, 141/255.0, 82/255.0);
-    gl.uniform3f(uHot, 223/255.0, 193/255.0, 148/255.0);
-    gl.uniform1f(uWaterLevel, 0.4);
-    gl.uniform1f(uRivers, 0.5);
-    gl.uniform1f(uTemperature, 1.4);
+    gl.uniform3fv(uCold, vCold);//53/255.0, 102/255.0, 100/255.0);
+    gl.uniform3fv(uTemperate, vTemperate);//79/255.0, 109/255.0, 68/255.0);
+    gl.uniform3fv(uWarm, vWarm);//119/255.0, 141/255.0, 82/255.0);
+    gl.uniform3fv(uHot, vHot);//223/255.0, 193/255.0, 148/255.0);
+    gl.uniform1f(uWaterLevel, vWaterLevel);
+    gl.uniform1f(uRivers, vRivers);
+    gl.uniform1f(uTemperature, vTemperature);
 
     var primitiveType = gl.TRIANGLES;
     var offset = 0;
@@ -504,6 +512,13 @@ function doDisplay(result) {
         "Industry: " + (Math.max(1, Math.min(9, eval(doExpand(result.struct.vals["min"], result))))) + "<br>" +
         "Science: " + (Math.max(1, Math.min(9, eval(doExpand(result.struct.vals["sci"], result)))))
     ).css("top", (jQuery(window).height() / 2 - jQuery("#stats").height() / 2) + "px");
+    vWaterLevel = eval(doExpand(result.struct.vals["watL"], result));
+    vTemperature = eval(doExpand(result.struct.vals["temp"], result));
+    vRivers = eval(doExpand(result.struct.vals["rive"], result));
+    vCold = eval(doExpand(result.struct.vals["coldC"], result));
+    vTemperate = eval(doExpand(result.struct.vals["temperateC"], result));
+    vWarm = eval(doExpand(result.struct.vals["warmC"], result));
+    vHot = eval(doExpand(result.struct.vals["hotC"], result));
 }
 
 function doExpand(txt, context) {
