@@ -184,7 +184,7 @@ coldC [0,0,0]
 temperateC [0,0,0]
 warmC [0,0,0]
 hotC [0,0,0]
-clouds 0.35 * {climate:clouds}
+clouds 0.3 * {climate:clouds}
 
 surface ocean
 desc A planet-wide {climate:ocean}. {landscape:desc}
@@ -202,7 +202,7 @@ coldC [0,0,0]
 temperateC [0,0,0]
 warmC [0,0,0]
 hotC [0,0,0]
-clouds 0.35 * {climate:clouds}
+clouds 0.3 * {climate:clouds}
 
 surface islands
 desc A few islands are dotted around an {climate:ocean}. {landscape:desc} {flora:land}
@@ -220,7 +220,7 @@ coldC {flora:coldC}
 temperateC {flora:temperateC}
 warmC {flora:warmC}
 hotC {soilColor:c}
-clouds 0.4 * {climate:clouds}
+clouds 0.3 * {climate:clouds}
 
 surface continents
 desc Large continents. {landscape:desc} {flora:land}
@@ -238,7 +238,7 @@ coldC {flora:coldC}
 temperateC {flora:temperateC}
 warmC {flora:warmC}
 hotC {flora:hotC}
-clouds 0.35 * {climate:clouds}
+clouds 0.28 * {climate:clouds}
 
 surface supercontinent
 desc A supercontinent and some small, shallow {climate:seas}. {landscape:desc} {flora:land}
@@ -256,7 +256,7 @@ coldC {flora:coldC}
 temperateC {flora:temperateC}
 warmC {flora:warmC}
 hotC {soilColor:c}
-clouds 0.3 * {climate:clouds}
+clouds 0.25 * {climate:clouds}
 
 surface swamps
 desc Shallow {climate:lakes} and swamps. {landscape:desc} {flora:land}
@@ -274,7 +274,7 @@ coldC {flora:coldC}
 temperateC {flora:temperateC}
 warmC {flora:warmC}
 hotC {flora:hotC}
-clouds 0.45 * {climate:clouds}
+clouds 0.3 * {climate:clouds}
 
 surface jungle
 desc Dense jungles of {flora:desc} cover {nameStart}{nameEnd} {nameNumber}. {landscape:desc}
@@ -292,7 +292,7 @@ coldC {flora:coldC}
 temperateC {flora:warmC}
 warmC {flora:hotC}
 hotC {flora:hotC}
-clouds 0.45 * {climate:clouds}
+clouds 0.3 * {climate:clouds}
 
 surface forests
 desc Dense forests of {flora:desc} cover {nameStart}{nameEnd} {nameNumber}. {landscape:desc}
@@ -310,7 +310,7 @@ coldC {flora:coldC}
 temperateC {flora:temperateC}
 warmC {flora:warmC}
 hotC {flora:hotC}
-clouds 0.35 * {climate:clouds}
+clouds 0.25 * {climate:clouds}
 
 surface scatteredForests
 desc There are scattered forests of {flora:desc}. {landscape:desc}
@@ -328,7 +328,7 @@ coldC {flora:coldC}
 temperateC {flora:temperateC}
 warmC {soilColor:c}
 hotC {flora:hotC}
-clouds 0.3 * {climate:clouds}
+clouds 0.2 * {climate:clouds}
 
 surface tundra
 desc Tundra and a few {climate:lakes}. {landscape:desc} {flora:land}
@@ -346,7 +346,7 @@ coldC {rockColor:c}
 temperateC {flora:coldC}
 warmC {flora:coldC}
 hotC {flora:temperateC}
-clouds 0.3 * {climate:clouds}
+clouds 0.15 * {climate:clouds}
 
 surface muddy
 desc {soilColor:cap} mud and small rivulets. {landscape:desc} {flora:land}
@@ -364,6 +364,7 @@ coldC {soilColor:c}
 temperateC {soilColor:c}
 warmC {soilColor:c}
 hotC {flora:warmC}
+clouds 0.15 * {climate:clouds}
 
 surface arid
 desc Apart from a few {climate:lakes} and rivers, {nameStart}{nameEnd} {nameNumber} is dry. {landscape:desc} {flora:land}
@@ -381,7 +382,7 @@ coldC {soilColor:c}
 temperateC {flora:temperateC}
 warmC {soilColor:c}
 hotC {rockColor:c}
-clouds 0.2 * {climate:clouds}
+clouds 0.08 * {climate:clouds}
 
 surface desert
 desc A sandy desert lit by a {sun:brightness} {sun:color} sun. {landscape:desc} {flora:land}
@@ -399,7 +400,7 @@ coldC {soilColor:c}
 temperateC {soilColor:c}
 warmC {soilColor:c}
 hotC {soilColor:c}
-clouds 0.1 * {climate:clouds}
+clouds 0.05 * {climate:clouds}
 
 surface icyDesert
 desc An icy desert. {landscape:desc} {flora:land}
@@ -417,7 +418,7 @@ coldC {soilColor:c}
 temperateC {soilColor:c}
 warmC {flora:coldC}
 hotC {soilColor:c}
-clouds 0.2 * {climate:clouds}
+clouds 0.1 * {climate:clouds}
 
 surface rocks
 desc A rocky desert lit by a {sun:brightness} {sun:color} sun. {landscape:desc} {flora:land}
@@ -435,7 +436,7 @@ coldC {rockColor:c}
 temperateC {soilColor:c}
 warmC {rockColor:c}
 hotC {rockColor:c}
-clouds 0.15 * {climate:clouds}
+clouds 0.1 * {climate:clouds}
 
 surface jaggedRocks
 desc A desert of jagged rocks. {landscape:desc} {flora:land}
@@ -453,7 +454,7 @@ coldC {rockColor:c}
 temperateC {soilColor:c}
 warmC {rockColor:c}
 hotC {rockColor:c}
-clouds 0.15 * {climate:clouds}
+clouds 0.1 * {climate:clouds}
 
 climate veryCold
 blocker sun brightBlue
@@ -1274,7 +1275,7 @@ tall yes
 hab -1
 sze -1
 coldC {leafColor:coldC}
-temperateC {leafColor:temperateC}
+temperateC {leafColor:warmC}
 warmC {leafColor:warmC}
 hotC {leafColor:hotC}
 
