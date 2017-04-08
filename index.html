@@ -369,6 +369,7 @@ var vWaterLevel = 0;
 var vRivers = 0;
 var vTemperature = 0;
 var vCold = [0.5, 0.5, 0.5];
+var vOcean = [0.5, 0.5, 0.5];
 var vTemperate = [0.5, 0.5, 0.5];
 var vWarm = [0.5, 0.5, 0.5];
 var vHot = [0.5, 0.5, 0.5];
@@ -428,7 +429,7 @@ function renderPlanet() {
     gl.uniform2fv(uNoiseScale3, vNoiseScale3);
     gl.uniform2fv(uCloudNoise, vCloudNoise);
     gl.uniform1f(uCloudiness, vCloudiness);
-    gl.uniform3f(uOcean, 13/255.0, 55/255.0, 97/255.0);
+    gl.uniform3fv(uOcean, vOcean);
     gl.uniform3f(uIce, 250/255.0, 250/255.0, 250/255.0);
     gl.uniform3fv(uCold, vCold);//53/255.0, 102/255.0, 100/255.0);
     gl.uniform3fv(uTemperate, vTemperate);//79/255.0, 109/255.0, 68/255.0);
@@ -544,6 +545,7 @@ function doDisplay(result) {
     vTemperature = eval(doExpand(result.struct.vals["temp"], result));
     vRivers = eval(doExpand(result.struct.vals["rive"], result));
     vCold = eval(doExpand(result.struct.vals["coldC"], result));
+    vOcean = eval(doExpand(result.struct.vals["oceanC"], result)) || [0.05, 0.22, 0.38];
     vTemperate = eval(doExpand(result.struct.vals["temperateC"], result));
     vWarm = eval(doExpand(result.struct.vals["warmC"], result));
     vHot = eval(doExpand(result.struct.vals["hotC"], result));

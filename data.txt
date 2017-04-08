@@ -38,6 +38,7 @@ cloudC {special:cloudC}
 rotspeedMult 1.0 {special:rotspeedMult}
 lightC {sun:lightC}
 hazeC {special:hazeC}
+oceanC {special:oceanC}
 
 nameStart Bi
 nameStart Tor
@@ -747,28 +748,34 @@ hab -2
 min +1
 cloudC [0.8, 0.85, 0.9]
 hazeC [0.2, 0.24, 0.25]
+oceanC {lifeSpecial:oceanC}
 
 special giantMoon
 desc A giant moon looms in the sky.
 hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
 
 special darkness
 desc Due to a celestial conjunction, the planet is plunged into darkness every {prime} years.
 hab -1
 hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
 
 special manyMoons
 desc Many moons can be seen in the sky.
 hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
 
 special dustBand
 desc A band of glittering dust can be seen in the sky.
 hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
 
 special cloudCover
 desc The sky is constantly cloudy.
 clouds + 2.4
 hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
 
 special constantRain
 blocker surface:land no
@@ -776,6 +783,7 @@ blocker surface:dry yes
 desc It is always raining.
 clouds + 0.3
 hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
 
 special suddenRain
 blocker surface:land no
@@ -783,6 +791,7 @@ blocker surface:dry yes
 desc There are sudden, violent rains.
 clouds + 0.2
 hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
 
 special drizzle
 blocker surface:land no
@@ -798,6 +807,7 @@ desc There are frequent fogs.
 clouds + 0.7
 cloudC [0.7, 0.7, 0.7]
 hazeC [0.4, 0.4, 0.4]
+oceanC {lifeSpecial:oceanC}
 
 special impactCrater
 blocker surface deepOcean
@@ -805,6 +815,7 @@ blocker surface ocean
 desc The remains of an ancient, massive impact crater can be seen all the way from orbit.
 min +1
 hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
 
 special dustStorms
 blocker surface:land no
@@ -814,6 +825,7 @@ hab -1
 clouds + 0.3
 cloudC {soilColor:c}
 hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
 
 special snowStorms
 blocker climate temperate
@@ -824,6 +836,7 @@ desc Constant snowstorms make it hard to see anything.
 hab -1
 clouds + 0.4
 hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
 
 special hailStorms
 blocker climate temperate
@@ -833,6 +846,7 @@ blocker surface:dry yes
 desc Constant hail storms batter the surface.
 hab -1
 clouds + 0.3
+oceanC {lifeSpecial:oceanC}
 
 special hurricanes
 blocker climate veryCold
@@ -841,6 +855,7 @@ desc Constant hurricanes ravage the surface.
 hab -1
 clouds + 0.7
 hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
 
 special iceSpires
 blocker surface:land no
@@ -850,20 +865,24 @@ blocker climate veryHot
 desc Tall ice spires formed by an unknown process cover much of the ground.
 sze -1
 hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
 
 special slowDayCycle
 desc A single day takes a very long time.
 rotspeedMult * 0.1
 hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
 
 special noStars
 desc An interstellar dust cloud hides most of the stars in the night sky.
 hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
 
 special fastDayCycle
 desc Day and night rapidly follow on from each other.
 rotspeedMult * 3
 hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
 
 special heavyGravity
 desc The gravity is very strong.
@@ -872,35 +891,41 @@ sze +2
 min -1
 clouds - 0.2
 hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
 
 special lowGravity
 desc The gravity is quite low.
 sze -1
 clouds - 0.2
 hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
 
 special thinAir
 desc The air is thin.
 hab -1
 clouds - 0.7
 hazeC [0.1, 0.1, 0.12]
+oceanC {lifeSpecial:oceanC}
 
 special thickAir
 desc The air pressure is very high.
 hab -1
 hazeC [0.3, 0.3, 0.4]
+oceanC {lifeSpecial:oceanC}
 
 special electricalStorms
 desc Powerful electrical storms disrupt electronics and light up the sky.
 hab -1
 sci -1
 hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
 
 special solarFlares
 desc Frequent strong solar flares cause beautiful displays of light in the sky and make electronics all but useless.
 hab -1
 sci -1
 hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
 
 special coldAir
 blocker climate temperate
@@ -908,6 +933,7 @@ blocker climate hot
 blocker climate veryHot
 desc The air is bitterly cold.
 hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
 
 special hotAir
 blocker climate temperate
@@ -915,6 +941,7 @@ blocker climate cold
 blocker climate veryCold
 desc The air is almost unbearably hot.
 hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
 
 special coldWind
 blocker climate temperate
@@ -922,6 +949,7 @@ blocker climate hot
 blocker climate veryHot
 desc There is a constant cold wind.
 hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
 
 special hotWind
 blocker climate temperate
@@ -929,6 +957,7 @@ blocker climate cold
 blocker climate veryCold
 desc There is a constant hot wind.
 hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
 
 special suddenColdWind
 blocker climate temperate
@@ -936,6 +965,7 @@ blocker climate hot
 blocker climate veryHot
 desc There are sudden cold winds.
 hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
 
 special suddenHotWind
 blocker climate temperate
@@ -943,6 +973,7 @@ blocker climate cold
 blocker climate veryCold
 desc There are sudden hot winds.
 hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
 
 special poisonedSoil
 blocker surface:land no
@@ -950,36 +981,43 @@ desc The soil is poisoned with heavy metals.
 hab -3
 min +1
 hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
 
 special richSurface
 blocker surface:land no
 desc Deposits of valuable ores can be seen all over the surface.
 min +3
 hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
 
 special deepRiches
 blocker surface:land yes
 desc There are deposits of valuable ores in the ocean depths.
 min +2
 hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
 
 special petroleum
 blocker surface:land no
 desc There are deposits of a petroleum-like substance just under the surface.
 min +3
 hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
 
 special constantWind
 desc A constant wind whips around the planet.
 hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
 
 special shootingStars
 desc There are frequent shooting stars.
 hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
 
 special variableGravity
 desc The gravity at the poles is much stronger than at the equator.
 hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
 
 special radioDust
 blocker surface:land no
@@ -987,6 +1025,7 @@ blocker surface:dry no
 desc Radioactive dust pollutes the air.
 hab -4
 hazeC [0.4, 0.42, 0.45]
+oceanC {lifeSpecial:oceanC}
 
 special volcanoes
 blocker surface:land no
@@ -997,33 +1036,39 @@ min +1
 clouds + 0.7
 cloudC {soilColor:c}
 hazeC {soilColor:c}
+oceanC {lifeSpecial:oceanC}
 
 special dormantVolcanoes
 blocker surface:land no
 desc There are many dormant volcanoes.
 sze -1
 hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
 
 special dormantOceanVolcanoes
 blocker surface:ocean no
 desc There are many dormant underwater volcanoes.
 hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
 
 special meteoriteHail
 desc There is a constant hail of small meteorite impacts.
 hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
 
 special colorWater
 blocker surface:dry yes
 desc The water is colored {plantDecoColor} by microorganisms.
 hab -1
 hazeC {lifeSpecial:hazeC}
+oceanC {plantDecoColor:c}
 
 special ecoCollapseCycle
 desc The ecosystem of the planet goes through a cycle of collapsing every few hundred years.
 hab -1
 sci +1
 hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
 
 symmetry 2
 many eight
@@ -1224,22 +1269,37 @@ animalTexture segmented
 animalTexture leathery
 
 plantDecoColor red
+c [0.745098039216, 0.133333333333, 0.176470588235]
 plantDecoColor green
+c [0.239215686275, 0.333333333333, 0.137254901961]
 plantDecoColor orange
-plantDecoColor green
+c [0.78431372549, 0.364705882353, 0.0705882352941]
 plantDecoColor purple
+c [0.380392156863, 0.376470588235, 0.41568627451]
 plantDecoColor black
+c [0.192156862745, 0.239215686275, 0.219607843137]
 plantDecoColor blue
+c [0.262745098039, 0.529411764706, 0.607843137255]
 plantDecoColor white
+c [0.807843137255, 0.81568627451, 0.721568627451]
 plantDecoColor yellow
+c [0.988235294118, 0.839215686275, 0.0941176470588]
 plantDecoColor crimson
+c [0.83137254902, 0.0941176470588, 0.0745098039216]
 plantDecoColor pink
+c [0.83137254902, 0.364705882353, 0.537254901961]
 plantDecoColor light blue
+c [0.262745098039, 0.529411764706, 0.607843137255]
 plantDecoColor dark green
+c [0.121568627451, 0.254901960784, 0.0196078431373]
 plantDecoColor grey
+c [0.63137254902, 0.623529411765, 0.603921568627]
 plantDecoColor dark orange
+c [0.627450980392, 0.207843137255, 0.0]
 plantDecoColor light green
+c [0.317647058824, 0.450980392157, 0.21568627451]
 plantDecoColor brown
+c [0.662745098039, 0.317647058824, 0.196078431373]
 
 plantDeco hairs
 desc fine {plantDecoColor} hair
@@ -2063,6 +2123,7 @@ blocker climate cold
 blocker climate veryCold
 plural {lifeSpecial:desc}
 desc A white foam of unknown origin covers much of the ocean.
+oceanC [0.52, 0.5, 0.5]
 
 lifeSpecial climbers
 blocker flora:tall no
