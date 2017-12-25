@@ -10,7 +10,7 @@ body {
     background: black;
     background-image: url('starfield.png');
     color: #ffffff;
-    font-size: 16pt;
+    font-size: 2.5vmin;
     font-family: Dosis;
     line-height: 1.5;
     padding: 0;
@@ -32,13 +32,13 @@ body {
     position: fixed;
     left: 1em;
     width: 24em;
-    max-width: 25%;
+    max-width: 30%;
 }
 #c {
   position: fixed;
   left: 2em;
-  width: 300px;
-  height: 300px;
+  width: 500px;
+  height: 500px;
 }
 </style>
 <body>
@@ -416,7 +416,7 @@ function renderPlanet() {
     gl.uniform1f(uTime, t * 0.001); // qqDPS
     gl.uniform1f(uLeft, -10);
     gl.uniform1f(uTop, -10);
-    gl.uniform2f(uResolution, 280, 280);
+    gl.uniform2f(uResolution, 480, 480);
     gl.uniform1f(uAngle, vAngle);
     gl.uniform1f(uRotspeed, vRotspeed);
     gl.uniform1f(uLight, vLight);
