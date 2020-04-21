@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html onclick="doDisplay(doGen('planet'));">
+<!-- <html onclick="doDisplay(doGen('planet'));"> -->
 <head><title>GenGen</title></head>
 <script src="jquery-3.2.0.min.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Dosis|Raleway" rel="stylesheet">
@@ -42,10 +42,23 @@ body {
 }
 </style>
 <body>
-<canvas id="c"></canvas>
-<div id="stats"></div>
-<div id="txt"></div>
+<canvas id="c" width="300" height="300" ></canvas>
 
+
+<div id="stats"></div>
+<div id="txt">
+
+    
+</div>
+
+<div id="DownloadDiv" style="width: 100% !important; height: 100% !important; position: absolute;">
+
+<!-- <button type="button">Download as PNG</button> -->
+
+
+<a download="Planet.png" id="download">Download as PNG</a>
+    </br>
+</div>
 <script id="2d-vertex-shader" type="notjs">
  
   // an attribute will receive data from a buffer
@@ -74,6 +87,8 @@ body {
   }
  
 </script>
+
+
 
 <script id="planet-shader" type="notjs">
 #ifdef GL_ES
@@ -273,6 +288,8 @@ var canvas = document.getElementById("c");
 var structs = {};
 var slots = {};
 
+
+
 function createShader(gl, type, source) {
   var shader = gl.createShader(type);
   gl.shaderSource(shader, source);
@@ -314,7 +331,9 @@ function resize(canvas) {
   }
 }
 
-var gl = canvas.getContext("webgl");
+var gl = canvas.getContext("webgl", {
+    preserveDrawingBuffer: true
+});
 var vertexShaderSource = document.getElementById("2d-vertex-shader").text;
 var fragmentShaderSource = document.getElementById("planet-shader").text;
 var vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
@@ -446,6 +465,10 @@ function renderPlanet() {
     var offset = 0;
     var count = 6;
     gl.drawArrays(primitiveType, offset, count);
+
+
+
+    
 }
 
 renderPlanet();
@@ -587,6 +610,42 @@ jQuery.ajax({
     url: "data.txt?" + (new Date()).getTime(),
     success: function(txt) { doParse(txt); doDisplay(doGen("planet")); }
 });
+
+
+setInterval(function(){ 
+    var download = document.getElementById("download");
+download.href = canvas.toDataURL();
+}, 1000);
+
+
 </script>
+
+
+<style>
+    #download{
+	padding-right:100px;
+	padding-left:100px;
+	padding-top:10px;
+	padding-bottom:10px;
+	border-top-left-radius:10px;
+	border-top-right-radius:10px;
+	border-bottom-left-radius:10px;
+	border-bottom-right-radius:10px;
+	background-color:#556270 !important;
+	color:#ecf0f1;
+    top:20px !important;
+	position:relative;
+    text-decoration: none;
+    
+}
+
+#DownloadDiv{
+	text-align:center;
+}
+
+
+
+</style>
+
 </body>
 </html>
