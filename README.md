@@ -4,3 +4,5 @@ A procedural planet generator that uses a clever templating system and a mildly 
 Influences: An earlier project that generated entire SF universes at a shallower level. No Man's Sky. Sid Meier's Alpha Centauri.
 
 Licensed as GPLv3. Other licenses available upon request. Feel free to [ask questions](mailto:zarkonnen@gmail.com) or [make suggestions](https://github.com/Zarkonnen/GenGen/issues).
+
+---
