@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 
-<html onclick="doDisplay(doGen('planet'));">
 <head><title>GenGen</title></head>
 <script src="jquery-3.2.0.min.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Dosis|Raleway" rel="stylesheet">
@@ -42,7 +41,7 @@ body {
 }
 </style>
 <body>
-<canvas id="c" width="300" height="300" ></canvas>
+<canvas onclick="doDisplay(doGen('planet'));" id="c" width="300" height="300" ></canvas>
 
 
 <div id="stats"></div>
@@ -51,7 +50,7 @@ body {
     
 </div>
 
-<div id="DownloadDiv" style="width: 100% !important; height: 100% !important; position: absolute;">
+<div id="DownloadDiv" style="width: 100% !important; position: absolute;">
 
 
 <a download="Planet.png" id="download">Download as PNG</a>
