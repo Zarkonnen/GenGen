@@ -20,6 +20,10 @@ slot plantDecoColor
 slot plantDeco
 slot fauna
 slot lifeSpecial
+slot bodyPart
+slot rockType
+slot famousPerson
+slot famousShip
 desc <h1>{nameStart}{nameEnd} {nameNumber}</h1>{surface:desc}<br><br>{fauna:desc}<br><br>{special:desc}
 hab {surface:hab} {climate:hab} {flora:hab} {fauna:hab} {lifeSpecial:hab} {special:hab}
 sze {surface:sze} {climate:sze} {flora:sze} {fauna:sze} {lifeSpecial:sze} {special:sze}
@@ -456,8 +460,8 @@ hotC {rockColor:c}
 clouds 0.1 * {climate:clouds}
 speckleC {landscape:speckleC}
 
-surface jaggedRocks
-desc A desert of jagged rocks. {landscape:desc} {flora:land}
+surface rockDesert
+desc A desert of {rockType} rocks. {landscape:desc} {flora:land}
 lurk in nooks and crannies.
 ocean no
 land yes
@@ -1070,6 +1074,468 @@ sci +1
 hazeC {lifeSpecial:hazeC}
 oceanC {lifeSpecial:oceanC}
 
+special writingSpires
+desc There are great {rockColor} spires with patterns that may be writing, but are probably caused by the weather.
+sci +1
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special geodes
+blocker surface:land no
+desc Huge glittering geodes dot the surface.
+hab +1
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special transuranic
+desc There are deposits of stable transuranic elements.
+sci +1
+hab -1
+min +2
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special tides
+blocker surface:land no
+blocker surface:ocean no
+desc The tides are very powerful.
+hab -1
+sze -1
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special skeletons
+desc There are huge skeletons of animals seemingly unrelated to the local life.
+sci +1
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special gravity
+desc The gravity is uneven.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special rumbles
+blocker surface:land no
+desc There are constant subsonic tremors of unknown origin.
+hab -1
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special geysers
+blocker surface:dry no
+desc Huge geysers spew boiling water kilometres into the air.
+clouds +0.5
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special isotopes
+desc The planet is composed of unusual isotopes that would make it far younger than is possible.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special ammoDump
+desc Large quantities of unexploded munitions litter the surface.
+hab -1
+sze -2
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special crashSite
+desc Due to its location, many starships have crashed on this planet.
+hab -1
+sci +1
+ind +1
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special monastery
+desc There are rumours of a monastery of heretical monks.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special evil
+desc This planet has an evil reputation, but no one can say why.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special unmapped
+desc This planet does not appear on any charts.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special hollow
+desc Some claim that this planet is hollow.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special tomb
+desc The tomb of {famousPerson} is located here.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special exile
+desc {famousPerson} was exiled here.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special treasure
+desc This planet is rumoured to harbour the treasures of {famousPerson}.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special radioBuoy
+desc A small buoy orbiting the planet endlessly repeats an incomprehensible message.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special acidOceans
+blocker surface:ocean no
+desc The oceans are very acidic.
+hab -1
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special alkaliOceans
+blocker surface:ocean no
+desc The oceans are very alkaline.
+hab -1
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special firstMapped
+desc This planet was first mapped by {famousPerson}.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special shardBand
+desc A band of metal shards encircles the planet.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special lostColony
+desc Records describe an attempt to colonize that failed for unclear reasons.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special secretExpeditions
+desc There are rumours of secret expeditions to this planet.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special secretBase
+desc This planet supposedly harbours the secret base of {famousPerson}.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special crashedHugeShip
+desc The {famousShip} crashed here. Its reactor core is still too hot to approach.
+sze -1
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special lostShip
+desc The {famousShip} vanished while exploring this planet.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special hiddenShip
+desc The {famousShip} is supposedly buried here.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special shipPlans
+desc The plans of the {famousShip} may be hidden somewhere on this planet.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special sunShade
+desc {famousPerson} installed an orbital sun shade to cool down this planet.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special toughCrust
+desc The stone of the planetary crust is unusually dense and hard.
+ind -1
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special jellyWater
+desc Nearly all water on the planet contains micro-organisms that give it a jelly-like consistency.
+hab - 1
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special abandonedColony
+desc There are records of a failed attempt to found a colony here.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special introducedAnimals
+desc Some of the local animals were clearly introduced from other planets.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special abandonedFields
+desc There are regular formations of plants that look like abandoned fields.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special poem
+desc This planet is the subject of a famous poem by a famous poet who clearly never visited it.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special expedUnin
+desc The first expedition to encounter this planet marked it down as "entirely uninhabitable", no reason given.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special migrationStop
+desc This planet was a stop in the Lesser Migration.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special looksLikeAnother
+desc There are records of a remote, far-away planet that matches this one exactly.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special pheroHunger
+desc The air contains pheromones that induce an insatiable hunger.
+hab -3
+hazeC [0.2, 0.2, 0.4]
+oceanC {lifeSpecial:oceanC}
+
+special pheroLust
+desc The air contains pheromones that induce insatiable lust.
+hab -2
+ind -2
+sci +1
+hazeC [0.2, 0.3, 0.1]
+oceanC {lifeSpecial:oceanC}
+
+special pheroMemory
+desc The air contains pheromones that induce memory loss.
+hab -3
+ind -2
+sci +1
+hazeC [0.2, 0.2, 0.3]
+oceanC {lifeSpecial:oceanC}
+
+special pheroKill
+desc The air contains pheromones that induce an insatiable desire to kill.
+hab -3
+ind -2
+sci +1
+hazeC [0.3, 0.1, 0.2]
+oceanC {lifeSpecial:oceanC}
+
+special disease
+desc The planet harbours an alien disease lethal to humans.
+hab -5
+ind -2
+sci +2
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special fungus
+desc The planet harbours an alien fungus lethal to all Earth life.
+hab -5
+ind -2
+sci +2
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special oceanBeing
+blocker surface:ocean no
+desc The planet's ocean is a single being of immense power.
+hab -1
+ind -1
+sci +2
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special timeDistortions
+desc The flow of time is distorted on the planet's surface.
+hab -2
+ind -2
+sci +3
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special garbageDump
+desc Vast quantities of toxic waste have been dumped here.
+hab -3
+ind -1
+sci -1
+hazeC [0.4, 0.3, 0.3]
+oceanC [0.5, 0.15, 0.1]
+
+special birthplace
+desc {famousPerson} was supposedly born in orbit around this planet.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special hunting
+desc Certain very wealthy individuals are said to go hunting here.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special smugglers
+desc There are rumours of a smuggler's lair on this planet.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special book
+desc A famous holo-novel is set on a fictionalized version of this planet.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special strangeMatter
+desc There are deposits of strange matter.
+sci +2
+ind +1
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special badAir
+desc The air has an inaccountably foul smell.
+hab -1
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special spheres
+desc The planet is covered in small metal spheres of unknown origin.
+ind +1
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special tectonic
+desc The planet is very tectonically active.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special radCore
+desc There is a strange radiation source at the planet's core.
+sci +2
+hab -1
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special voices
+desc One of the local animals screams at night in a way that sounds eerily human.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special weirdSkeletons
+desc There are skeletons here that look almost human, but not quite.
+sci +1
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special anoxicPeriods
+desc The geological record shows irregular periods where, for unknown reasons, all oxygen vanished from the atmosphere.
+sci +1
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special dust
+desc Everything is coated in a thin layer of {soilColor} dust.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special burningPeriods
+blocker surface:land no
+desc The geological record shows irregular periods of sudden conflagration.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special extinctionPeriods
+desc The geological record shows strangely regular mass extinction events with no clear cause.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special formerLife
+desc The geological record shows that life arose twice on this planet. It was utterly wiped out once, two billion years ago, and has flourished again.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special slime
+blocker surface:land no
+desc The ground is covered in translucent {leafColor} slime.
+hab -1
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special auroras
+desc The night sky is filled with auroras.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special gasGiant
+desc A nearby gas giant looms in the sky.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special manyMoons
+desc The planet has hundreds of moons.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special storms
+desc There are incredibly violent storms.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special alwaysSnowing
+blocker climate hot
+blocker climate veryHot
+blocker climate temperate
+desc It's always snowing.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special motes
+desc Millions of tiny motes light up the night sky.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special sunsets
+desc The sunsets are especially beautiful.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special weirdFlashes
+desc There are sudden flashes of light at night, of unclear origin.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special softGround
+blocker surface:land no
+blocker surface rocks
+blocker surface rockDesert
+desc The ground is too soft to walk on.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special noWind
+desc There is never any wind.
+hazeC {lifeSpecial:hazeC}
+oceanC {lifeSpecial:oceanC}
+
+special oceanPlants
+blocker surface:ocean no
+desc The oceans are covered in mats of {leafColor} vegetation.
+hazeC {lifeSpecial:hazeC}
+oceanC {leafColor:temperateC}
+
+special fireproof
+blocker surface:land no
+desc The {flora:plural} are fireproof.
+hazeC {lifeSpecial:hazeC}
+oceanC {leafColor:temperateC}
+
 symmetry 2
 many eight
 waterPropulsion tails
@@ -1267,6 +1733,11 @@ animalTexture gelatinous
 animalTexture rugose
 animalTexture segmented
 animalTexture leathery
+animalTexture shimmering
+animalTexture pulsating
+animalTexture mottled
+animalTexture wrinkled
+
 
 plantDecoColor red
 c [0.745098039216, 0.133333333333, 0.176470588235]
@@ -1334,11 +1805,46 @@ desc {plantDecoColor} tentacles
 plantDeco blisters
 desc {plantDecoColor} blisters
 
+plantDeco veils
+desc thin floating {plantDecoColor} veils
+
+plantDeco ropes
+desc tangles of {plantDecoColor} ropes
+
+plantDeco translucentBubbles
+desc translucent {plantDecoColor} bubbles
+
+plantDeco hollowNeedles
+desc hollow {plantDecoColor} needles
+
+plantDeco boils
+desc shapeless {plantDecoColor} boils
+
+plantDeco hookedBarbs
+desc tiny hooked {plantDecoColor} barbs
+
+plantDeco reticulatedLeaves
+desc reticulated {leafColor} leaves
+
 plantTexture smooth
 plantTexture knotted
 plantTexture brittle
 plantTexture spongy
 plantTexture reticulated
+plantTexture wrinkled
+plantTexture porous
+plantTexture rubbery
+plantTexture soft
+plantTexture coarse
+plantTexture furry
+plantTexture slippery
+plantTexture waxy
+plantTexture tough
+plantTexture leathery
+plantTexture fibrous
+plantTexture velvety
+plantTexture greasy
+plantTexture crystalline
 
 flora tubules
 blocker surface desert
@@ -1691,8 +2197,8 @@ hotC {leafColor:hotC}
 speckleC {landscape:speckleC}
 
 flora trumpets
-desc {plantTexture} trumpet-shaped plants
-land The plants are shaped like {plantTexture} trumpets pointing up at the sky.
+desc {plantTexture} {leafColor} trumpet-shaped plants
+land The plants are {plantTexture} {leafColor} trumpets pointing up at the sky.
 plural trumpets
 lurk in the trumpets.
 tall yes
@@ -1707,6 +2213,18 @@ desc {leafColor} segmented plants
 land The plants are made of hexagonal {leafColor} segments stacked atop each other, with {plantDeco:desc} between the segments.
 plural stacks
 lurk in the stacks.
+tall yes
+coldC {leafColor:coldC}
+temperateC {leafColor:temperateC}
+warmC {leafColor:warmC}
+hotC {leafColor:hotC}
+speckleC {landscape:speckleC}
+
+flora mazes
+desc {leafColor} plants
+land The {leafColor} plants grow in elaborate mazes to avoid touching one another.
+plural plants
+lurk in the mazes.
 tall yes
 coldC {leafColor:coldC}
 temperateC {leafColor:temperateC}
@@ -1731,6 +2249,24 @@ coldC {leafColor:coldC}
 temperateC {leafColor:coldC}
 warmC {leafColor:coldC}
 hotC {leafColor:coldC}
+speckleC {landscape:speckleC}
+
+flora mossPatterns
+blocker surface desert
+blocker surface icyDesert
+blocker surface rocks
+blocker surface jaggedRocks
+blocker surface forests
+blocker surface scatteredForests
+blocker surface jungle
+desc {leafColor} moss
+land Thin mats of {leafColor} moss cover the surface in elaborate patterns.
+lurk in the moss.
+tall no
+coldC {leafColor:coldC}
+temperateC {leafColor:temperateC}
+warmC {leafColor:temperateC}
+hotC {leafColor:hotC}
 speckleC {landscape:speckleC}
 
 fauna giantHives
@@ -1811,6 +2347,10 @@ fauna waterSwarms
 blocker surface:ocean no
 blocker animalTexture feathered
 desc Great swarms of {animalTexture} creatures inhabit the oceans. {lifeSpecial:plural}
+
+fauna rootedWorms
+blocker surface:ocean no
+desc Giant {animalTexture} worms are rooted to the sea floor. {lifeSpecial:plural}
 
 fauna deepScuttlers
 blocker surface:ocean no
@@ -1980,7 +2520,7 @@ fauna divers
 blocker surface:ocean no
 desc {animalColor:cap} fliers patrol the oceans, diving suddenly to catch their prey. {lifeSpecial:plural}
 
-fauna divers
+fauna ribbons
 blocker surface:ocean no
 desc Thin {animalColor} ribbons move through the oceans. {lifeSpecial:plural}
 
@@ -1992,6 +2532,29 @@ fauna snailoids
 blocker surface:land no
 blocker surface:dry yes
 desc Large {animalTexture} creatures move across the land on trails of slime. {lifeSpecial:plural}
+
+fauna hugeCritters
+desc Giant {animalTexture} creatures slowly move across the surface, each of them with an entire ecosystem on its back. {lifeSpecial:plural}
+
+fauna symbioticBands
+desc Symbiotic bands of creatures of multiple species live and hunt together. {lifeSpecial:plural}
+
+fauna brachiators
+blocker flora:tall no
+desc Variously sized {animalTexture} creatures brachiate and leap between the {flora:plural}. {lifeSpecial:plural}
+
+fauna eyeTowers
+blocker flora:tall no
+blocker surface:land no
+desc Tall {symmetry:nPods} peek out above the {flora:plural}, keeping watch for predators. {lifeSpecial:plural}
+
+fauna monopedes
+blocker surface:land no
+desc Single-legged {animalColor} creatures hop between the {flora:plural}. {lifeSpecial:plural}
+
+fauna wheels
+blocker surface:land no
+desc Some creatures are shaped like wheels, using their legs to roll themselves along. {lifeSpecial:plural}
 
 lifeSpecial radar
 plural They use a biological radar to perceive the world around them.
@@ -2341,6 +2904,181 @@ desc The local predators track down their prey using their psionic powers.
 hab -1
 sci +1
 
+lifeSpecial lures
+plural They use glowing lures to find prey.
+desc The local predators use glowing lures to find prey.
+
+lifeSpecial hibernate
+plural They can survive for thousands of years in a state of hibernation.
+desc The planet's creatures can enter a state of hibernation that lets them survive for thousands of years.
+sci + 1
+
+lifeSpecial sessiles
+blocker fauna motilePlants
+plural {lifeSpecial:desc}
+desc The local plants are actually the sessile phase of the animals' lifecycle.
+
+lifeSpecial skyRibbons
+blocker fauna motilePlants
+plural {lifeSpecial:desc}
+desc Gossamer-thin sheets of plant matter float in the sky.
+
+lifeSpecial deeper
+blocker surface:land yes
+plural As they age, they descend to deeper depths.
+desc As the local animals age, they descend to deeper ocean depths.
+
+lifeSpecial exoReuse
+plural Other creatures have specially evolved to make use of their shed exoskeletons.
+desc As some creatures shed their exoskeletons, others move in to make use of them.
+
+lifeSpecial mayfly
+plural They only live for a day.
+desc The animals on this planet live only for a day.
+
+lifeSpecial breathing
+plural They have to keep moving to be able to breathe.
+desc This planet's creatures need to keep moving to be able to breathe.
+
+lifeSpecial midday
+plural They move in a sudden burst at mid-day and then fall silent.
+desc Life moves in a sudden burst at mid-day and then falls silent.
+
+lifeSpecial slow
+blocker fauna hyperPredators
+plural They move with utter slowness.
+desc Life moves with utter slowness.
+
+lifeSpecial mutableBody
+plural They have a highly mutable body plan, differing in size as well as number and arrangement of limbs.
+desc Each species has a highly mutable body plan, differing in size as well as number and arrangement of limbs.
+
+lifeSpecial siblingPair
+plural They live in sibling pairs that hatch together.
+desc The creatures on this planet hatch in sibling pairs that spend their lives together.
+
+lifeSpecial trapWeaver
+plural They weave elaborate mechanical traps.
+desc Predators weave elaborate mechanical traps.
+
+lifeSpecial sacs
+plural They can inflate large colorful sacs as a threat display.
+desc Some creatures can inflate large colorful sacs as a threat display.
+
+lifeSpecial buryYoung
+plural They bury unwanted young as a food reserve.
+desc Some animals bury unwanted young as a food reserve.
+
+lifeSpecial freezeSolid
+blocker climate temperate
+blocker climate hot
+blocker climate veryHot
+plural When it gets too cold, they freeze solid with no ill effects.
+desc When it gets too cold, the local animals can freeze solid with no ill effects.
+
+lifeSpecial dryOut
+blocker surface:dry no
+plural When water is scarce, they can dry out completely with no ill effects.
+desc When water is scarce, the local animals can dry out completely with no ill effects.
+
+lifeSpecial bpWearsOut
+plural They have multiple replacement {bodyPart}.
+desc Most species have multiple replacement {bodyPart}.
+
+lifeSpecial bpHardens
+plural After death, their {bodyPart} harden and remain.
+desc After death, the {bodyPart} of the local creatures harden and remain.
+
+lifeSpecial bpParasites
+plural Their {bodyPart} are teeming with parasites.
+desc The {bodyPart} of the local creatures teem with parasites.
+
+lifeSpecial bpLoseS
+plural They lose their {bodyPart} in adulthood.
+desc The local animals lose their {bodyPart} in adulthood.
+
+lifeSpecial bpMatingDisplay
+plural They use their {bodyPart} in mating displays.
+desc Some animals use their {bodyPart} in mating displays.
+
+lifeSpecial bpDevLater
+plural They only develop their {bodyPart} later in life.
+desc The animals of this planet only develop their {bodyPart} later in life.
+
+lifeSpecial mating
+plural Unfortunately, they regard humans as suitable partners for mating.
+desc Unfortunately, some animals on this planet regard humans as desirable partners for mating.
+hab -1
+
+lifeSpecial firehawk
+blocker surface:land no
+plural They start fires to flush out prey.
+desc The local predators start fires to flush out prey.
+hab -1
+
 lifeSpecial nothingSpecial
 plural  
 desc  
+
+bodyPart heads
+bodyPart eyes
+bodyPart stomachs
+bodyPart lungs
+bodyPart tails
+bodyPart bones
+bodyPart teeth
+bodyPart brains
+bodyPart tongues
+bodyPart ears
+bodyPart tentacles
+
+rockType jagged
+rockType crumbling
+rockType crystalline
+rockType irregular
+rockType sharp
+rockType smooth
+rockType hexagonal
+
+famousPerson Emperor Vitus III
+famousPerson Empress Claudia
+famousPerson Emperor Alex II
+famousPerson Emperor Zero
+famousPerson Emperor Tesselling
+famousPerson Empress Ixa
+famousPerson Pirate King Vulpis
+famousPerson Captain Church
+famousPerson Captain Nakamura
+famousPerson Exarch Okkos
+famousPerson Pirate Queen Sue
+famousPerson Lurpak the Despoiler
+famousPerson Queen Freya
+famousPerson Admiral Barnes
+famousPerson Patriarch Ulnax
+famousPerson Matriarch Eleven
+famousPerson Empress Neon Fourteen
+famousPerson Elector Axolotl
+famousPerson Enumerator Vix
+famousPerson Ghost Hunter Zaa
+famousPerson King Teodor XIV
+famousPerson Queen Xatarina IV
+famousPerson Professor Xi
+
+famousShip ISS Shadow
+famousShip ISS Snake
+famousShip ISS Hexagon
+famousShip SS Ferret
+famousShip SS Farsight
+famousShip SS Yin
+famousShip SS Yang
+famousShip ISS Observer
+famousShip SS Starflare
+famousShip SS Oberon
+famousShip ISS Undertaker
+famousShip SS Wolverine
+famousShip ISS Tesseract
+famousShip SS Dolphin
+famousShip SS Arrow
+famousShip SS Alpine
+famousShip SS Vixen
+famousShip SS Naiad
