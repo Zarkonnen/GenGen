@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 
-<html onclick="doDisplay(doGen('planet'));">
+<html>
 <head><title>GenGen</title></head>
 <script src="jquery-3.2.0.min.js"></script>
+<script src="seedrandom.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Dosis|Raleway" rel="stylesheet">
 <style>
 h1 { margin-top: 0; padding-top: 0; font-family: Raleway; }
@@ -16,7 +17,7 @@ body {
     padding: 0;
     margin: 0;
 }
-#stats, #txt {
+#stats, #txt, #genIDDiv {
     top: 1em;
     padding: 1em;
     border-radius: 1em;
@@ -42,8 +43,7 @@ body {
 }
 </style>
 <body>
-<canvas id="c" width="300" height="300" ></canvas>
-
+<canvas id="c" width="300" height="300" onclick="genFromRandomID();"></canvas>
 
 <div id="stats"></div>
 <div id="txt">
@@ -51,10 +51,16 @@ body {
     
 </div>
 
-<div id="DownloadDiv" style="width: 100% !important; height: 100% !important; position: absolute;">
+<div id="DownloadDiv" style="width: 100% !important; position: absolute;">
 
 
-<a download="Planet.png" id="download">Download as PNG</a>
+<a download="planet.txt" id="downloadText" class="button"><img src="download-text.png"><div class="tooltip">Download Text</div></a>
+<a download="Planet.png" id="download" onmouseover="writeImageData();" class="button"><img src="download-image.png"><div class="tooltip">Download Image</div></a>
+<a id="mapSwitch" class="button" onclick="doMapSwitch();"><img src="map.png"><div class="tooltip">Switch to Map</div></a>
+<a id="setID" class="button" onclick="setID();"><img src="id.png"><div class="tooltip">View/Set ID</div></a>
+<a id="nextPlanet" class="button" onclick="genFromRandomID();"><img src="next.png"><div class="tooltip">Random New Planet</div></a>
+
+
     </br>
 </div>
 <script id="2d-vertex-shader" type="notjs">
@@ -86,6 +92,179 @@ body {
  
 </script>
 
+
+<script id="map-shader" type="notjs">
+#ifdef GL_ES
+precision highp float;
+#endif
+
+uniform int cities;
+uniform float time;
+uniform float left;
+uniform float top;
+uniform vec2 resolution;
+uniform float angle;
+uniform float rotspeed;
+uniform float light;
+uniform float zLight;
+
+uniform float modValue;
+
+uniform vec2 noiseOffset;
+uniform vec2 noiseScale;
+uniform vec2 noiseScale2;
+uniform vec2 noiseScale3;
+uniform vec2 cloudNoise;
+
+uniform float cloudiness;
+
+uniform float waterLevel;
+uniform float rivers;
+uniform float temperature;
+
+uniform vec3 ocean;
+uniform vec3 ice;
+uniform vec3 cold;
+uniform vec3 temperate;
+uniform vec3 warm;
+uniform vec3 hot;
+uniform vec3 speckle;
+uniform vec3 clouds;
+uniform vec3 haze;
+uniform vec3 lightColor;
+
+//
+// GLSL textureless classic 2D noise "cnoise",
+// with an RSL-style periodic variant "pnoise".
+// Author:  Stefan Gustavson (stefan.gustavson@liu.se)
+// Version: 2011-08-22
+//
+// Many thanks to Ian McEwan of Ashima Arts for the
+// ideas for permutation and gradient selection.
+//
+// Copyright (c) 2011 Stefan Gustavson. All rights reserved.
+// Distributed under the MIT license. See LICENSE file.
+// https://github.com/ashima/webgl-noise
+//
+
+vec4 mod289(vec4 x)
+{
+  return x - floor(x * (1.0 / modValue)) * modValue;
+}
+
+vec4 permute(vec4 x)
+{
+  return mod289(((x*34.0)+1.0)*x);
+}
+
+vec4 taylorInvSqrt(vec4 r)
+{
+  return 1.79284291400159 - 0.85373472095314 * r;
+}
+
+vec2 fade(vec2 t) {
+  return t*t*t*(t*(t*6.0-15.0)+10.0);
+}
+
+// Classic Perlin noise, periodic variant
+float pnoise(vec2 P, vec2 rep)
+{
+  vec4 Pi = floor(P.xyxy) + vec4(0.0, 0.0, 1.0, 1.0);
+  vec4 Pf = fract(P.xyxy) - vec4(0.0, 0.0, 1.0, 1.0);
+  Pi = mod(Pi, rep.xyxy); // To create noise with explicit period
+  Pi = mod289(Pi);        // To avoid truncation effects in permutation
+  vec4 ix = Pi.xzxz;
+  vec4 iy = Pi.yyww;
+  vec4 fx = Pf.xzxz;
+  vec4 fy = Pf.yyww;
+
+  vec4 i = permute(permute(ix) + iy);
+
+  vec4 gx = fract(i * (1.0 / 41.0)) * 2.0 - 1.0 ;
+  vec4 gy = abs(gx) - 0.5 ;
+  vec4 tx = floor(gx + 0.5);
+  gx = gx - tx;
+
+  vec2 g00 = vec2(gx.x,gy.x);
+  vec2 g10 = vec2(gx.y,gy.y);
+  vec2 g01 = vec2(gx.z,gy.z);
+  vec2 g11 = vec2(gx.w,gy.w);
+
+  vec4 norm = taylorInvSqrt(vec4(dot(g00, g00), dot(g01, g01), dot(g10, g10), dot(g11, g11)));
+  g00 *= norm.x;  
+  g01 *= norm.y;  
+  g10 *= norm.z;  
+  g11 *= norm.w;  
+
+  float n00 = dot(g00, vec2(fx.x, fy.x));
+  float n10 = dot(g10, vec2(fx.y, fy.y));
+  float n01 = dot(g01, vec2(fx.z, fy.z));
+  float n11 = dot(g11, vec2(fx.w, fy.w));
+
+  vec2 fade_xy = fade(Pf.xy);
+  vec2 n_x = mix(vec2(n00, n01), vec2(n10, n11), fade_xy.x);
+  float n_xy = mix(n_x.x, n_x.y, fade_xy.y);
+  return 2.3 * n_xy;
+}
+
+float spow(float x, float y) { float s = sign(x); return s * pow(s * x, y); }
+
+vec4 planet(in vec2 pix) {
+    //vec2 p = -1.0 + 2.0 * pix;
+    //p.x *= resolution.x / resolution.y;
+	
+	//vec2 uv = p;
+	
+	vec3 col = vec3(0.0);
+	
+	// uv.y * 2.0 - 100.5
+	// so if we take uv * 2 - 100.5 we get 0-1, which means if we have 0-1 we need to add 100.5 and halve
+	//uv = uv * 2.0 - vec2(100.5, 100.5);
+	vec2 uv = (pix + vec2(100.0, 99.9)) * vec2(0.25, 0.5);
+
+	
+	float n2 = pnoise(uv * noiseScale2, noiseScale2) * 0.05;
+	float n = pnoise(uv * noiseScale, noiseScale) + n2;
+	float n3 = pnoise(uv * noiseScale3, noiseScale3);
+	
+	float temp = cos(uv.y * 8.0) + n3 * 0.8 + n * 0.5 + temperature;
+	
+	float oceanity = min(1.0, 1.0 - smoothstep(0.19, 0.2, n - waterLevel) + rivers * (1.0 - smoothstep(0.01, 0.04, mod(temp - uv.x * 35.0 + 0.3, 1.0) + n * n * 0.35))) * smoothstep(-0.9, -0.75, temp);
+
+	float iceity = max(0.0, 1.0 + waterLevel - oceanity - smoothstep(-0.8, -0.6, temp));
+	float specklity = max(0.0, step(0.009, n2 * n3) - iceity - oceanity);
+	float coldity = max(0.0, 1.0 - iceity - oceanity - specklity - smoothstep(-0.4, 0.0, temp));
+	float temperateity = max(0.0, 1.0 - iceity - coldity - oceanity - specklity - smoothstep(0.3, 0.8, temp));
+	float warmity = max(0.0, 1.0 - iceity - coldity - temperateity - oceanity - specklity - smoothstep(1.05, 1.3, temp));
+	float hottity = max(0.0, 1.0 - oceanity - iceity - coldity - temperateity - warmity - specklity);
+	
+	col = ocean * oceanity + ice * iceity + cold * coldity + temperate * temperateity + warm * warmity + hot * hottity + speckle * specklity;
+	
+	col *= (0.7 + abs(temp + n * 0.2) * 0.3);
+	col *= 0.92 + step(0.1, mod(n2, 0.4)) * 0.08;
+	col *= 1.0 + step(0.39, mod(n + uv.x, 0.4)) * 0.1;
+	
+	if (
+		cities == 1 &&
+		(n > 0.05 && n < 0.2 ||// Next to the water
+		mod(uv.x * uv.y + n / 10.0, 1.0) < 0.1)
+	)
+	{
+		col += vec3(1.0, 1.0, 0.7) * (max(0.7, pnoise(uv * vec2(122.0, 122.0), vec2(122.0, 122.0))) - 0.7) * 3.0;
+	}
+
+    return vec4(col, 1.0);
+}
+
+void main(void)
+{
+	vec3 coord = vec3(gl_FragCoord);
+	coord.x += left;
+	coord.y += top;
+
+	gl_FragColor = planet(coord.xy / resolution.xy), 1.0;
+}
+</script>
 
 
 <script id="planet-shader" type="notjs">
@@ -408,6 +587,10 @@ var vNoiseScale3 = [50, 50];
 var vCloudNoise = [6, 30];
 
 function renderPlanet() {
+	jQuery("#c").
+	css("width", "400px").css("height", "400px").
+    css("top", (jQuery(window).innerHeight() / 2 - jQuery("#c").height() / 2) + "px").
+    css("left", (jQuery(window).innerWidth() / 2 - jQuery("#c").width() / 2) + "px");
     resize(gl.canvas);
     gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
 
@@ -462,21 +645,122 @@ function renderPlanet() {
     var primitiveType = gl.TRIANGLES;
     var offset = 0;
     var count = 6;
-    gl.drawArrays(primitiveType, offset, count);
-
-
-
-    
+    gl.drawArrays(primitiveType, offset, count);    
 }
 
 renderPlanet();
 
+var vertexShaderSource2 = document.getElementById("2d-vertex-shader").text;
+var fragmentShaderSource2 = document.getElementById("map-shader").text;
+var vertexShader2 = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource2);
+var fragmentShader2 = createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource2);
+var program2 = createProgram(gl, vertexShader2, fragmentShader2);
+var positionAttributeLocation2 = gl.getAttribLocation(program2, "a_position");
+
+var u2Cities = gl.getUniformLocation(program2, "cities");
+var u2Time = gl.getUniformLocation(program2, "time");
+var u2Left = gl.getUniformLocation(program2, "left");
+var u2Top = gl.getUniformLocation(program2, "top");
+var u2Resolution = gl.getUniformLocation(program2, "resolution");
+var u2Angle = gl.getUniformLocation(program2, "angle");
+var u2Rotspeed = gl.getUniformLocation(program2, "rotspeed");
+var u2Light = gl.getUniformLocation(program2, "light");
+var u2ZLight = gl.getUniformLocation(program2, "zLight");
+var u2LightColor = gl.getUniformLocation(program2, "lightColor");
+var u2ModValue = gl.getUniformLocation(program2, "modValue");
+var u2NoiseOffset = gl.getUniformLocation(program2, "noiseOffset");
+var u2NoiseScale = gl.getUniformLocation(program2, "noiseScale");
+var u2NoiseScale2 = gl.getUniformLocation(program2, "noiseScale2");
+var u2NoiseScale3 = gl.getUniformLocation(program2, "noiseScale3");
+var u2CloudNoise = gl.getUniformLocation(program2, "cloudNoise");
+var u2Cloudiness = gl.getUniformLocation(program2, "cloudiness");
+var u2Ocean = gl.getUniformLocation(program2, "ocean");
+var u2Ice = gl.getUniformLocation(program2, "ice");
+var u2Cold = gl.getUniformLocation(program2, "cold");
+var u2Temperate = gl.getUniformLocation(program2, "temperate");
+var u2Warm = gl.getUniformLocation(program2, "warm");
+var u2Hot = gl.getUniformLocation(program2, "hot");
+var u2Speckle = gl.getUniformLocation(program2, "speckle");
+var u2Clouds = gl.getUniformLocation(program2, "clouds");
+var u2WaterLevel = gl.getUniformLocation(program2, "waterLevel");
+var u2Rivers = gl.getUniformLocation(program2, "rivers");
+var u2Temperature = gl.getUniformLocation(program2, "temperature");
+var u2Haze = gl.getUniformLocation(program2, "haze");
+
+function renderMap() {
+	jQuery("#c").
+	css("width", "1024px").css("height", "512px").
+    css("top", (jQuery(window).innerHeight() / 2 - jQuery("#c").height() / 2) + "px").
+    css("left", (jQuery(window).innerWidth() / 2 - jQuery("#c").width() / 2) + "px");
+    resize(gl.canvas);
+    gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
+
+    // Clear the canvas
+    gl.clearColor(0, 0, 0, 0);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    // Tell it to use our program (pair of shaders)
+    gl.useProgram(program2);
+    gl.enableVertexAttribArray(positionAttributeLocation2);
+    // Bind the position buffer.
+    gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+     
+    // Tell the attribute how to get data out of positionBuffer (ARRAY_BUFFER)
+    var size = 2;          // 2 components per iteration
+    var type = gl.FLOAT;   // the data is 32bit floats
+    var normalize = false; // don't normalize the data
+    var stride = 0;        // 0 = move forward size * sizeof(type) each iteration to get the next position
+    var offset = 0;        // start at the beginning of the buffer
+    gl.vertexAttribPointer(
+        positionAttributeLocation2, size, type, normalize, stride, offset)
+
+    gl.uniform1i(u2Cities, 0);
+    gl.uniform1f(u2Time, t * 0.001); // qqDPS
+    gl.uniform1f(u2Left, -10);
+    gl.uniform1f(u2Top, -10);
+    gl.uniform2f(u2Resolution, 380, 380);
+    gl.uniform1f(u2Angle, vAngle);
+    gl.uniform1f(u2Rotspeed, vRotspeed);
+    gl.uniform1f(u2Light, vLight);
+    gl.uniform1f(u2ZLight, vZLight);
+    gl.uniform3fv(u2LightColor, vLightColor);
+    gl.uniform1f(u2ModValue, vModValue);
+    gl.uniform2fv(u2NoiseOffset, vNoiseOffset);
+    gl.uniform2fv(u2NoiseScale, vNoiseScale);
+    gl.uniform2fv(u2NoiseScale2, vNoiseScale2);
+    gl.uniform2fv(u2NoiseScale3, vNoiseScale3);
+    gl.uniform2fv(u2CloudNoise, vCloudNoise);
+    gl.uniform1f(u2Cloudiness, vCloudiness);
+    gl.uniform3fv(u2Ocean, vOcean);
+    gl.uniform3f(u2Ice, 250/255.0, 250/255.0, 250/255.0);
+    gl.uniform3fv(u2Cold, vCold);//53/255.0, 102/255.0, 100/255.0);
+    gl.uniform3fv(u2Temperate, vTemperate);//79/255.0, 109/255.0, 68/255.0);
+    gl.uniform3fv(u2Warm, vWarm);//119/255.0, 141/255.0, 82/255.0);
+    gl.uniform3fv(u2Hot, vHot);//223/255.0, 193/255.0, 148/255.0);
+    gl.uniform3fv(u2Speckle, vSpeckle);
+    gl.uniform3fv(u2Clouds, vClouds);
+    gl.uniform3fv(u2Haze, vHaze);
+    gl.uniform1f(u2WaterLevel, vWaterLevel);
+    gl.uniform1f(u2Rivers, vRivers);
+    gl.uniform1f(u2Temperature, vTemperature);
+
+    var primitiveType = gl.TRIANGLES;
+    var offset = 0;
+    var count = 6;
+    gl.drawArrays(primitiveType, offset, count);    
+}
+
+function rnd() {
+	return Math.random();
+}
+
 var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
 var t = new Date().getTime() % 1000000;
 
+var doRenderMap = false;
+
 function nextFrame() {
     t = new Date().getTime() % 1000000;
-    renderPlanet();
+    if (doRenderMap) { renderMap(); } else { renderPlanet(); }
     requestAnimationFrame(nextFrame);
 }
 
@@ -523,6 +807,45 @@ function doParse(text) {
     //console.log(slots);
 }
 
+var randHex = function(len) {
+  var maxlen = 8,
+      min = Math.pow(16,Math.min(len,maxlen)-1) 
+      max = Math.pow(16,Math.min(len,maxlen)) - 1,
+      n   = Math.floor( Math.random() * (max-min+1) ) + min,
+      r   = n.toString(16);
+  while ( r.length < len ) {
+     r = r + randHex( len - maxlen );
+  }
+  return r;
+};
+
+var genID = "?";
+
+function genFromRandomID() {
+	Math.seedrandom();
+	genFromID(randHex(8));
+}
+
+function genFromID(id) {
+	genID = id;
+	console.log(id);
+	Math.seedrandom(id);
+	var result = doGen("planet")
+	doDisplay(result);
+	var name = doExpand(result.struct.vals["desc"], result).split("</h1>")[0].replace("<h1>", "");
+	document.getElementById("download").download = name + " " + genID + ".png";
+	document.getElementById("downloadText").download = name + " " + genID + ".txt";
+	document.getElementById("downloadText").href = "data:text/plain," + encodeURI(doExpand(result.struct.vals["desc"], result).replace("<h1>", "").replace("</h1>", "\n\n").replace(/<br>/g, "\n") + "\n\n" +
+		"Habitability: " + (Math.max(1, Math.min(9, eval(doExpand(result.struct.vals["hab"], result)))) * 10) + "%\n" +
+        "Size: " + (Math.max(1, Math.min(9, eval(doExpand(result.struct.vals["sze"], result))))) + "\n" +
+        "Industry: " + (Math.max(1, Math.min(9, eval(doExpand(result.struct.vals["min"], result))))) + "\n" +
+        "Science: " + (Math.max(1, Math.min(9, eval(doExpand(result.struct.vals["sci"], result))))) + "\n\n" + id);
+}
+
+function setID() {
+	genFromID(prompt("Planet ID", genID) || genID);
+}
+
 function doGen(structID) {
     var result = {"struct": structs[structID]};
     structs[structID].slots.forEach(function(slot) {
@@ -545,16 +868,17 @@ function doGen(structID) {
             console.log(result);
             availableSlots = slots[slot]; // qqDPS
         }
-        result[slot] = availableSlots[Math.floor(Math.random() * availableSlots.length)];
+        result[slot] = availableSlots[Math.floor(rnd() * availableSlots.length)];
     });
     return result;
 }
 
 function doDisplay(result) {
-    jQuery("body").css("background-position", Math.ceil(Math.random() * 2000) + "px " + Math.ceil(Math.random() * 2000) + "px");
-    jQuery("#c").
+    jQuery("body").css("background-position", Math.ceil(rnd() * 2000) + "px " + Math.ceil(rnd() * 2000) + "px");
+    /*jQuery("#c").
     css("top", (jQuery(window).innerHeight() / 2 - jQuery("#c").height() / 2) + "px").
-    css("left", (jQuery(window).innerWidth() / 2 - jQuery("#c").width() / 2) + "px");
+    css("left", (jQuery(window).innerWidth() / 2 - jQuery("#c").width() / 2) + "px");*/
+	//jQuery("#setID").html("ID: " + genID);
     jQuery("#txt").html(doExpand(result.struct.vals["desc"], result));
     jQuery("#stats").html(
         "Habitability: " + (Math.max(1, Math.min(9, eval(doExpand(result.struct.vals["hab"], result)))) * 10) + "%<br>" +
@@ -576,18 +900,18 @@ function doDisplay(result) {
     
     vCloudiness = Math.min(1.5, Math.max(0, eval(doExpand(result.struct.vals["clouds"], result))));
     vClouds = eval(doExpand(result.struct.vals["cloudC"], result)) || [0.9, 0.9, 0.9];
-    vAngle = 0.6 * Math.random();
-    vRotspeed = (0.005 + Math.random() * 0.01) * (Math.random() < 0.3 ? -1 : 1) * eval(doExpand(result.struct.vals["rotspeedMult"], result));;
-    vLight = 4 * Math.random();
-    vZLight = 0.2 + Math.random();
-    vModValue = 17 + Math.ceil(Math.random() * 20);
-    vNoiseOffset = [Math.ceil(Math.random() * 100), Math.ceil(Math.random() * 100)];
-    vNoiseScale = [7 + Math.ceil(Math.random() * 10), 5 + Math.ceil(Math.random() * 7)];
-    var sc = 80 + Math.ceil(Math.random() * 220);
+    vAngle = 0.6 * rnd();
+    vRotspeed = (0.005 + rnd() * 0.01) * (rnd() < 0.3 ? -1 : 1) * eval(doExpand(result.struct.vals["rotspeedMult"], result));;
+    vLight = 4 * rnd();
+    vZLight = 0.2 + rnd();
+    vModValue = 17 + Math.ceil(rnd() * 20);
+    vNoiseOffset = [Math.ceil(rnd() * 100), Math.ceil(rnd() * 100)];
+    vNoiseScale = [6 + Math.ceil(rnd() * 8), 5 + Math.ceil(rnd() * 6)];
+    var sc = 80 + Math.ceil(rnd() * 220);
     vNoiseScale2 = [sc, sc];
-    sc = 20 + Math.ceil(Math.random() * 80);
+    sc = 20 + Math.ceil(rnd() * 80);
     vNoiseScale3 = [sc, sc];
-    vCloudNoise = [4 + Math.ceil(Math.random() * 9), 20 + Math.ceil(Math.random() * 20)];
+    vCloudNoise = [4 + Math.ceil(rnd() * 9), 20 + Math.ceil(rnd() * 20)];
 }
 
 function doExpand(txt, context) {
@@ -606,35 +930,54 @@ function doExpand(txt, context) {
 
 jQuery.ajax({
     url: "data.txt?" + (new Date()).getTime(),
-    success: function(txt) { doParse(txt); doDisplay(doGen("planet")); }
+    success: function(txt) { doParse(txt); genFromRandomID(); }
 });
 
+function writeImageData() {
+	document.getElementById("download").href = canvas.toDataURL();
+}
 
-setInterval(function(){ 
-    var download = document.getElementById("download");
-download.href = canvas.toDataURL();
-}, 1000);
+/*setInterval(function(){ 
+    document.getElementById("download").href = canvas.toDataURL();
+}, 1000);*/
+
+function doMapSwitch() {
+	doRenderMap = !doRenderMap;
+	document.getElementById("mapSwitch").innerHTML = doRenderMap ? '<img src="planet.png">' : '<img src="map.png">';
+}
 
 
 </script>
 
 
 <style>
-    #download{
-	padding-right:100px;
-	padding-left:100px;
-	padding-top:10px;
-	padding-bottom:10px;
-	border-top-left-radius:10px;
-	border-top-right-radius:10px;
-	border-bottom-left-radius:10px;
-	border-bottom-right-radius:10px;
-	background-color:#556270 !important;
-	color:#ecf0f1;
-    top:20px !important;
+.button {
+	top: 1em;
 	position:relative;
-    text-decoration: none;
-    
+	cursor: pointer;
+	text-decoration: none !important;
+	color: white;
+}
+
+.button img {
+	width: 40px;
+}
+
+.button .tooltip {
+	position: absolute;
+	display: none;
+	top: 40px;
+	left: 0px;
+	width: 300px;
+	text-align: left;
+}
+
+.button:hover .tooltip {
+	display: block;
+}
+
+#download, #mapSwitch, #setID, #nextPlanet {
+	margin-left: 1em;
 }
 
 #DownloadDiv{
