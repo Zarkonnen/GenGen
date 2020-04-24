@@ -1250,6 +1250,8 @@ hazeC {lifeSpecial:hazeC}
 oceanC {lifeSpecial:oceanC}
 
 special sunShade
+blocker climate cold
+blocker climate veryCold
 desc {famousPerson} installed an orbital sun shade to cool down this planet.
 hazeC {lifeSpecial:hazeC}
 oceanC {lifeSpecial:oceanC}
@@ -1533,6 +1535,25 @@ oceanC {leafColor:temperateC}
 special fireproof
 blocker surface:land no
 desc The {flora:plural} are fireproof.
+hazeC {lifeSpecial:hazeC}
+oceanC {leafColor:temperateC}
+
+special round
+desc The planet is perfectly round, with no equatorial bulge.
+sci +1
+hazeC {lifeSpecial:hazeC}
+oceanC {leafColor:temperateC}
+
+special gold
+desc There are large gold deposits.
+ind +1
+hazeC {lifeSpecial:hazeC}
+oceanC {leafColor:temperateC}
+
+special cadmium
+desc There are large cadmium deposits.
+ind +1
+hab -1
 hazeC {lifeSpecial:hazeC}
 oceanC {leafColor:temperateC}
 
@@ -2269,6 +2290,18 @@ warmC {leafColor:temperateC}
 hotC {leafColor:hotC}
 speckleC {landscape:speckleC}
 
+fauna throwers
+blocker surface:land no
+desc Swarms of small {animalTexture} creatures move by throwing each other. {lifeSpecial:plural}
+
+fauna slitherers
+blocker surface:land no
+desc Long {animalTexture} creatures slither between the {flora:plural}. {lifeSpecial:plural}
+
+fauna concertina
+blocker surface:land no
+desc Small {animalTexture} creatures move in a concertina-like fashion. {lifeSpecial:plural}
+
 fauna giantHives
 blocker surface:land no
 desc Giant hives of small, {animalTexture}, {symmetry:many}-legged creatures dominate. {lifeSpecial:plural}
@@ -2336,7 +2369,7 @@ desc Colonies of small {animalColor} creatures live inside the {flora:plural}. {
 
 fauna shapeShifters
 desc One of the local animals can imitate the shape and sounds of any creature, even a sentient one. {lifeSpecial:desc}
-hab -1
+hab -2
 sci +2
 
 fauna gasFloaters
@@ -3016,6 +3049,42 @@ plural They start fires to flush out prey.
 desc The local predators start fires to flush out prey.
 hab -1
 
+lifeSpecial bpMeasure
+plural They compare {bodyPart} to establish dominance.
+desc Many local animals compare {bodyPart} to establish dominance.
+
+lifeSpecial liquefy
+plural They liquefy instantly when they die.
+desc The local animals liquefy instantly when they die.
+
+lifeSpecial curious
+plural They are very curious and friendly.
+desc The local creatures are very curious and friendly.
+
+lifeSpecial hotInternals
+plural Their body temperature is extremely high.
+desc The body temperature of the animals on this planet is extremely high.
+
+lifeSpecial angels
+plural They only move when you're not looking.
+desc The animals on this planet only move when no one is looking.
+
+lifeSpecial geneRecode
+plural They can re-code their genes.
+desc The life on this planet can re-code its genes.
+
+lifeSpecial noSensory
+plural They have no visible sensory organs.
+desc The lifeforms on this planet have no visible sensory organs.
+
+lifeSpecials hostage
+plural They hold animals of certain other species hostage in exchange for food.
+desc A creature on this planet holds animals of certain other species hostage in exchange for food.
+
+lifeSpecial colony
+plural They are colony organisms made from thousands of tiny worms.
+desc The creatures on this planet are colony organisms made from thousands of tiny worms.
+
 lifeSpecial nothingSpecial
 plural  
 desc  
@@ -3031,6 +3100,11 @@ bodyPart brains
 bodyPart tongues
 bodyPart ears
 bodyPart tentacles
+bodyPart antennae
+bodyPart feelers
+bodyPart throat sacs
+bodyPart proboscides
+bodyPart horns
 
 rockType jagged
 rockType crumbling
@@ -3039,6 +3113,7 @@ rockType irregular
 rockType sharp
 rockType smooth
 rockType hexagonal
+rockType marbled
 
 famousPerson Emperor Vitus III
 famousPerson Empress Claudia
