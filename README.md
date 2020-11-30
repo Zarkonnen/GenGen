@@ -7,6 +7,14 @@ Licensed as GPLv3. Other licenses available upon request. Feel free to [ask ques
 
 Icons by streamlineicons.com.
 
+## Keyboard shortcuts
+
+- Download Text (T)
+- Download Image (D)
+- Switch to Map (M)
+- View/Set ID (I)
+- Random New Planet (R)
+
 ## Additional Contributors ✨
 
 Thanks goes to these wonderful people:

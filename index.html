@@ -54,12 +54,28 @@ body {
 <div id="DownloadDiv" style="width: 100% !important; position: absolute;">
 
 
-<a download="planet.txt" id="downloadText" class="button"><img src="download-text.png"><div class="tooltip">Download Text</div></a>
-<a download="Planet.png" id="download" onmouseover="writeImageData();" class="button"><img src="download-image.png"><div class="tooltip">Download Image</div></a>
-<a id="mapSwitch" class="button" onclick="doMapSwitch();"><img src="map.png"><div class="tooltip">Switch to Map</div></a>
-<a id="setID" class="button" onclick="setID();"><img src="id.png"><div class="tooltip">View/Set ID</div></a>
-<a id="nextPlanet" class="button" onclick="genFromRandomID();"><img src="next.png"><div class="tooltip">Random New Planet</div></a>
+<a download="planet.txt" id="downloadText" class="button"><img src="download-text.png"><div class="tooltip">Download Text (T)</div></a>
+<a download="Planet.png" id="download" onmouseover="writeImageData();" class="button"><img src="download-image.png"><div class="tooltip">Download Image (D)</div></a>
+<a id="mapSwitch" class="button" onclick="doMapSwitch();"><img src="map.png"><div class="tooltip">Switch to Map (M)</div></a>
+<a id="setID" class="button" onclick="setID();"><img src="id.png"><div class="tooltip">View/Set ID (I)</div></a>
+<a id="nextPlanet" class="button" onclick="genFromRandomID();"><img src="next.png"><div class="tooltip">Random New Planet (R)</div></a>
 
+<script>
+$(document).keydown(function(e){
+  if (e.keyCode==84){ // T
+    document.getElementById("downloadText").click();
+  }else if (e.keyCode==68){ // D
+    writeImageData();
+    document.getElementById("download").click();
+  }else if (e.keyCode==77){ // M
+    document.getElementById("mapSwitch").click(); 
+  }else if (e.keyCode==73){ // I
+    document.getElementById("setID").click(); 
+  }else if (e.keyCode==82){ // R
+    document.getElementById("nextPlanet").click(); 
+  }
+});
+</script>
 
     </br>
 </div>
@@ -963,7 +979,6 @@ function doMapSwitch() {
 	doRenderMap = !doRenderMap;
 	document.getElementById("mapSwitch").innerHTML = doRenderMap ? '<img src="planet.png">' : '<img src="map.png">';
 }
-
 
 </script>
 
